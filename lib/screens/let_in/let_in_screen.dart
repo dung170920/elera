@@ -1,4 +1,4 @@
-import 'package:elera/extensions/extensions.dart';
+import 'package:elera/theme/extensions/extensions.dart';
 import 'package:elera/theme/theme.dart';
 import 'package:elera/utils/utils.dart';
 import 'package:elera/widgets/text_with_link.dart';

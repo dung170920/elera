@@ -6,6 +6,7 @@ class AppColors {
   AppColors._(); //private constructor
 
   static Color primaryColor = Color(0xFF335EF7);
+  static Color shadowColor = Color(0xFF04060F).withOpacity(0.05);
   static Map<int, Color> darkColor = {
     1: const Color(0xFF181A20),
     2: const Color(0xFF1F222A),

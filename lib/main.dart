@@ -1,11 +1,18 @@
 import 'package:elera/screens/screens.dart';
 import 'package:elera/screens/welcome/bloc/bloc.dart';
+import 'package:elera/screens/sign_in/bloc/bloc.dart';
 import 'package:elera/theme/theme.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'firebase_options.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   runApp(const MyApp());
 }
 
@@ -20,9 +27,9 @@ class MyApp extends StatelessWidget {
           lazy: true,
           create: (context) => WelcomeBloc(),
         ),
-        // BlocProvider(
-        //   create: (context) => SubjectBloc(),
-        // ),
+        BlocProvider(
+          create: (context) => SignInBloc(),
+        ),
       ],
       child: ScreenUtilInit(
         designSize: const Size(360, 690),
