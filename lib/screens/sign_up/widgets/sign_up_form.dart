@@ -5,14 +5,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class SignInForm extends StatefulWidget {
-  const SignInForm({super.key});
+class SignUpForm extends StatefulWidget {
+  const SignUpForm({super.key});
 
   @override
-  State<SignInForm> createState() => _SignInFormState();
+  State<SignUpForm> createState() => _SignUpFormState();
 }
 
-class _SignInFormState extends State<SignInForm> {
+class _SignUpFormState extends State<SignUpForm> {
   final _focusNodes = List.generate(2, (index) => FocusNode()).toList();
   final _emailController = TextEditingController();
   final _passController = TextEditingController();

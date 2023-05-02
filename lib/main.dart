@@ -1,3 +1,5 @@
+import 'package:elera/routes/pages.dart';
+import 'package:elera/routes/routes.dart';
 import 'package:elera/screens/screens.dart';
 import 'package:elera/screens/welcome/bloc/bloc.dart';
 import 'package:elera/screens/sign_in/bloc/bloc.dart';
@@ -23,13 +25,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
-        BlocProvider(
-          lazy: true,
-          create: (context) => WelcomeBloc(),
-        ),
-        BlocProvider(
-          create: (context) => SignInBloc(),
-        ),
+        ...AppPages.BlocList(context),
       ],
       child: ScreenUtilInit(
         designSize: const Size(360, 690),
@@ -38,10 +34,12 @@ class MyApp extends StatelessWidget {
         builder: (context, child) => MaterialApp(
           title: 'Elera',
           debugShowCheckedModeBanner: false,
+          initialRoute: AppRoutes.WELCOME,
+          navigatorObservers: [AppPages.observer],
+          onGenerateRoute: AppPages.GenerateRouteSettings,
           builder: (context, child) =>
               ScrollConfiguration(behavior: MyBehavior(), child: child!),
           theme: AppTheme.lightTheme,
-          home: const SignInScreen(),
         ),
       ),
     );

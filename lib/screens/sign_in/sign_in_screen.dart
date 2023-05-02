@@ -1,4 +1,4 @@
-import 'package:elera/theme/extensions/extensions.dart';
+import 'package:elera/routes/routes.dart';
 import 'package:elera/screens/sign_in/bloc/bloc.dart';
 import 'package:elera/screens/sign_in/widgets/widgets.dart';
 import 'package:elera/theme/theme.dart';
@@ -21,6 +21,7 @@ class _SignInScreenState extends State<SignInScreen> {
     return Scaffold(
       appBar: AppBar(
         leading: GestureDetector(
+          onTap: () => Navigator.pop(context),
           child: Padding(
             padding: EdgeInsets.only(left: 8.w),
             child: Icon(
@@ -91,7 +92,10 @@ class _SignInScreenState extends State<SignInScreen> {
                     TextWithLink(
                       text: 'Don’t have an account?',
                       linkText: 'Sign up',
-                      linkAction: () {},
+                      linkAction: () => Navigator.pushReplacementNamed(
+                        context,
+                        AppRoutes.SIGN_UP,
+                      ),
                     ),
                   ],
                 );

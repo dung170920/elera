@@ -1,4 +1,3 @@
-import 'package:elera/theme/extensions/extensions.dart';
 import 'package:elera/models/models.dart';
 import 'package:elera/theme/theme.dart';
 import 'package:flutter/material.dart';

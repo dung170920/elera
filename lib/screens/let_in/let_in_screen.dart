@@ -1,4 +1,4 @@
-import 'package:elera/theme/extensions/extensions.dart';
+import 'package:elera/routes/routes.dart';
 import 'package:elera/theme/theme.dart';
 import 'package:elera/utils/utils.dart';
 import 'package:elera/widgets/text_with_link.dart';
@@ -78,7 +78,10 @@ class _LetInScreenState extends State<LetInScreen> {
               AppElevatedButton.primary(
                 color: AppColors.primaryColor,
                 radius: 100,
-                onPressed: () {},
+                onPressed: () => Navigator.pushNamed(
+                  context,
+                  AppRoutes.SIGN_IN,
+                ),
                 child: Text(
                   'Sign in with password',
                   style: AppTextStyle.bodyLarge(
@@ -88,7 +91,10 @@ class _LetInScreenState extends State<LetInScreen> {
               TextWithLink(
                 text: 'Don’t have an account?',
                 linkText: 'Sign up',
-                linkAction: () {},
+                linkAction: () => Navigator.pushNamed(
+                  context,
+                  AppRoutes.SIGN_UP,
+                ),
               ),
             ],
           ),
