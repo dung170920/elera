@@ -14,8 +14,8 @@ class SignInForm extends StatefulWidget {
 
 class _SignInFormState extends State<SignInForm> {
   final _focusNodes = List.generate(2, (index) => FocusNode()).toList();
-  final _emailController = TextEditingController();
-  final _passController = TextEditingController();
+  final _emailController = TextEditingController(text: '');
+  final _passController = TextEditingController(text: '');
 
   @override
   void initState() {
@@ -90,7 +90,7 @@ class _SignInFormState extends State<SignInForm> {
             },
           ),
           SizedBox(
-            height: 24.w,
+            height: 20.w,
           ),
           AppTextField(
             label: 'Password',
@@ -105,14 +105,17 @@ class _SignInFormState extends State<SignInForm> {
             },
           ),
           SizedBox(
-            height: 24.w,
+            height: 20.w,
           ),
           AppElevatedButton.primary(
             color: AppColors.primaryColor,
             radius: 100,
-            onPressed: () {
-              _handleSignIn();
-            },
+            onPressed:
+                _emailController.text.isEmpty || _passController.text.isEmpty
+                    ? null
+                    : () {
+                        _handleSignIn();
+                      },
             child: Text(
               'Sign in',
               style: AppTextStyle.bodyLarge(

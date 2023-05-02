@@ -1,4 +1,4 @@
-import 'package:elera/screens/sign_in/bloc/bloc.dart';
+import 'package:elera/screens/sign_up/bloc/bloc.dart';
 import 'package:elera/theme/theme.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -13,9 +13,12 @@ class SignUpForm extends StatefulWidget {
 }
 
 class _SignUpFormState extends State<SignUpForm> {
-  final _focusNodes = List.generate(2, (index) => FocusNode()).toList();
+  final _focusNodes = List.generate(4, (index) => FocusNode()).toList();
+  final _nameController = TextEditingController();
   final _emailController = TextEditingController();
   final _passController = TextEditingController();
+  final _rePassController = TextEditingController();
+  final _formKey = GlobalKey<FormState>();
 
   @override
   void initState() {
@@ -24,73 +27,95 @@ class _SignUpFormState extends State<SignUpForm> {
         .forEach((element) => element.addListener(() => setState(() {})));
   }
 
-  Future<void> _handleSignIn() async {
-    try {
-      final state = context.read<SignInBloc>().state;
-      String email = state.email;
-      String password = state.password;
-      final auth = FirebaseAuth.instance;
+  Future<void> _handleSignUp() async {
+    if (_formKey.currentState!.validate()) {
+      try {
+        final state = context.read<SignUpBloc>().state;
+        String fullName = state.fullName;
+        String email = state.email;
+        String password = state.password;
+        String rePassword = state.rePassword;
+        final auth = FirebaseAuth.instance;
 
-      final credential = await auth.signInWithEmailAndPassword(
-          email: email, password: password);
+        if (password.compareTo(rePassword) != 0) {}
 
-      if (credential.user == null) {
-        return;
-      }
+        final credential = await auth.createUserWithEmailAndPassword(
+            email: email, password: password);
 
-      if (!credential.user!.emailVerified) {
-        credential.user!.sendEmailVerification();
-        AppSnackbar.show(context: context, title: 'verify');
-        return;
-      }
+        if (credential.user == null) {
+          return;
+        }
 
-      AppSnackbar.show(context: context, title: 'Login successfully');
-    } on FirebaseAuthException catch (e) {
-      if (e.code == 'user-not-found') {
-        AppSnackbar.show(
-            context: context, title: 'No user found with this email');
-        return;
+        if (!credential.user!.emailVerified) {
+          credential.user!.sendEmailVerification();
+          AppSnackbar.show(context: context, title: 'verify');
+          return;
+        }
+
+        AppSnackbar.show(context: context, title: 'Login successfully');
+      } on FirebaseAuthException catch (e) {
+        if (e.code == 'user-not-found') {
+          AppSnackbar.show(
+              context: context, title: 'No user found with this email');
+          return;
+        }
+        if (e.code == 'wrong-password') {
+          AppSnackbar.show(context: context, title: 'Password is wrong');
+          return;
+        }
+        if (e.code == 'invalid-email') {
+          AppSnackbar.show(context: context, title: 'Email format is wrong');
+          return;
+        }
+        if (e.code == 'too-many-requests') {
+          AppSnackbar.show(
+              context: context,
+              title: 'Account block because password is wrong many time');
+          return;
+        }
+        print(e.code);
+      } catch (e) {
+        print(e.toString());
       }
-      if (e.code == 'wrong-password') {
-        AppSnackbar.show(context: context, title: 'Password is wrong');
-        return;
-      }
-      if (e.code == 'invalid-email') {
-        AppSnackbar.show(context: context, title: 'Email format is wrong');
-        return;
-      }
-      if (e.code == 'too-many-requests') {
-        AppSnackbar.show(
-            context: context,
-            title: 'Account block because password is wrong many time');
-        return;
-      }
-      print(e.code);
-    } catch (e) {
-      print(e.toString());
     }
   }
 
   @override
   Widget build(BuildContext context) {
     return Form(
+      key: _formKey,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
+          AppTextField(
+            label: 'Full name',
+            hintText: 'Full name',
+            textFieldType: TextInputType.name,
+            prefix: Icon(MyIcons.solidUser),
+            focus: _focusNodes[0],
+            controller: _nameController,
+            nextFocus: _focusNodes[1],
+            onChanged: (value) {
+              context.read<SignUpBloc>().add(EmailEvent(value));
+            },
+          ),
+          SizedBox(
+            height: 20.w,
+          ),
           AppTextField(
             label: 'Email',
             hintText: 'Email',
             textFieldType: TextInputType.emailAddress,
             prefix: Icon(MyIcons.solidEnvelope),
-            focus: _focusNodes[0],
+            focus: _focusNodes[1],
             controller: _emailController,
-            nextFocus: _focusNodes[1],
+            nextFocus: _focusNodes[2],
             onChanged: (value) {
-              context.read<SignInBloc>().add(EmailEvent(value));
+              context.read<SignUpBloc>().add(EmailEvent(value));
             },
           ),
           SizedBox(
-            height: 24.w,
+            height: 20.w,
           ),
           AppTextField(
             label: 'Password',
@@ -98,43 +123,45 @@ class _SignUpFormState extends State<SignUpForm> {
             textFieldType: TextInputType.text,
             isPassword: true,
             prefix: Icon(MyIcons.solidLock),
-            focus: _focusNodes[1],
+            focus: _focusNodes[2],
+            nextFocus: _focusNodes[3],
             controller: _passController,
             onChanged: (value) {
-              context.read<SignInBloc>().add(PasswordEvent(value));
+              context.read<SignUpBloc>().add(PasswordEvent(value));
             },
           ),
           SizedBox(
-            height: 24.w,
+            height: 20.w,
+          ),
+          AppTextField(
+            label: 'Confirm Password',
+            hintText: 'Confirm Password',
+            textFieldType: TextInputType.text,
+            isPassword: true,
+            prefix: Icon(MyIcons.solidLock),
+            focus: _focusNodes[3],
+            controller: _rePassController,
+            onChanged: (value) {
+              context.read<SignUpBloc>().add(PasswordEvent(value));
+            },
+          ),
+          SizedBox(
+            height: 20.w,
           ),
           AppElevatedButton.primary(
             color: AppColors.primaryColor,
             radius: 100,
             onPressed: () {
-              _handleSignIn();
+              _handleSignUp();
             },
             child: Text(
-              'Sign in',
+              'Sign up',
               style: AppTextStyle.bodyLarge(
                 FontWeight.bold,
                 AppColors.lightColor,
               ),
             ),
           ),
-          SizedBox(
-            height: 16.w,
-          ),
-          Center(
-            child: GestureDetector(
-              child: Text(
-                'Forgot the password?',
-                style: AppTextStyle.bodyLarge(
-                  FontWeight.w600,
-                  AppColors.primaryColor,
-                ),
-              ),
-            ),
-          )
         ],
       ),
     );

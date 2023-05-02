@@ -44,50 +44,11 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       style: AppTextStyle.h1,
                     ),
                     SizedBox(
-                      height: 36.w,
+                      height: 26.w,
                     ),
                     SignUpForm(),
                     SizedBox(
-                      height: 36.w,
-                    ),
-                    Row(
-                      children: [
-                        Expanded(child: Divider()),
-                        Padding(
-                          padding: EdgeInsets.symmetric(horizontal: 16.w),
-                          child: Text(
-                            'or continue with',
-                            style: AppTextStyle.bodyXLarge(
-                              FontWeight.w600,
-                              AppColors.greyScaleColor[700],
-                            ),
-                          ),
-                        ),
-                        Expanded(child: Divider()),
-                      ],
-                    ),
-                    SizedBox(
-                      height: 20.w,
-                    ),
-                    Wrap(
-                      spacing: 20.w,
-                      direction: Axis.horizontal,
-                      children: getThirdSignInList()
-                          .map(
-                            (e) => AppOutlinedButton.primary(
-                              width: 88.w,
-                              child: Image.asset(
-                                e.img!,
-                                height: 24.w,
-                                width: 24.w,
-                              ),
-                              onPressed: () {},
-                            ),
-                          )
-                          .toList(),
-                    ),
-                    SizedBox(
-                      height: 36.w,
+                      height: 26.w,
                     ),
                     TextWithLink(
                       text: 'Already have an account?',

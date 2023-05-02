@@ -1,8 +1,11 @@
 import 'package:elera/routes/pages.dart';
 import 'package:elera/routes/routes.dart';
+import 'package:elera/screens/home/home_screen.dart';
 import 'package:elera/screens/screens.dart';
+import 'package:elera/screens/splash/bloc/splash_bloc.dart';
 import 'package:elera/screens/welcome/bloc/bloc.dart';
 import 'package:elera/screens/sign_in/bloc/bloc.dart';
+import 'package:elera/services/services.dart';
 import 'package:elera/theme/theme.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -31,15 +34,28 @@ class MyApp extends StatelessWidget {
         designSize: const Size(360, 690),
         minTextAdapt: true,
         splitScreenMode: true,
-        builder: (context, child) => MaterialApp(
+        builder: (_, child) => MaterialApp(
           title: 'Elera',
           debugShowCheckedModeBanner: false,
-          initialRoute: AppRoutes.WELCOME,
-          navigatorObservers: [AppPages.observer],
+          initialRoute: AppRoutes.SPLASH,
+          //navigatorObservers: [AppPages.observer],
           onGenerateRoute: AppPages.GenerateRouteSettings,
-          builder: (context, child) =>
-              ScrollConfiguration(behavior: MyBehavior(), child: child!),
           theme: AppTheme.lightTheme,
+          builder: (context, child) => BlocListener<SplashBloc, SplashState>(
+            listener: (context, state) {
+              if (state.status == AuthStatus.authenticated)
+                Navigator.pushNamedAndRemoveUntil(
+                    context, AppRoutes.HOME, (route) => false);
+
+              if (state.status == AuthStatus.unAuthenticated)
+                Navigator.pushNamedAndRemoveUntil(
+                    context, AppRoutes.LET_IN, (route) => false);
+            },
+            child: ScrollConfiguration(
+              behavior: MyBehavior(),
+              child: child!,
+            ),
+          ),
         ),
       ),
     );
