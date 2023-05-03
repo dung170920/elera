@@ -54,6 +54,16 @@ class AppTheme {
         gapPadding: 12.w,
         borderSide: BorderSide(color: AppColors.primaryColor),
       ),
+      errorBorder: OutlineInputBorder(
+        borderRadius: radiusCircular(12),
+        gapPadding: 12.w,
+        borderSide: BorderSide(color: AppColors.statusColor[StatusEnum.ERROR]!),
+      ),
+      focusedErrorBorder: OutlineInputBorder(
+        borderRadius: radiusCircular(12),
+        gapPadding: 12.w,
+        borderSide: BorderSide(color: AppColors.primaryColor),
+      ),
     ),
   );
 

@@ -1,5 +1,5 @@
 import 'package:elera/routes/routes.dart';
-import 'package:elera/screens/sign_up/bloc/bloc.dart';
+import 'package:elera/screens/sign_up/bloc/sign_up_bloc.dart';
 import 'package:elera/screens/sign_up/widgets/widgets.dart';
 import 'package:elera/theme/theme.dart';
 import 'package:elera/utils/utils.dart';

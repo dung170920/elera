@@ -16,10 +16,17 @@ class AuthService {
     });
   }
 
-  Future<void> signUp({required String email, required String password}) async {
+  Future<void> signUp(
+      {required String email,
+      required String password,
+      required String name}) async {
     try {
-      await firebaseAuth.createUserWithEmailAndPassword(
-          email: email, password: password);
+      var user = await firebaseAuth.createUserWithEmailAndPassword(
+        email: email,
+        password: password,
+      );
+
+      user.user!.updateDisplayName(name);
     } catch (e) {
       print(e.toString());
     }
@@ -53,6 +60,7 @@ extension on User {
       email: email,
       name: displayName,
       avatar: photoURL,
+      phoneNumber: phoneNumber,
     );
   }
 }

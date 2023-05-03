@@ -10,6 +10,7 @@ part 'splash_state.dart';
 class SplashBloc extends Bloc<SplashEvent, SplashState> {
   StreamSubscription<UserModel>? _userSubscription;
   final AuthService authService;
+
   SplashBloc({required AuthService authService})
       : authService = authService,
         super(authService.currentUser.isNotEmpty
@@ -28,7 +29,10 @@ class SplashBloc extends Bloc<SplashEvent, SplashState> {
     });
 
     _userSubscription = authService.user.listen(
-      (user) => add(AuthUserChanged(user)),
+      (user) {
+        print('user: $user');
+        add(AuthUserChanged(user));
+      },
     );
   }
 

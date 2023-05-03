@@ -1,27 +1,38 @@
-class SignUpState {
-  final String fullName;
+part of 'sign_up_bloc.dart';
+
+enum SignUpStatus { initial, submitting, sucess, error }
+
+class SignUpState extends Equatable {
+  final String name;
   final String email;
   final String password;
-  final String rePassword;
+  final SignUpStatus status;
 
-  const SignUpState({
-    this.email = '',
-    this.password = '',
-    this.fullName = '',
-    this.rePassword = '',
-  });
+  const SignUpState(
+      {required this.name,
+      required this.email,
+      required this.password,
+      required this.status});
+
+  factory SignUpState.inital() {
+    return SignUpState(
+        name: '', email: '', password: '', status: SignUpStatus.initial);
+  }
+
+  @override
+  List<Object?> get props => [name, email, password, status];
 
   SignUpState copyWith({
-    String? fullName,
+    String? name,
     String? email,
     String? password,
-    String? rePassword,
+    SignUpStatus? status,
   }) {
     return SignUpState(
-      fullName: fullName ?? this.fullName,
+      name: name ?? this.name,
       email: email ?? this.email,
       password: password ?? this.password,
-      rePassword: rePassword ?? this.rePassword,
+      status: status ?? this.status,
     );
   }
 }

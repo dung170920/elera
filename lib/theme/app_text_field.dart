@@ -42,6 +42,8 @@ class AppTextField extends StatefulWidget {
     this.keyboardAppearance,
     this.hintText,
     this.label = '',
+    this.errorText,
+    this.initialValue,
   });
 
   final TextEditingController? controller;
@@ -80,6 +82,8 @@ class AppTextField extends StatefulWidget {
   final String? obscuringCharacter;
   final Brightness? keyboardAppearance;
   final String label;
+  final String? errorText;
+  final String? initialValue;
 
   @override
   State<AppTextField> createState() => _AppTextFieldState();
@@ -116,11 +120,15 @@ class _AppTextFieldState extends State<AppTextField> {
             if (widget.onFieldSubmitted != null)
               widget.onFieldSubmitted!.call(s);
           },
+          initialValue: widget.initialValue,
           keyboardType: widget.textFieldType,
           decoration: InputDecoration(
             filled: true,
             focusColor: AppColors.lightColor,
-            //contentPadding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 18.w),
+            errorText: widget.errorText,
+            errorStyle: AppTextStyle.bodyMedium(
+                FontWeight.w500, AppColors.statusColor[StatusEnum.ERROR]),
+            errorMaxLines: 2,
             hintText: widget.hintText,
             hintStyle:
                 AppTextStyle.bodyMedium(null, AppColors.greyScaleColor[500]),

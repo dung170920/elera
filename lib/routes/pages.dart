@@ -1,9 +1,8 @@
 import 'package:elera/models/models.dart';
 import 'package:elera/routes/routes.dart';
-import 'package:elera/screens/home/home_screen.dart';
-import 'package:elera/screens/let_in/bloc/bloc.dart';
-import 'package:elera/screens/sign_in/bloc/bloc.dart';
-import 'package:elera/screens/sign_up/bloc/bloc.dart';
+import 'package:elera/screens/let_in/bloc/let_in_bloc.dart';
+import 'package:elera/screens/sign_in/bloc/sign_in_bloc.dart';
+import 'package:elera/screens/sign_up/bloc/sign_up_bloc.dart';
 import 'package:elera/screens/splash/bloc/splash_bloc.dart';
 import 'package:elera/screens/welcome/bloc/bloc.dart';
 import 'package:elera/services/services.dart';
@@ -46,7 +45,7 @@ class AppPages {
         page: SignInScreen(),
         bloc: BlocProvider(
           lazy: true,
-          create: (_) => SignInBloc(),
+          create: (_) => SignInBloc(_authService),
         ),
       ),
       RouteModel(
@@ -54,7 +53,7 @@ class AppPages {
         page: SignUpScreen(),
         bloc: BlocProvider(
           lazy: true,
-          create: (_) => SignUpBloc(),
+          create: (_) => SignUpBloc(_authService),
         ),
       ),
       RouteModel(
@@ -80,6 +79,18 @@ class AppPages {
     var route = Routes().where((element) => element.path == settings.name);
 
     return MaterialPageRoute(
-        builder: (_) => route.first.page, settings: settings);
+        builder: (_) => BlocListener<SplashBloc, SplashState>(
+              listener: (context, state) {
+                if (state.status == AuthStatus.authenticated)
+                  Navigator.pushNamedAndRemoveUntil(
+                      context, AppRoutes.HOME, (route) => false);
+
+                if (state.status == AuthStatus.unAuthenticated)
+                  Navigator.pushNamedAndRemoveUntil(
+                      context, AppRoutes.LET_IN, (route) => false);
+              },
+              child: route.first.page,
+            ),
+        settings: settings);
   }
 }

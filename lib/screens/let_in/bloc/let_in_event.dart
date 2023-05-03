@@ -1,4 +1,4 @@
-import 'package:equatable/equatable.dart';
+part of 'let_in_bloc.dart';
 
 abstract class LetInEvent extends Equatable {
   const LetInEvent();

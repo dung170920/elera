@@ -1,11 +1,13 @@
+part of 'sign_up_bloc.dart';
+
 abstract class SignUpEvent {
   const SignUpEvent();
 }
 
-class FullNameEvent extends SignUpEvent {
-  final String fullName;
+class NameEvent extends SignUpEvent {
+  final String name;
 
-  const FullNameEvent(this.fullName);
+  const NameEvent(this.name);
 }
 
 class EmailEvent extends SignUpEvent {
@@ -20,8 +22,4 @@ class PasswordEvent extends SignUpEvent {
   const PasswordEvent(this.password);
 }
 
-class RePasswordEvent extends SignUpEvent {
-  final String rePassword;
-
-  const RePasswordEvent(this.rePassword);
-}
+class SignUpWithEmailAndPasswordEvent extends SignUpEvent {}

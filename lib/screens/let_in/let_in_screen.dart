@@ -32,6 +32,9 @@ class _LetInScreenState extends State<LetInScreen> {
                 "Let’s you in",
                 style: AppTextStyle.h1,
               ),
+              SizedBox(
+                height: 4.w,
+              ),
               Column(
                 children: getThirdSignInList()
                     .map(
@@ -87,6 +90,9 @@ class _LetInScreenState extends State<LetInScreen> {
                   style: AppTextStyle.bodyLarge(
                       FontWeight.bold, AppColors.lightColor),
                 ),
+              ),
+              SizedBox(
+                height: 8.w,
               ),
               TextWithLink(
                 text: 'Don’t have an account?',
