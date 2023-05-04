@@ -11,10 +11,10 @@ class SignInBloc extends Bloc<SignInEvent, SignInState> {
   final AuthService authService;
   SignInBloc(this.authService) : super(SignInState.inital()) {
     on<EmailEvent>((event, emit) {
-      //final email = Email.dirty(event.email);
       emit(
         state.copyWith(
           email: Email.pure(event.email),
+          status: FormzSubmissionStatus.initial,
         ),
       );
     });
@@ -23,6 +23,7 @@ class SignInBloc extends Bloc<SignInEvent, SignInState> {
       emit(
         state.copyWith(
           password: Password.pure(event.password),
+          status: FormzSubmissionStatus.initial,
         ),
       );
     });
@@ -38,6 +39,7 @@ class SignInBloc extends Bloc<SignInEvent, SignInState> {
           password: password,
         ),
       );
+
       if (Formz.validate([email, password])) {
         emit(
           state.copyWith(
@@ -46,12 +48,18 @@ class SignInBloc extends Bloc<SignInEvent, SignInState> {
         );
         try {
           await authService.signInWithEmailAndPassword(
-              email: state.password.value, password: state.password.value);
+              email: email.value, password: password.value);
 
           emit(state.copyWith(status: FormzSubmissionStatus.success));
-        } catch (e) {
-          print(e.toString());
-          emit(state.copyWith(status: FormzSubmissionStatus.failure));
+        } on FirebaseAuthExceptions catch (e) {
+          emit(state.copyWith(
+            status: FormzSubmissionStatus.failure,
+            errorMessage: e.message,
+          ));
+        } catch (_) {
+          emit(state.copyWith(
+            status: FormzSubmissionStatus.failure,
+          ));
         }
       }
     });

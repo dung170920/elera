@@ -7,7 +7,6 @@ abstract class SignInEvent {
 class EmailEvent extends SignInEvent {
   final String email;
 
-  @override
   List<Object> get props => [email];
 
   const EmailEvent(this.email);
@@ -16,7 +15,6 @@ class EmailEvent extends SignInEvent {
 class PasswordEvent extends SignInEvent {
   final String password;
 
-  @override
   List<Object> get props => [password];
 
   const PasswordEvent(this.password);

@@ -10,7 +10,7 @@ enum EmailValidationError {
 
 enum PasswordValidationError {
   invalid(
-      'Password must be at least 8 characters and contain at least one letter and number');
+      'Password must be at least 8 characters and contain 1 upper character, 1 lower character, 1 number and 1 special character');
 
   final String text;
 
@@ -38,8 +38,8 @@ class Password extends FormzInput<String, PasswordValidationError> {
 
   const Password.dirty([super.value = '']) : super.dirty(); // check lỗi
 
-  static final _passwordRegex = RegExp(
-      r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+");
+  static final _passwordRegex =
+      RegExp(r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#\$&*~]).{8,}$');
 
   @override
   PasswordValidationError? validator(String value) {

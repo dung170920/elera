@@ -65,7 +65,7 @@ extension AppOutlinedButton on OutlinedButton {
           fixedSize: Size.fromWidth(width ?? double.maxFinite),
           backgroundColor: AppColors.lightColor,
           disabledBackgroundColor: AppColors.greyScaleColor[100]!,
-          padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 18.w),
+          padding: EdgeInsets.symmetric(horizontal: 32.w, vertical: 18.w),
           shape: RoundedRectangleBorder(
             borderRadius: radiusCircular(radius),
             side: BorderSide(

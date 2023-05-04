@@ -5,4 +5,8 @@ class AppRoutes {
   static const SIGN_IN = '/sign_in';
   static const SIGN_UP = '/sign_up';
   static const HOME = '/home';
+  static const PROFILE = '/profile';
+  static const MY_COURSE = '/my_course';
+  static const INBOX = '/inbox';
+  static const TRANSACTION = '/transaction';
 }

@@ -1,4 +1,4 @@
-import 'package:elera/utils/constants.dart';
+import 'package:elera/constants/constants.dart';
 import 'package:flutter/material.dart';
 
 // Returns MaterialColor from Color
@@ -29,5 +29,5 @@ ShapeBorder shapeRadius([double? borderRadius]) {
 }
 
 BorderRadius radiusCircular([double? radius]) {
-  return BorderRadius.circular(radius ?? defaultRadius);
+  return BorderRadius.circular(radius ?? Styles.DEFAULT_RADIUS);
 }

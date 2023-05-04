@@ -1,11 +1,9 @@
 import 'package:elera/routes/routes.dart';
-import 'package:elera/screens/sign_in/bloc/sign_in_bloc.dart';
 import 'package:elera/screens/sign_in/widgets/widgets.dart';
 import 'package:elera/theme/theme.dart';
-import 'package:elera/utils/utils.dart';
+import 'package:elera/constants/constants.dart';
 import 'package:elera/widgets/widgets.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class SignInScreen extends StatefulWidget {
@@ -70,7 +68,7 @@ class _SignInScreenState extends State<SignInScreen> {
                 Wrap(
                   spacing: 20.w,
                   direction: Axis.horizontal,
-                  children: getThirdSignInList()
+                  children: Data.getThirdSignInList()
                       .map(
                         (e) => AppOutlinedButton.primary(
                           width: 88.w,

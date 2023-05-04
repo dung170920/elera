@@ -5,6 +5,13 @@ class TextModel {
   String? subTitle;
   String? title;
   IconData? iconData;
+  IconData? activeIconData;
 
-  TextModel({this.img, this.subTitle, this.title, this.iconData});
+  TextModel({
+    this.img,
+    this.subTitle,
+    this.title,
+    this.iconData,
+    this.activeIconData,
+  });
 }

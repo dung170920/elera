@@ -128,7 +128,7 @@ class _AppTextFieldState extends State<AppTextField> {
             errorText: widget.errorText,
             errorStyle: AppTextStyle.bodyMedium(
                 FontWeight.w500, AppColors.statusColor[StatusEnum.ERROR]),
-            errorMaxLines: 2,
+            errorMaxLines: 3,
             hintText: widget.hintText,
             hintStyle:
                 AppTextStyle.bodyMedium(null, AppColors.greyScaleColor[500]),

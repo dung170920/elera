@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:elera/models/models.dart';
+import 'package:elera/utils/utils.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 enum AuthStatus { authenticated, unAuthenticated }
@@ -26,9 +27,11 @@ class AuthService {
         password: password,
       );
 
-      user.user!.updateDisplayName(name);
-    } catch (e) {
-      print(e.toString());
+      await user.user!.updateDisplayName(name);
+    } on FirebaseAuthException catch (e) {
+      throw FirebaseAuthExceptions.fromCode(e.code);
+    } catch (_) {
+      throw FirebaseAuthExceptions();
     }
   }
 
@@ -37,8 +40,10 @@ class AuthService {
     try {
       await firebaseAuth.signInWithEmailAndPassword(
           email: email, password: password);
+    } on FirebaseAuthException catch (e) {
+      throw FirebaseAuthExceptions.fromCode(e.code);
     } catch (e) {
-      print(e.toString());
+      throw FirebaseAuthExceptions();
     }
   }
 
@@ -47,8 +52,10 @@ class AuthService {
       Future.wait([
         firebaseAuth.signOut(),
       ]);
+    } on FirebaseAuthException catch (e) {
+      throw FirebaseAuthExceptions.fromCode(e.code);
     } catch (e) {
-      print(e.toString());
+      throw FirebaseAuthExceptions();
     }
   }
 }

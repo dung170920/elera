@@ -1,6 +1,8 @@
 import 'package:elera/routes/routes.dart';
 import 'package:elera/screens/welcome/widgets/widgets.dart';
-import 'package:elera/utils/constants.dart';
+import 'package:elera/services/services.dart';
+import 'package:elera/constants/constants.dart';
+import 'package:elera/utils/global.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:elera/screens/welcome/bloc/bloc.dart';
@@ -27,24 +29,27 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                 state.page = value;
                 context.read<WelcomeBloc>().add(WelcomeEvent());
               },
-              children: getWelcomeList()
+              children: Data.getWelcomeList()
                   .map(
                     (e) => PageItem(
                       item: e,
                       index: state.page,
-                      total: getWelcomeList().length,
+                      total: Data.getWelcomeList().length,
                       onTap: () {
-                        if (state.page < getWelcomeList().length - 1) {
+                        if (state.page < Data.getWelcomeList().length - 1) {
                           state.page += 1;
                           context.read<WelcomeBloc>().add(WelcomeEvent());
                           pageController.animateToPage(state.page,
                               duration: Duration(microseconds: 500),
                               curve: Curves.bounceIn);
-                        } else
+                        } else {
+                          Global.storageService
+                              .setBool(Preferences.OPEN_FIRST_TIME_KEY, true);
                           Navigator.pushReplacementNamed(
                             context,
                             AppRoutes.LET_IN,
                           );
+                        }
                       },
                     ),
                   )

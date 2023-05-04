@@ -1,6 +1,7 @@
 import 'package:elera/routes/routes.dart';
 import 'package:elera/theme/theme.dart';
 import 'package:elera/utils/utils.dart';
+import 'package:elera/constants/constants.dart';
 import 'package:elera/widgets/text_with_link.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -23,10 +24,12 @@ class _LetInScreenState extends State<LetInScreen> {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              SizedBox(
-                height: 200.w,
-                width: double.maxFinite,
-                child: Image.asset(letIn),
+              Expanded(
+                child: SizedBox(
+                  height: 200.w,
+                  width: double.maxFinite,
+                  child: Image.asset(letIn),
+                ),
               ),
               Text(
                 "Let’s you in",
@@ -36,7 +39,7 @@ class _LetInScreenState extends State<LetInScreen> {
                 height: 4.w,
               ),
               Column(
-                children: getThirdSignInList()
+                children: Data.getThirdSignInList()
                     .map(
                       (e) => Container(
                         margin: EdgeInsets.only(bottom: 16.w),
@@ -77,6 +80,9 @@ class _LetInScreenState extends State<LetInScreen> {
                   ),
                   Expanded(child: Divider()),
                 ],
+              ),
+              SizedBox(
+                height: 8.w,
               ),
               AppElevatedButton.primary(
                 color: AppColors.primaryColor,

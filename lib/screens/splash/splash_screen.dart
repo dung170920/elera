@@ -1,9 +1,4 @@
-import 'package:elera/models/models.dart';
-import 'package:elera/routes/routes.dart';
-import 'package:elera/screens/home/home_screen.dart';
-import 'package:elera/screens/splash/bloc/splash_bloc.dart';
-import 'package:elera/services/auth_service.dart';
-import 'package:elera/utils/utils.dart';
+import 'package:elera/constants/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
