@@ -1,6 +1,5 @@
 import 'package:elera/routes/routes.dart';
 import 'package:elera/theme/theme.dart';
-import 'package:elera/utils/utils.dart';
 import 'package:elera/constants/constants.dart';
 import 'package:elera/widgets/text_with_link.dart';
 import 'package:flutter/material.dart';
@@ -98,7 +97,7 @@ class _LetInScreenState extends State<LetInScreen> {
                 ),
               ),
               SizedBox(
-                height: 8.w,
+                height: 16.w,
               ),
               TextWithLink(
                 text: 'Don’t have an account?',

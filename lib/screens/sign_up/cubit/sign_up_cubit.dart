@@ -13,7 +13,7 @@ class SignUpCubit extends Cubit<SignUpState> {
 
   void onNameChanged(String name) => emit(
         state.copyWith(
-          name: TextInput.pure(name),
+          name: TextInput.pure(value: name),
           status: FormzSubmissionStatus.initial,
         ),
       );
@@ -34,7 +34,10 @@ class SignUpCubit extends Cubit<SignUpState> {
 
   void onRePasswordChanged(String rePassword) => emit(
         state.copyWith(
-          rePassword: PasswordInput.pure(rePassword),
+          rePassword: RePasswordInput.pure(
+            state.password.value,
+            rePassword,
+          ),
           status: FormzSubmissionStatus.initial,
         ),
       );
@@ -42,17 +45,21 @@ class SignUpCubit extends Cubit<SignUpState> {
   void signUpSubmitted() async {
     if (state.status == FormzSubmissionStatus.inProgress) return;
 
-    final name = TextInput.dirty(state.name.value);
+    final name = TextInput.dirty(value: state.name.value, max: 20);
     final email = EmailInput.dirty(state.email.value);
     final password = PasswordInput.dirty(state.password.value);
-    final rePassword = PasswordInput.dirty(state.rePassword.value);
+    final rePassword = RePasswordInput.dirty(
+        password: password.value, value: state.rePassword.value);
     emit(
       state.copyWith(
+        name: name,
         email: email,
         password: password,
         rePassword: rePassword,
       ),
     );
+
+    print(Formz.validate([name, email, password, rePassword]));
 
     if (Formz.validate([name, email, password, rePassword])) {
       emit(

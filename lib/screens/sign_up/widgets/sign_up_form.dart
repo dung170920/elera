@@ -24,87 +24,115 @@ class _SignUpFormState extends State<SignUpForm> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<SignUpCubit, SignUpState>(
-      builder: (context, state) {
-        return Form(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              AppTextField(
-                label: 'Full name',
-                hintText: 'Full name',
-                textFieldType: TextInputType.name,
-                prefix: Icon(MyIcons.solidUser),
-                focus: _focusNodes[0],
-                nextFocus: _focusNodes[1],
-                onChanged: (value) {
-                  context.read<SignUpCubit>().onNameChanged(value);
-                },
-              ),
-              SizedBox(
-                height: 20.w,
-              ),
-              AppTextField(
-                label: 'Email',
-                hintText: 'Email',
-                textFieldType: TextInputType.emailAddress,
-                prefix: Icon(MyIcons.solidEnvelope),
-                focus: _focusNodes[1],
-                nextFocus: _focusNodes[2],
-                onChanged: (value) {
-                  context.read<SignUpCubit>().onEmailChanged(value);
-                },
-              ),
-              SizedBox(
-                height: 20.w,
-              ),
-              AppTextField(
-                label: 'Password',
-                hintText: 'Password',
-                textFieldType: TextInputType.text,
-                isPassword: true,
-                prefix: Icon(MyIcons.solidLock),
-                focus: _focusNodes[2],
-                nextFocus: _focusNodes[3],
-                onChanged: (value) {
-                  context.read<SignUpCubit>().onPasswordChanged(value);
-                },
-              ),
-              SizedBox(
-                height: 20.w,
-              ),
-              AppTextField(
-                label: 'Confirm Password',
-                hintText: 'Confirm Password',
-                textFieldType: TextInputType.text,
-                isPassword: true,
-                prefix: Icon(MyIcons.solidLock),
-                focus: _focusNodes[3],
-                onChanged: (value) {
-                  context.read<SignUpCubit>().onRePasswordChanged(value);
-                },
-              ),
-              SizedBox(
-                height: 20.w,
-              ),
-              AppElevatedButton.primary(
-                color: AppColors.primaryColor,
-                radius: 100,
-                onPressed: state.status == FormzSubmissionStatus.inProgress
-                    ? null
-                    : () => context.read<SignUpCubit>().signUpSubmitted(),
-                child: Text(
-                  'Sign up',
-                  style: AppTextStyle.bodyLarge(
-                    FontWeight.bold,
-                    AppColors.lightColor,
+    return BlocListener<SignUpCubit, SignUpState>(
+      listener: (context, state) {
+        if (state.status == FormzSubmissionStatus.failure) {
+          AppSnackbar.show(
+            context: context,
+            title: state.errorMessage ?? 'Sign up failed',
+          );
+        }
+      },
+      child: BlocBuilder<SignUpCubit, SignUpState>(
+        builder: (context, state) {
+          return Form(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                AppTextField(
+                  label: 'Full name',
+                  hintText: 'Full name',
+                  textFieldType: TextInputType.name,
+                  prefix: Icon(MyIcons.solidUser),
+                  focus: _focusNodes[0],
+                  nextFocus: _focusNodes[1],
+                  initialValue: state.name.value,
+                  errorText: !state.name.isPure && state.name.error != null
+                      ? state.name.error?.text
+                      : null,
+                  onChanged: (value) {
+                    context.read<SignUpCubit>().onNameChanged(value);
+                  },
+                ),
+                SizedBox(
+                  height: 20.w,
+                ),
+                AppTextField(
+                  label: 'Email',
+                  hintText: 'Email',
+                  textFieldType: TextInputType.emailAddress,
+                  prefix: Icon(MyIcons.solidEnvelope),
+                  focus: _focusNodes[1],
+                  nextFocus: _focusNodes[2],
+                  initialValue: state.email.value,
+                  errorText: !state.email.isPure && state.email.error != null
+                      ? state.email.error?.text
+                      : null,
+                  onChanged: (value) {
+                    context.read<SignUpCubit>().onEmailChanged(value);
+                  },
+                ),
+                SizedBox(
+                  height: 20.w,
+                ),
+                AppTextField(
+                  label: 'Password',
+                  hintText: 'Password',
+                  textFieldType: TextInputType.text,
+                  isPassword: true,
+                  prefix: Icon(MyIcons.solidLock),
+                  focus: _focusNodes[2],
+                  nextFocus: _focusNodes[3],
+                  initialValue: state.password.value,
+                  errorText:
+                      !state.password.isPure && state.password.error != null
+                          ? state.password.error?.text
+                          : null,
+                  onChanged: (value) {
+                    context.read<SignUpCubit>().onPasswordChanged(value);
+                  },
+                ),
+                SizedBox(
+                  height: 20.w,
+                ),
+                AppTextField(
+                  label: 'Confirm Password',
+                  hintText: 'Confirm Password',
+                  textFieldType: TextInputType.text,
+                  isPassword: true,
+                  prefix: Icon(MyIcons.solidLock),
+                  focus: _focusNodes[3],
+                  initialValue: state.rePassword.value,
+                  errorText:
+                      !state.rePassword.isPure && state.rePassword.error != null
+                          ? state.rePassword.error?.text
+                          : null,
+                  onChanged: (value) {
+                    context.read<SignUpCubit>().onRePasswordChanged(value);
+                  },
+                ),
+                SizedBox(
+                  height: 20.w,
+                ),
+                AppElevatedButton.primary(
+                  color: AppColors.primaryColor,
+                  radius: 100,
+                  onPressed: state.status == FormzSubmissionStatus.inProgress
+                      ? null
+                      : () => context.read<SignUpCubit>().signUpSubmitted(),
+                  child: Text(
+                    'Sign up',
+                    style: AppTextStyle.bodyLarge(
+                      FontWeight.bold,
+                      AppColors.lightColor,
+                    ),
                   ),
                 ),
-              ),
-            ],
-          ),
-        );
-      },
+              ],
+            ),
+          );
+        },
+      ),
     );
   }
 }

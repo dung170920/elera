@@ -4,7 +4,7 @@ class SignUpState extends Equatable {
   final TextInput name;
   final EmailInput email;
   final PasswordInput password;
-  final PasswordInput rePassword;
+  final RePasswordInput rePassword;
   final FormzSubmissionStatus status;
   final String? errorMessage;
 
@@ -22,7 +22,7 @@ class SignUpState extends Equatable {
       name: TextInput.pure(),
       email: EmailInput.pure(),
       password: PasswordInput.pure(),
-      rePassword: PasswordInput.pure(),
+      rePassword: RePasswordInput.pure(),
       status: FormzSubmissionStatus.initial,
     );
   }
@@ -35,7 +35,7 @@ class SignUpState extends Equatable {
     TextInput? name,
     EmailInput? email,
     PasswordInput? password,
-    PasswordInput? rePassword,
+    RePasswordInput? rePassword,
     FormzSubmissionStatus? status,
     String? errorMessage,
   }) {

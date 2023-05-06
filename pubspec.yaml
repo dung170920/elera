@@ -23,6 +23,7 @@ dependencies:
   formz: ^0.6.0
   flutter_easyloading: ^3.0.5
   shared_preferences: ^2.1.0
+  google_sign_in: ^6.1.0
 
 dev_dependencies:
   flutter_test:
