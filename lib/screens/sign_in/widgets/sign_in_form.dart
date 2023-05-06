@@ -1,4 +1,4 @@
-import 'package:elera/screens/sign_in/bloc/sign_in_bloc.dart';
+import 'package:elera/screens/sign_in/cubit/sign_in_cubit.dart';
 import 'package:elera/theme/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -24,7 +24,7 @@ class _SignInFormState extends State<SignInForm> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocListener<SignInBloc, SignInState>(
+    return BlocListener<SignInCubit, SignInState>(
       listener: (context, state) {
         if (state.status == FormzSubmissionStatus.failure) {
           AppSnackbar.show(
@@ -33,7 +33,7 @@ class _SignInFormState extends State<SignInForm> {
           );
         }
       },
-      child: BlocBuilder<SignInBloc, SignInState>(
+      child: BlocBuilder<SignInCubit, SignInState>(
         builder: (context, state) {
           return Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -50,7 +50,7 @@ class _SignInFormState extends State<SignInForm> {
                     ? state.email.error?.text
                     : null,
                 onChanged: (value) {
-                  context.read<SignInBloc>().add(EmailEvent(value));
+                  context.read<SignInCubit>().onEmailChanged(value);
                 },
               ),
               SizedBox(
@@ -69,7 +69,7 @@ class _SignInFormState extends State<SignInForm> {
                         ? state.password.error?.text
                         : null,
                 onChanged: (value) {
-                  context.read<SignInBloc>().add(PasswordEvent(value));
+                  context.read<SignInCubit>().onPasswordChanged(value);
                 },
               ),
               SizedBox(
@@ -80,9 +80,7 @@ class _SignInFormState extends State<SignInForm> {
                 radius: 100,
                 onPressed: state.status == FormzSubmissionStatus.inProgress
                     ? null
-                    : () => context
-                        .read<SignInBloc>()
-                        .add(SignInWithEmailAndPasswordEvent()),
+                    : () => context.read<SignInCubit>().signInSubmitted(),
                 child: Text(
                   'Sign in',
                   style: AppTextStyle.bodyLarge(

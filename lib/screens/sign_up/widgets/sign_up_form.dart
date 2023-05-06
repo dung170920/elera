@@ -1,9 +1,9 @@
-import 'package:elera/screens/sign_up/bloc/sign_up_bloc.dart';
+import 'package:elera/screens/sign_up/cubit/sign_up_cubit.dart';
 import 'package:elera/theme/theme.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:formz/formz.dart';
 
 class SignUpForm extends StatefulWidget {
   const SignUpForm({super.key});
@@ -14,11 +14,6 @@ class SignUpForm extends StatefulWidget {
 
 class _SignUpFormState extends State<SignUpForm> {
   final _focusNodes = List.generate(4, (index) => FocusNode()).toList();
-  final _nameController = TextEditingController();
-  final _emailController = TextEditingController();
-  final _passController = TextEditingController();
-  final _rePassController = TextEditingController();
-  final _formKey = GlobalKey<FormState>();
 
   @override
   void initState() {
@@ -27,65 +22,11 @@ class _SignUpFormState extends State<SignUpForm> {
         .forEach((element) => element.addListener(() => setState(() {})));
   }
 
-  // Future<void> _handleSignUp() async {
-  //   if (_formKey.currentState!.validate()) {
-  //     try {
-  //       final state = context.read<SignUpBloc>().state;
-  //       String fullName = state.fullName;
-  //       String email = state.email;
-  //       String password = state.password;
-  //       String rePassword = state.rePassword;
-  //       final auth = FirebaseAuth.instance;
-
-  //       if (password.compareTo(rePassword) != 0) {}
-
-  //       final credential = await auth.createUserWithEmailAndPassword(
-  //           email: email, password: password);
-
-  //       if (credential.user == null) {
-  //         return;
-  //       }
-
-  //       if (!credential.user!.emailVerified) {
-  //         credential.user!.sendEmailVerification();
-  //         AppSnackbar.show(context: context, title: 'verify');
-  //         return;
-  //       }
-
-  //       AppSnackbar.show(context: context, title: 'Login successfully');
-  //     } on FirebaseAuthException catch (e) {
-  //       if (e.code == 'user-not-found') {
-  //         AppSnackbar.show(
-  //             context: context, title: 'No user found with this email');
-  //         return;
-  //       }
-  //       if (e.code == 'wrong-password') {
-  //         AppSnackbar.show(context: context, title: 'Password is wrong');
-  //         return;
-  //       }
-  //       if (e.code == 'invalid-email') {
-  //         AppSnackbar.show(context: context, title: 'Email format is wrong');
-  //         return;
-  //       }
-  //       if (e.code == 'too-many-requests') {
-  //         AppSnackbar.show(
-  //             context: context,
-  //             title: 'Account block because password is wrong many time');
-  //         return;
-  //       }
-  //       print(e.code);
-  //     } catch (e) {
-  //       print(e.toString());
-  //     }
-  //   }
-  //}
-
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<SignUpBloc, SignUpState>(
+    return BlocBuilder<SignUpCubit, SignUpState>(
       builder: (context, state) {
         return Form(
-          key: _formKey,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -95,10 +36,9 @@ class _SignUpFormState extends State<SignUpForm> {
                 textFieldType: TextInputType.name,
                 prefix: Icon(MyIcons.solidUser),
                 focus: _focusNodes[0],
-                controller: _nameController,
                 nextFocus: _focusNodes[1],
                 onChanged: (value) {
-                  context.read<SignUpBloc>().add(NameEvent(value));
+                  context.read<SignUpCubit>().onNameChanged(value);
                 },
               ),
               SizedBox(
@@ -110,10 +50,9 @@ class _SignUpFormState extends State<SignUpForm> {
                 textFieldType: TextInputType.emailAddress,
                 prefix: Icon(MyIcons.solidEnvelope),
                 focus: _focusNodes[1],
-                controller: _emailController,
                 nextFocus: _focusNodes[2],
                 onChanged: (value) {
-                  context.read<SignUpBloc>().add(EmailEvent(value));
+                  context.read<SignUpCubit>().onEmailChanged(value);
                 },
               ),
               SizedBox(
@@ -127,37 +66,33 @@ class _SignUpFormState extends State<SignUpForm> {
                 prefix: Icon(MyIcons.solidLock),
                 focus: _focusNodes[2],
                 nextFocus: _focusNodes[3],
-                controller: _passController,
                 onChanged: (value) {
-                  context.read<SignUpBloc>().add(PasswordEvent(value));
+                  context.read<SignUpCubit>().onPasswordChanged(value);
                 },
               ),
               SizedBox(
                 height: 20.w,
               ),
-              // AppTextField(
-              //   label: 'Confirm Password',
-              //   hintText: 'Confirm Password',
-              //   textFieldType: TextInputType.text,
-              //   isPassword: true,
-              //   prefix: Icon(MyIcons.solidLock),
-              //   focus: _focusNodes[3],
-              //   controller: _rePassController,
-              //   onChanged: (value) {
-              //     context.read<SignUpBloc>().add(PasswordEvent(value));
-              //   },
-              // ),
-              // SizedBox(
-              //   height: 20.w,
-              // ),
+              AppTextField(
+                label: 'Confirm Password',
+                hintText: 'Confirm Password',
+                textFieldType: TextInputType.text,
+                isPassword: true,
+                prefix: Icon(MyIcons.solidLock),
+                focus: _focusNodes[3],
+                onChanged: (value) {
+                  context.read<SignUpCubit>().onRePasswordChanged(value);
+                },
+              ),
+              SizedBox(
+                height: 20.w,
+              ),
               AppElevatedButton.primary(
                 color: AppColors.primaryColor,
                 radius: 100,
-                onPressed: state.status == SignUpStatus.submitting
+                onPressed: state.status == FormzSubmissionStatus.inProgress
                     ? null
-                    : () => context
-                        .read<SignUpBloc>()
-                        .add(SignUpWithEmailAndPasswordEvent()),
+                    : () => context.read<SignUpCubit>().signUpSubmitted(),
                 child: Text(
                   'Sign up',
                   style: AppTextStyle.bodyLarge(

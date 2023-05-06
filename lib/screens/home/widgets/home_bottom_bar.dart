@@ -1,4 +1,4 @@
-import 'package:elera/screens/home/bloc/home_bloc.dart';
+import 'package:elera/screens/home/cubit/home_cubit.dart';
 import 'package:elera/theme/theme.dart';
 import 'package:elera/constants/constants.dart';
 import 'package:flutter/material.dart';
@@ -17,7 +17,7 @@ class HomeBottomBar extends StatelessWidget {
       ),
       child: BottomNavigationBar(
         backgroundColor: AppColors.lightColor,
-        currentIndex: context.read<HomeBloc>().state.index,
+        currentIndex: context.read<HomeCubit>().state.index,
         type: BottomNavigationBarType.fixed,
         elevation: 0,
         iconSize: 24.w,
@@ -26,7 +26,7 @@ class HomeBottomBar extends StatelessWidget {
         unselectedItemColor: AppColors.greyScaleColor[500],
         selectedItemColor: AppColors.primaryColor,
         onTap: (value) {
-          context.read<HomeBloc>().add(PageChanged(value));
+          context.read<HomeCubit>().onPageChange(value);
         },
         items: Data.getBottomBarItemList()
             .map(

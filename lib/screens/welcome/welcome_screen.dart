@@ -1,11 +1,10 @@
 import 'package:elera/routes/routes.dart';
 import 'package:elera/screens/welcome/widgets/widgets.dart';
-import 'package:elera/services/services.dart';
 import 'package:elera/constants/constants.dart';
 import 'package:elera/utils/global.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:elera/screens/welcome/bloc/bloc.dart';
+import 'package:elera/screens/welcome/cubit/welcome_cubit.dart';
 
 class WelcomeScreen extends StatefulWidget {
   const WelcomeScreen({super.key});
@@ -21,25 +20,25 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: BlocBuilder<WelcomeBloc, WelcomeState>(
+        child: BlocBuilder<WelcomeCubit, WelcomeState>(
           builder: (context, state) {
             return PageView(
               controller: pageController,
               onPageChanged: (value) {
-                state.page = value;
-                context.read<WelcomeBloc>().add(WelcomeEvent());
+                context.read<WelcomeCubit>().onPageChange(value);
               },
               children: Data.getWelcomeList()
                   .map(
                     (e) => PageItem(
                       item: e,
-                      index: state.page,
+                      index: state.index,
                       total: Data.getWelcomeList().length,
                       onTap: () {
-                        if (state.page < Data.getWelcomeList().length - 1) {
-                          state.page += 1;
-                          context.read<WelcomeBloc>().add(WelcomeEvent());
-                          pageController.animateToPage(state.page,
+                        if (state.index < Data.getWelcomeList().length - 1) {
+                          context
+                              .read<WelcomeCubit>()
+                              .onPageChange(state.index + 1);
+                          pageController.animateToPage(state.index,
                               duration: Duration(microseconds: 500),
                               curve: Curves.bounceIn);
                         } else {

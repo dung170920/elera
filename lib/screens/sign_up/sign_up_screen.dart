@@ -1,8 +1,7 @@
 import 'package:elera/routes/routes.dart';
-import 'package:elera/screens/sign_up/bloc/sign_up_bloc.dart';
+import 'package:elera/screens/sign_in/cubit/sign_in_cubit.dart';
 import 'package:elera/screens/sign_up/widgets/widgets.dart';
 import 'package:elera/theme/theme.dart';
-import 'package:elera/utils/utils.dart';
 import 'package:elera/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -35,32 +34,28 @@ class _SignUpScreenState extends State<SignUpScreen> {
         child: SingleChildScrollView(
           child: Padding(
             padding: EdgeInsets.fromLTRB(24.w, 0, 24.w, 20.w),
-            child: BlocBuilder<SignUpBloc, SignUpState>(
-              builder: (context, state) {
-                return Column(
-                  children: [
-                    Text(
-                      'Create your Account',
-                      style: AppTextStyle.h1,
-                    ),
-                    SizedBox(
-                      height: 26.w,
-                    ),
-                    SignUpForm(),
-                    SizedBox(
-                      height: 26.w,
-                    ),
-                    TextWithLink(
-                      text: 'Already have an account?',
-                      linkText: 'Sign in',
-                      linkAction: () => Navigator.pushReplacementNamed(
-                        context,
-                        AppRoutes.SIGN_IN,
-                      ),
-                    ),
-                  ],
-                );
-              },
+            child: Column(
+              children: [
+                Text(
+                  'Create your Account',
+                  style: AppTextStyle.h1,
+                ),
+                SizedBox(
+                  height: 26.w,
+                ),
+                SignUpForm(),
+                SizedBox(
+                  height: 26.w,
+                ),
+                TextWithLink(
+                  text: 'Already have an account?',
+                  linkText: 'Sign in',
+                  linkAction: () => Navigator.pushReplacementNamed(
+                    context,
+                    AppRoutes.SIGN_IN,
+                  ),
+                ),
+              ],
             ),
           ),
         ),

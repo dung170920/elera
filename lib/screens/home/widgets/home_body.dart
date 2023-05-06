@@ -1,4 +1,4 @@
-import 'package:elera/screens/splash/bloc/splash_bloc.dart';
+import 'package:elera/screens/splash/cubit/splash_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -10,7 +10,7 @@ class HomeBody extends StatelessWidget {
     return Container(
       child: Center(
         child: GestureDetector(
-          onTap: () => context.read<SplashBloc>().add(AuthLogoutRequested()),
+          onTap: () => context.read<SplashCubit>().onAuthLogoutRequested(),
           child: Text('log out'),
         ),
       ),
