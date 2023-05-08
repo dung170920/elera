@@ -13,7 +13,7 @@ class HomeBody extends StatelessWidget {
     return Scaffold(
       appBar: PreferredSize(
         child: HomeAppBar(),
-        preferredSize: Size.fromHeight(100.w),
+        preferredSize: Size.fromHeight(90.w),
       ),
       body: CustomScrollView(
         slivers: [

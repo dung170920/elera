@@ -147,4 +147,63 @@ class Data {
     );
     return list;
   }
+
+  static List<TextModel> getProfileActionList() {
+    List<TextModel> list = [];
+    list.add(
+      TextModel(
+        title: 'Profile',
+        iconData: MyIcons.user,
+      ),
+    );
+    list.add(
+      TextModel(
+        title: 'Notification',
+        iconData: MyIcons.bell,
+      ),
+    );
+    list.add(
+      TextModel(
+        title: "Payment",
+        iconData: MyIcons.wallet,
+      ),
+    );
+    list.add(
+      TextModel(
+        title: "Security",
+        iconData: MyIcons.shieldCheck,
+      ),
+    );
+    list.add(
+      TextModel(
+        title: "Language",
+        iconData: MyIcons.globe,
+      ),
+    );
+    list.add(
+      TextModel(
+        title: "Dark Mode",
+        iconData: MyIcons.brushAlt,
+      ),
+    );
+    list.add(
+      TextModel(
+        title: "Privacy Policy",
+        iconData: MyIcons.lock,
+      ),
+    );
+    list.add(
+      TextModel(
+        title: "Help Center",
+        iconData: MyIcons.commentQuestion,
+      ),
+    );
+    // list.add(
+    //   TextModel(
+    //     title: "Invite Friends",
+    //     iconData: MyIcons.usersGroup,
+    //   ),
+    // );
+    return list;
+  }
 }

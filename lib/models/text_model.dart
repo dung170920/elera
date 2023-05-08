@@ -6,6 +6,7 @@ class TextModel {
   String? title;
   IconData? iconData;
   IconData? activeIconData;
+  String? path;
 
   TextModel({
     this.img,
@@ -13,5 +14,6 @@ class TextModel {
     this.title,
     this.iconData,
     this.activeIconData,
+    this.path,
   });
 }

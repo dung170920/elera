@@ -1,3 +1,4 @@
+import 'package:elera/constants/constants.dart';
 import 'package:elera/screens/splash/cubit/splash_cubit.dart';
 import 'package:elera/theme/theme.dart';
 import 'package:flutter/material.dart';
@@ -16,9 +17,11 @@ class HomeAppBar extends StatelessWidget {
           child: AppBar(
             leadingWidth: 48.w,
             leading: CircleAvatar(
-              backgroundImage: NetworkImage(
-                context.read<SplashCubit>().state.user.avatar ?? '',
-              ),
+              child: state.user.avatar != null
+                  ? Image.network(
+                      state.user.avatar!,
+                    )
+                  : Image.asset(logo),
             ),
             title: Column(
               children: [
