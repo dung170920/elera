@@ -39,6 +39,30 @@ class FirebaseAuthExceptions implements Exception {
         return const FirebaseAuthExceptions(
           'Account temporary block because password is wrong many time',
         );
+      case 'account-exists-with-different-credential':
+        return const FirebaseAuthExceptions(
+          'Account exists with different credentials.',
+        );
+      case 'invalid-credential':
+        return const FirebaseAuthExceptions(
+          'The credential received is malformed or has expired.',
+        );
+      case 'operation-not-allowed':
+        return const FirebaseAuthExceptions(
+          'Operation is not allowed. Please contact support.',
+        );
+      case 'user-disabled':
+        return const FirebaseAuthExceptions(
+          'This user has been disabled. Please contact support for help.',
+        );
+      case 'invalid-verification-code':
+        return const FirebaseAuthExceptions(
+          'The credential verification code received is invalid.',
+        );
+      case 'invalid-verification-id':
+        return const FirebaseAuthExceptions(
+          'The credential verification ID received is invalid.',
+        );
       default:
         return const FirebaseAuthExceptions();
     }

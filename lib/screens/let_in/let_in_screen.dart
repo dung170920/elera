@@ -1,8 +1,11 @@
 import 'package:elera/routes/routes.dart';
+import 'package:elera/screens/let_in/cubit/let_in_cubit.dart';
+import 'package:elera/screens/sign_in/cubit/sign_in_cubit.dart';
 import 'package:elera/theme/theme.dart';
 import 'package:elera/constants/constants.dart';
 import 'package:elera/widgets/text_with_link.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class LetInScreen extends StatefulWidget {
@@ -32,7 +35,7 @@ class _LetInScreenState extends State<LetInScreen> {
               ),
               Text(
                 "Let’s you in",
-                style: AppTextStyle.h1,
+                style: AppTextStyle.h1(),
               ),
               SizedBox(
                 height: 4.w,
@@ -40,28 +43,42 @@ class _LetInScreenState extends State<LetInScreen> {
               Column(
                 children: Data.getThirdSignInList()
                     .map(
-                      (e) => Container(
-                        margin: EdgeInsets.only(bottom: 16.w),
-                        child: AppOutlinedButton.primary(
-                          onPressed: () {},
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Image.asset(
-                                e.img!,
-                                height: 24.w,
-                                width: 24.w,
+                      (e) => BlocBuilder<SignInCubit, SignInState>(
+                        builder: (context, state) {
+                          return Container(
+                            margin: EdgeInsets.only(bottom: 16.w),
+                            child: AppOutlinedButton.primary(
+                              onPressed: () {
+                                switch (e.img) {
+                                  case google:
+                                    context
+                                        .read<LetInCubit>()
+                                        .signInWithGoogle();
+                                    break;
+                                  default:
+                                }
+                              },
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Image.asset(
+                                    e.img!,
+                                    height: 24.w,
+                                    width: 24.w,
+                                  ),
+                                  SizedBox(
+                                    width: 12.w,
+                                  ),
+                                  Text(
+                                    e.title!,
+                                    style:
+                                        AppTextStyle.bodyLarge(FontWeight.w600),
+                                  ),
+                                ],
                               ),
-                              SizedBox(
-                                width: 12.w,
-                              ),
-                              Text(
-                                e.title!,
-                                style: AppTextStyle.bodyLarge(FontWeight.w600),
-                              ),
-                            ],
-                          ),
-                        ),
+                            ),
+                          );
+                        },
                       ),
                     )
                     .toList(),

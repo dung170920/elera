@@ -34,7 +34,7 @@ class PageItem extends StatelessWidget {
               child: Text(
                 item.title!,
                 textAlign: TextAlign.center,
-                style: AppTextStyle.h2,
+                style: AppTextStyle.h2(),
               ),
             ),
           ),

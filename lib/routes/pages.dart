@@ -44,7 +44,7 @@ class AppPages {
         page: LetInScreen(),
         bloc: BlocProvider(
           lazy: true,
-          create: (_) => LetInCubit(),
+          create: (_) => LetInCubit(_authService),
         ),
       ),
       RouteModel(

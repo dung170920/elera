@@ -1,9 +1,12 @@
 import 'package:elera/routes/routes.dart';
+import 'package:elera/screens/let_in/cubit/let_in_cubit.dart';
+import 'package:elera/screens/sign_in/cubit/sign_in_cubit.dart';
 import 'package:elera/screens/sign_in/widgets/widgets.dart';
 import 'package:elera/theme/theme.dart';
 import 'package:elera/constants/constants.dart';
 import 'package:elera/widgets/widgets.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class SignInScreen extends StatefulWidget {
@@ -37,7 +40,7 @@ class _SignInScreenState extends State<SignInScreen> {
               children: [
                 Text(
                   'Login to your Account',
-                  style: AppTextStyle.h1,
+                  style: AppTextStyle.h1(),
                 ),
                 SizedBox(
                   height: 36.w,
@@ -77,7 +80,14 @@ class _SignInScreenState extends State<SignInScreen> {
                             height: 24.w,
                             width: 24.w,
                           ),
-                          onPressed: () {},
+                          onPressed: () {
+                            switch (e.img) {
+                              case google:
+                                context.read<LetInCubit>().signInWithGoogle();
+                                break;
+                              default:
+                            }
+                          },
                         ),
                       )
                       .toList(),

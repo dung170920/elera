@@ -44,6 +44,7 @@ class AppTextField extends StatefulWidget {
     this.label = '',
     this.errorText,
     this.initialValue,
+    this.sufix,
   });
 
   final TextEditingController? controller;
@@ -67,6 +68,7 @@ class AppTextField extends StatefulWidget {
   final bool? enableSuggestions;
   final int? maxLength;
   final Widget? prefix;
+  final Widget? sufix;
   final Iterable<String>? autoFillHints;
   final EdgeInsets? scrollPadding;
   final double? cursorWidth;
@@ -127,7 +129,9 @@ class _AppTextFieldState extends State<AppTextField> {
             focusColor: AppColors.lightColor,
             errorText: widget.errorText,
             errorStyle: AppTextStyle.bodyMedium(
-                FontWeight.w500, AppColors.statusColor[StatusEnum.ERROR]),
+              FontWeight.w500,
+              StatusColor.ERROR.color,
+            ),
             errorMaxLines: 3,
             hintText: widget.hintText,
             hintStyle:
@@ -148,7 +152,9 @@ class _AppTextFieldState extends State<AppTextField> {
                       setState(() {});
                     },
                   )
-                : null,
+                : widget.sufix != null
+                    ? widget.sufix
+                    : null,
             prefixIcon: widget.prefix,
           ),
           focusNode: widget.focus,

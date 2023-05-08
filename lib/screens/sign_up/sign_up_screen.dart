@@ -38,7 +38,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
               children: [
                 Text(
                   'Create your Account',
-                  style: AppTextStyle.h1,
+                  style: AppTextStyle.h1(),
                 ),
                 SizedBox(
                   height: 26.w,

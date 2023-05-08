@@ -1,42 +1,15 @@
 import 'package:formz/formz.dart';
 
-class EmailValidationError {
+class ValidationError {
   final String text;
 
-  EmailValidationError(this.text);
+  ValidationError(this.text);
 
   @override
   String toString() => text;
 }
 
-class PasswordValidationError {
-  final String text;
-
-  PasswordValidationError(this.text);
-
-  @override
-  String toString() => text;
-}
-
-class RePasswordValidationError {
-  final String text;
-
-  RePasswordValidationError(this.text);
-
-  @override
-  String toString() => text;
-}
-
-class TextValidationError {
-  final String text;
-
-  TextValidationError(this.text);
-
-  @override
-  String toString() => text;
-}
-
-class EmailInput extends FormzInput<String, EmailValidationError> {
+class EmailInput extends FormzInput<String, ValidationError> {
   const EmailInput.pure([super.value = '']) : super.pure();
   const EmailInput.dirty([super.value = '']) : super.dirty();
 
@@ -45,14 +18,14 @@ class EmailInput extends FormzInput<String, EmailValidationError> {
   );
 
   @override
-  EmailValidationError? validator(String? value) {
+  ValidationError? validator(String? value) {
     return _emailRegex.hasMatch(value ?? '')
         ? null
-        : EmailValidationError('Please ensure the email entered is valid');
+        : ValidationError('Please ensure the email entered is valid');
   }
 }
 
-class PasswordInput extends FormzInput<String, PasswordValidationError> {
+class PasswordInput extends FormzInput<String, ValidationError> {
   const PasswordInput.pure([super.value = '']) : super.pure(); // khởi tạo
 
   const PasswordInput.dirty([super.value = '']) : super.dirty(); // check lỗi
@@ -61,15 +34,16 @@ class PasswordInput extends FormzInput<String, PasswordValidationError> {
       RegExp(r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#\$&*~]).{8,}$');
 
   @override
-  PasswordValidationError? validator(String value) {
+  ValidationError? validator(String value) {
     return _passwordRegex.hasMatch(value)
         ? null
-        : PasswordValidationError(
-            'Password must be at least 8 characters and contain 1 upper character, 1 lower character, 1 number and 1 special character');
+        : ValidationError(
+            'Password must be at least 8 characters and contain 1 upper character, 1 lower character, 1 number and 1 special character',
+          );
   }
 }
 
-class RePasswordInput extends FormzInput<String, RePasswordValidationError> {
+class RePasswordInput extends FormzInput<String, ValidationError> {
   final String password;
 
   const RePasswordInput.pure([this.password = '', super.value = ''])
@@ -79,15 +53,14 @@ class RePasswordInput extends FormzInput<String, RePasswordValidationError> {
       : super.dirty(value); // check lỗi
 
   @override
-  RePasswordValidationError? validator(String value) {
+  ValidationError? validator(String value) {
     return password == value
         ? null
-        : RePasswordValidationError(
-            'Password and confirm password does not match');
+        : ValidationError('Password and confirm password does not match');
   }
 }
 
-class TextInput extends FormzInput<String, TextValidationError> {
+class TextInput extends FormzInput<String, ValidationError> {
   final int min;
   final int max;
 
@@ -97,13 +70,12 @@ class TextInput extends FormzInput<String, TextValidationError> {
       : super.dirty(value);
 
   @override
-  TextValidationError? validator(String? value) {
+  ValidationError? validator(String? value) {
     if (value == null || value.isEmpty)
-      return TextValidationError('This field is required');
+      return ValidationError('This field is required');
 
     if (value.length < min || value.length > max)
-      return TextValidationError(
-          'This field must be from $min to $max characters');
+      return ValidationError('This field must be from $min to $max characters');
 
     return null;
   }

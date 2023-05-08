@@ -3,18 +3,36 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 extension AppTextStyle on TextStyle {
-  static TextStyle get h1 => TextStyle(
-      fontSize: 48.sp, fontWeight: FontWeight.bold, letterSpacing: 0.2);
-  static TextStyle get h2 => TextStyle(
-      fontSize: 40.sp, fontWeight: FontWeight.bold, letterSpacing: 0.2);
-  static TextStyle get h3 => TextStyle(
-      fontSize: 32.sp, fontWeight: FontWeight.bold, letterSpacing: 0.2);
-  static TextStyle get h4 => TextStyle(
-      fontSize: 24.sp, fontWeight: FontWeight.bold, letterSpacing: 0.2);
-  static TextStyle get h5 => TextStyle(
-      fontSize: 20.sp, fontWeight: FontWeight.bold, letterSpacing: 0.2);
-  static TextStyle get h6 => TextStyle(
-      fontSize: 18.sp, fontWeight: FontWeight.bold, letterSpacing: 0.2);
+  static TextStyle h1([Color? color]) => TextStyle(
+      fontSize: 48.sp,
+      fontWeight: FontWeight.bold,
+      letterSpacing: 0.2,
+      color: color ?? AppColors.greyScaleColor[900]);
+  static TextStyle h2([Color? color]) => TextStyle(
+      fontSize: 40.sp,
+      fontWeight: FontWeight.bold,
+      letterSpacing: 0.2,
+      color: color ?? AppColors.greyScaleColor[900]);
+  static TextStyle h3([Color? color]) => TextStyle(
+      fontSize: 32.sp,
+      fontWeight: FontWeight.bold,
+      letterSpacing: 0.2,
+      color: color ?? AppColors.greyScaleColor[900]);
+  static TextStyle h4([Color? color]) => TextStyle(
+      fontSize: 24.sp,
+      fontWeight: FontWeight.bold,
+      letterSpacing: 0.2,
+      color: color ?? AppColors.greyScaleColor[900]);
+  static TextStyle h5([Color? color]) => TextStyle(
+      fontSize: 20.sp,
+      fontWeight: FontWeight.bold,
+      letterSpacing: 0.2,
+      color: color ?? AppColors.greyScaleColor[900]);
+  static TextStyle h6([Color? color]) => TextStyle(
+      fontSize: 18.sp,
+      fontWeight: FontWeight.bold,
+      letterSpacing: 0.2,
+      color: color ?? AppColors.greyScaleColor[900]);
   static TextStyle bodyXLarge([FontWeight? weight, Color? color]) => TextStyle(
         fontSize: 18.sp,
         fontWeight: weight ?? FontWeight.normal,

@@ -2,11 +2,13 @@ import 'dart:async';
 import 'package:elera/models/models.dart';
 import 'package:elera/utils/utils.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
 enum AuthStatus { authenticated, unAuthenticated }
 
 class AuthService {
   final FirebaseAuth firebaseAuth = FirebaseAuth.instance;
+  final GoogleSignIn _googleSignIn = GoogleSignIn.standard();
   var currentUser = UserModel.empty;
 
   Stream<UserModel> get user {
@@ -44,6 +46,24 @@ class AuthService {
       throw FirebaseAuthExceptions.fromCode(e.code);
     } catch (e) {
       throw FirebaseAuthExceptions();
+    }
+  }
+
+  Future<void> logInWithGoogle() async {
+    try {
+      final googleUser = await _googleSignIn.signIn();
+      final googleAuth = await googleUser!.authentication;
+      final credential = GoogleAuthProvider.credential(
+        accessToken: googleAuth.accessToken,
+        idToken: googleAuth.idToken,
+      );
+
+      await firebaseAuth.signInWithCredential(credential);
+    } on FirebaseAuthException catch (e) {
+      print(e.code);
+      throw FirebaseAuthExceptions.fromCode(e.code);
+    } catch (_) {
+      throw const FirebaseAuthExceptions();
     }
   }
 

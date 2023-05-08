@@ -15,8 +15,7 @@ extension AppElevatedButton on ElevatedButton {
       style: ElevatedButton.styleFrom(
         fixedSize: Size.fromWidth(width ?? double.maxFinite),
         backgroundColor: color ?? AppColors.primaryColor,
-        disabledBackgroundColor:
-            AppColors.statusColor[StatusEnum.DISABLED_BUTTON],
+        disabledBackgroundColor: StatusColor.DISABLED_BUTTON.color,
         padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 18.w),
         shape: RoundedRectangleBorder(
           borderRadius: radiusCircular(radius),
@@ -39,8 +38,7 @@ extension AppElevatedButton on ElevatedButton {
         backgroundColor: color != null
             ? color.withOpacity(0.1)
             : AppColors.primaryColor.withOpacity(0.1),
-        disabledBackgroundColor:
-            AppColors.statusColor[StatusEnum.DISABLED_BUTTON],
+        disabledBackgroundColor: StatusColor.DISABLED_BUTTON.color,
         elevation: 0,
         padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 18.w),
         shape: RoundedRectangleBorder(

@@ -1,12 +1,23 @@
 import 'package:flutter/material.dart';
 
-enum StatusEnum { SUCCESS, ERROR, WARNING, INFO, DISABLED, DISABLED_BUTTON }
+enum StatusColor {
+  SUCCESS(const Color(0xFF4ADE80)),
+  ERROR(const Color(0xFFF75555)),
+  WARNING(const Color(0xFFFACC15)),
+  INFO(const Color(0xFF246BFD)),
+  DEFAULT(const Color(0xFF757575)),
+  DISABLED(const Color(0xFFD8D8D8)),
+  DISABLED_BUTTON(const Color(0xFF4360C9));
+
+  final Color color;
+  const StatusColor(this.color);
+}
 
 class AppColors {
   AppColors._(); //private constructor
 
   static Color primaryColor = Color(0xFF335EF7);
-  static Color shadowColor = Color(0xFF04060F).withOpacity(0.05);
+  static Color shadowColor = Color(0xFF04060F);
   static Map<int, Color> darkColor = {
     1: const Color(0xFF181A20),
     2: const Color(0xFF1F222A),
@@ -24,13 +35,5 @@ class AppColors {
     700: const Color(0xFF616161),
     800: const Color(0xFF424242),
     900: const Color(0xFF212121),
-  };
-  static Map<StatusEnum, Color> statusColor = {
-    StatusEnum.SUCCESS: const Color(0xFF4ADE80),
-    StatusEnum.INFO: const Color(0xFF246BFD),
-    StatusEnum.WARNING: const Color(0xFFFACC15),
-    StatusEnum.ERROR: const Color(0xFFF75555),
-    StatusEnum.DISABLED: const Color(0xFFD8D8D8),
-    StatusEnum.DISABLED_BUTTON: const Color(0xFF4360C9),
   };
 }

@@ -1,4 +1,4 @@
-import 'package:bloc/bloc.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:elera/services/services.dart';
 import 'package:elera/utils/utils.dart';
 import 'package:equatable/equatable.dart';

@@ -1,10 +1,28 @@
 part of 'let_in_cubit.dart';
 
-abstract class LetInState extends Equatable {
-  const LetInState();
+class LetInState extends Equatable {
+  final FormzSubmissionStatus status;
+  final String? errorMessage;
+
+  const LetInState({
+    required this.status,
+    this.errorMessage,
+  });
+
+  factory LetInState.inital() {
+    return LetInState(status: FormzSubmissionStatus.initial);
+  }
 
   @override
-  List<Object> get props => [];
-}
+  List<Object?> get props => [status, errorMessage];
 
-class LetInInitial extends LetInState {}
+  LetInState copyWith({
+    FormzSubmissionStatus? status,
+    String? errorMessage,
+  }) {
+    return LetInState(
+      status: status ?? this.status,
+      errorMessage: errorMessage ?? this.errorMessage,
+    );
+  }
+}

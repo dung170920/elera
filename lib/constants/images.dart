@@ -6,3 +6,4 @@ const letIn = 'assets/images/let_in.png';
 const fb = 'assets/images/facebook.png';
 const google = 'assets/images/google.png';
 const apple = 'assets/images/apple_logo.png';
+const sliderDecor = 'assets/images/slider_decor.png';

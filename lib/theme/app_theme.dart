@@ -57,7 +57,9 @@ class AppTheme {
       errorBorder: OutlineInputBorder(
         borderRadius: radiusCircular(12),
         gapPadding: 12.w,
-        borderSide: BorderSide(color: AppColors.statusColor[StatusEnum.ERROR]!),
+        borderSide: BorderSide(
+          color: StatusColor.ERROR.color,
+        ),
       ),
       focusedErrorBorder: OutlineInputBorder(
         borderRadius: radiusCircular(12),
