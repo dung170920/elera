@@ -1,16 +1,10 @@
-# elera
+# Elera
 
-A new Flutter project.
+A Elearing Template by Flutter, Bloc State Management, ...
 
-## Getting Started
+## Demo
 
-This project is a starting point for a Flutter application.
+To view live demo for this download:
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+- [APK for android](https://docs.flutter.dev/get-started/codelab)
+- [Design in Figma](https://ui8.net/munirsr/products/elera-online-course-e-learning-app-ui-kit)
