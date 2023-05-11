@@ -9,4 +9,5 @@ class AppRoutes {
   static const MY_COURSE = '/my_course';
   static const INBOX = '/inbox';
   static const TRANSACTION = '/transaction';
+  static const INFO = '/info';
 }

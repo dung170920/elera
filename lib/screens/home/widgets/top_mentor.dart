@@ -17,7 +17,7 @@ class TopMentor extends StatelessWidget {
             children: [
               Text(
                 'Top Mentors',
-                style: AppTextStyle.h5(),
+                style: AppTextStyle.h6(),
               ),
               TextButton(
                 onPressed: () {},
@@ -30,7 +30,7 @@ class TopMentor extends StatelessWidget {
             ],
           ),
           Padding(
-            padding: EdgeInsets.symmetric(vertical: 24.w),
+            padding: EdgeInsets.only(bottom: 16.w),
             child: SingleChildScrollView(
               scrollDirection: Axis.horizontal,
               child: Wrap(
@@ -40,8 +40,8 @@ class TopMentor extends StatelessWidget {
                   (index) => Column(
                     children: [
                       Container(
-                        width: 72.w,
-                        height: 72.w,
+                        width: 70.w,
+                        height: 70.w,
                         decoration: BoxDecoration(
                           shape: BoxShape.circle,
                           image: DecorationImage(

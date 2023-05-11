@@ -24,6 +24,7 @@ class HomeAppBar extends StatelessWidget {
                   : Image.asset(logo),
             ),
             title: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
                   'Welcome back',
@@ -31,7 +32,7 @@ class HomeAppBar extends StatelessWidget {
                       null, AppColors.greyScaleColor[600]),
                 ),
                 Text(
-                  context.read<SplashCubit>().state.user.name ?? 'Name',
+                  context.read<SplashCubit>().state.user.name ?? '',
                   style: AppTextStyle.h5(),
                 ),
               ],

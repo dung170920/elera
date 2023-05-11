@@ -5,7 +5,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 extension AppTag on Widget {
   static Widget solid({
-    required StatusColor status,
+    required StatusEnum status,
     required String text,
   }) {
     return Container(
@@ -25,7 +25,7 @@ extension AppTag on Widget {
   }
 
   static Widget outlined({
-    required StatusColor status,
+    required StatusEnum status,
     required String text,
   }) {
     return Container(
@@ -45,7 +45,7 @@ extension AppTag on Widget {
   }
 
   static Widget inverted({
-    required StatusColor status,
+    required StatusEnum status,
     required String text,
     // ThemeMode mode = ThemeMode.light,
   }) {

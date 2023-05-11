@@ -15,8 +15,9 @@ extension AppElevatedButton on ElevatedButton {
       style: ElevatedButton.styleFrom(
         fixedSize: Size.fromWidth(width ?? double.maxFinite),
         backgroundColor: color ?? AppColors.primaryColor,
-        disabledBackgroundColor: StatusColor.DISABLED_BUTTON.color,
+        disabledBackgroundColor: StatusEnum.DISABLED_BUTTON.color,
         padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 18.w),
+        textStyle: AppTextStyle.bodyLarge(FontWeight.bold),
         shape: RoundedRectangleBorder(
           borderRadius: radiusCircular(radius),
         ),
@@ -38,9 +39,10 @@ extension AppElevatedButton on ElevatedButton {
         backgroundColor: color != null
             ? color.withOpacity(0.1)
             : AppColors.primaryColor.withOpacity(0.1),
-        disabledBackgroundColor: StatusColor.DISABLED_BUTTON.color,
+        disabledBackgroundColor: StatusEnum.DISABLED_BUTTON.color,
         elevation: 0,
         padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 18.w),
+        textStyle: AppTextStyle.bodyLarge(FontWeight.bold),
         shape: RoundedRectangleBorder(
           borderRadius: radiusCircular(radius),
         ),
@@ -60,18 +62,11 @@ extension AppOutlinedButton on OutlinedButton {
       double? radius}) {
     return OutlinedButton(
       style: OutlinedButton.styleFrom(
-          fixedSize: Size.fromWidth(width ?? double.maxFinite),
-          backgroundColor: AppColors.lightColor,
-          disabledBackgroundColor: AppColors.greyScaleColor[100]!,
-          padding: EdgeInsets.symmetric(horizontal: 32.w, vertical: 18.w),
-          shape: RoundedRectangleBorder(
-            borderRadius: radiusCircular(radius),
-            side: BorderSide(
-              color: AppColors.greyScaleColor[200]!,
-              width: 1,
-            ),
-          ),
-          elevation: 0),
+        fixedSize: Size.fromWidth(width ?? double.maxFinite),
+        shape: RoundedRectangleBorder(
+          borderRadius: radiusCircular(radius),
+        ),
+      ),
       onPressed: onPressed,
       child: child,
     );

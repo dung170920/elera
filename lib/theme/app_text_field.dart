@@ -130,15 +130,15 @@ class _AppTextFieldState extends State<AppTextField> {
             errorText: widget.errorText,
             errorStyle: AppTextStyle.bodyMedium(
               FontWeight.w500,
-              StatusColor.ERROR.color,
+              StatusEnum.ERROR.color,
             ),
             errorMaxLines: 3,
             hintText: widget.hintText,
             hintStyle:
                 AppTextStyle.bodyMedium(null, AppColors.greyScaleColor[500]),
             fillColor: widget.focus != null && widget.focus!.hasFocus
-                ? AppColors.lightColor
-                : AppColors.greyScaleColor[50]!,
+                ? AppColors.primaryColor.withOpacity(0.08)
+                : null,
             suffixIcon: widget.isPassword
                 ? GestureDetector(
                     child: Icon(

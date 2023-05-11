@@ -4,7 +4,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class AppSnackbar {
-  static void show({required BuildContext context, required String title}) {
+  static void show(
+      {required BuildContext context,
+      required String title,
+      required StatusEnum status}) {
     final snackBar = SnackBar(
       behavior: SnackBarBehavior.floating,
       backgroundColor: Colors.transparent,
@@ -13,7 +16,7 @@ class AppSnackbar {
       elevation: 0,
       content: Container(
         width: 1.0.sw,
-        margin: EdgeInsets.only(bottom: 0.8.sh, top: 24.h),
+        margin: EdgeInsets.only(bottom: 0.7.sh, top: 24.h),
         padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 16.w),
         decoration: BoxDecoration(
           color: AppColors.lightColor,
@@ -32,7 +35,7 @@ class AppSnackbar {
             Expanded(
               child: Row(
                 children: [
-                  const Icon(Icons.favorite, color: Colors.green),
+                  Icon(status.icon, color: status.color),
                   Expanded(
                     child: Padding(
                       padding: EdgeInsets.only(left: 8.w),

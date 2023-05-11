@@ -20,7 +20,7 @@ class PopuplarCourses extends StatelessWidget {
             children: [
               Text(
                 'Most Popular Courses',
-                style: AppTextStyle.h5(),
+                style: AppTextStyle.h6(),
               ),
               TextButton(
                 onPressed: () {},
@@ -32,47 +32,65 @@ class PopuplarCourses extends StatelessWidget {
               ),
             ],
           ),
+          // Padding(
+          //   padding: EdgeInsets.symmetric(vertical: 24.w),
+          //   child: SingleChildScrollView(
+          //     scrollDirection: Axis.horizontal,
+          //     child: Wrap(
+          //       spacing: 12.w,
+          //       runAlignment: WrapAlignment.start,
+          //       children: [
+          //         Chip(
+          //           label: Text('All'),
+          //           labelStyle: AppTextStyle.bodyLarge(
+          //             FontWeight.w600,
+          //             AppColors.primaryColor,
+          //           ),
+          //           labelPadding: EdgeInsets.zero,
+          //           visualDensity: VisualDensity.compact,
+          //           elevation: 0,
+          //           padding:
+          //               EdgeInsets.symmetric(horizontal: 20.w, vertical: 8.w),
+          //           backgroundColor: AppColors.lightColor,
+          //           shape: StadiumBorder(
+          //             side: BorderSide(
+          //               color: AppColors.primaryColor,
+          //               width: 1,
+          //             ),
+          //           ),
+          //         ),
+          //         Chip(
+          //           label: Text('3D Design'),
+          //           labelStyle: AppTextStyle.bodyLarge(
+          //             FontWeight.w600,
+          //             AppColors.primaryColor,
+          //           ),
+          //           labelPadding: EdgeInsets.zero,
+          //           visualDensity: VisualDensity.compact,
+          //           elevation: 0,
+          //           padding:
+          //               EdgeInsets.symmetric(horizontal: 20.w, vertical: 8.w),
+          //           backgroundColor: AppColors.lightColor,
+          //           shape: StadiumBorder(
+          //             side: BorderSide(
+          //               color: AppColors.primaryColor,
+          //               width: 1,
+          //             ),
+          //           ),
+          //         ),
+          //       ],
+          //     ),
+          //   ),
+          // ),
           Padding(
-            padding: EdgeInsets.symmetric(vertical: 24.w),
-            child: SingleChildScrollView(
-              scrollDirection: Axis.horizontal,
-              child: Wrap(
-                spacing: 12.w,
-                runAlignment: WrapAlignment.start,
-                children: [
-                  Chip(
-                    label: Text('All'),
-                    labelStyle: AppTextStyle.bodyLarge(
-                      FontWeight.w600,
-                      AppColors.primaryColor,
-                    ),
-                    labelPadding: EdgeInsets.zero,
-                    elevation: 0,
-                    padding:
-                        EdgeInsets.symmetric(horizontal: 20.w, vertical: 8.w),
-                    backgroundColor: AppColors.lightColor,
-                    shape: StadiumBorder(
-                      side: BorderSide(
-                        color: AppColors.primaryColor,
-                        width: 1,
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ),
-          Padding(
-            padding: EdgeInsets.only(bottom: 24.w),
+            padding: EdgeInsets.only(bottom: 16.w),
             child: ListView.separated(
               physics: NeverScrollableScrollPhysics(),
               shrinkWrap: true,
               itemBuilder: (context, index) =>
                   CourseCard(course: Data.getCourseList()[index]),
               itemCount: Data.getCourseList().length,
-              separatorBuilder: (context, index) => SizedBox(
-                height: 16.w,
-              ),
+              separatorBuilder: (context, index) => SizedBox(height: 16.w),
             ),
           )
         ],

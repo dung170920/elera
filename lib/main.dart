@@ -1,5 +1,6 @@
 import 'package:elera/routes/pages.dart';
 import 'package:elera/routes/routes.dart';
+import 'package:elera/screens/profile/cubit/profile_cubit.dart';
 import 'package:elera/theme/theme.dart';
 import 'package:elera/utils/utils.dart';
 import 'package:flutter/material.dart';
@@ -26,18 +27,22 @@ class MyApp extends StatelessWidget {
         designSize: const Size(360, 690),
         minTextAdapt: true,
         splitScreenMode: true,
-        builder: (_, child) => MaterialApp(
-          // navigatorKey: navigatorKey,
-          title: 'Elera',
-          debugShowCheckedModeBanner: false,
-          initialRoute: AppRoutes.SPLASH,
-          //navigatorObservers: [AppPages.observer],
-          onGenerateRoute: AppPages.GenerateRouteSettings,
-          theme: AppTheme.lightTheme,
-          builder: (context, child) => ScrollConfiguration(
-            behavior: MyBehavior(),
-            child: child!,
-          ),
+        builder: (context, child) => BlocBuilder<ProfileCubit, ProfileState>(
+          builder: (context, state) {
+            return MaterialApp(
+              // navigatorKey: navigatorKey,
+              title: 'Elera',
+              debugShowCheckedModeBanner: false,
+              initialRoute: AppRoutes.SPLASH,
+              //navigatorObservers: [AppPages.observer],
+              onGenerateRoute: AppPages.GenerateRouteSettings,
+              theme: state.theme,
+              builder: (context, child) => ScrollConfiguration(
+                behavior: MyBehavior(),
+                child: child!,
+              ),
+            );
+          },
         ),
       ),
     );

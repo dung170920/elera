@@ -7,3 +7,4 @@ export 'app_styles.dart';
 export 'app_button.dart';
 export 'app_text_style.dart';
 export 'app_tag.dart';
+export 'app_dialog.dart';

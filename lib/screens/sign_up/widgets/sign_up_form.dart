@@ -30,6 +30,7 @@ class _SignUpFormState extends State<SignUpForm> {
           AppSnackbar.show(
             context: context,
             title: state.errorMessage ?? 'Sign up failed',
+            status: StatusEnum.ERROR,
           );
         }
       },

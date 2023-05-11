@@ -24,11 +24,28 @@ class ProfileAppBar extends StatelessWidget {
         ),
         actions: [
           GestureDetector(
-            onTap: () => context.read<SplashCubit>().onAuthLogoutRequested(),
+            onTap: () => showDialog(
+              context: context,
+              builder: (context) => AppDialog(
+                status: StatusEnum.INFO,
+                title: 'Are you sure?',
+                subTitle: 'Are you sure?',
+                primaryButton: AppElevatedButton.primary(
+                  child: Text('Logout'),
+                  onPressed: () =>
+                      context.read<SplashCubit>().onAuthLogoutRequested(),
+                ),
+                secondaryButton: AppElevatedButton.secondary(
+                  child: Text('Logout'),
+                  onPressed: () =>
+                      context.read<SplashCubit>().onAuthLogoutRequested(),
+                ),
+              ),
+            ),
             child: Icon(
               MyIcons.solidLogOut,
               size: 28.w,
-              color: StatusColor.ERROR.color,
+              color: StatusEnum.ERROR.color,
             ),
           ),
         ],

@@ -1,10 +1,17 @@
 part of 'profile_cubit.dart';
 
-abstract class ProfileState extends Equatable {
-  const ProfileState();
+class ProfileState extends Equatable {
+  final ThemeData theme;
+  const ProfileState({required this.theme});
 
   @override
-  List<Object> get props => [];
-}
+  List<Object> get props => [theme];
 
-class ProfileInitial extends ProfileState {}
+  ProfileState copyWith({
+    ThemeData? theme,
+  }) {
+    return ProfileState(
+      theme: theme ?? this.theme,
+    );
+  }
+}

@@ -1,18 +1,5 @@
 import 'package:flutter/material.dart';
 
-enum StatusColor {
-  SUCCESS(const Color(0xFF4ADE80)),
-  ERROR(const Color(0xFFF75555)),
-  WARNING(const Color(0xFFFACC15)),
-  INFO(const Color(0xFF246BFD)),
-  DEFAULT(const Color(0xFF757575)),
-  DISABLED(const Color(0xFFD8D8D8)),
-  DISABLED_BUTTON(const Color(0xFF4360C9));
-
-  final Color color;
-  const StatusColor(this.color);
-}
-
 class AppColors {
   AppColors._(); //private constructor
 
