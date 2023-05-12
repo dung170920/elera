@@ -6,6 +6,7 @@ import 'package:elera/screens/inbox/cubit/inbox_cubit.dart';
 import 'package:elera/screens/info/cubit/info_cubit.dart';
 import 'package:elera/screens/let_in/cubit/let_in_cubit.dart';
 import 'package:elera/screens/my_course/cubit/my_course_cubit.dart';
+import 'package:elera/screens/notification/cubit/notification_cubit.dart';
 import 'package:elera/screens/profile/cubit/profile_cubit.dart';
 import 'package:elera/screens/sign_in/cubit/sign_in_cubit.dart';
 import 'package:elera/screens/sign_up/cubit/sign_up_cubit.dart';
@@ -19,9 +20,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:elera/screens/screens.dart';
 
 class AppPages {
-  static final RouteObserver<Route> observer = RouteObserver();
-  static List<String> history = [];
-
   static List<RouteModel> Routes() {
     final AuthService _authService = AuthService();
     return [
@@ -110,6 +108,14 @@ class AppPages {
         bloc: BlocProvider(
           lazy: true,
           create: (_) => InfoCubit(),
+        ),
+      ),
+      RouteModel(
+        path: AppRoutes.NOTIFICATION,
+        page: NotificationScreen(),
+        bloc: BlocProvider(
+          lazy: true,
+          create: (_) => NotificationCubit(),
         ),
       ),
     ];

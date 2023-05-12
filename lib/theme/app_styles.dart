@@ -1,21 +1,6 @@
 import 'package:elera/theme/theme.dart';
 import 'package:flutter/material.dart';
 
-enum StatusEnum {
-  SUCCESS(const Color(0xFF4ADE80), MyIcons.solidCheckSquare),
-  ERROR(const Color(0xFFF75555), MyIcons.solidTimesSquare),
-  WARNING(const Color(0xFFFACC15), MyIcons.solidExclamationSquare),
-  INFO(const Color(0xFF246BFD), MyIcons.solidQuestionSquare),
-  DEFAULT(const Color(0xFF757575)),
-  DISABLED(const Color(0xFFD8D8D8)),
-  DISABLED_BUTTON(const Color(0xFF4360C9));
-
-  final Color color;
-  final IconData? icon;
-
-  const StatusEnum(this.color, [this.icon]);
-}
-
 class AppStyles {
   AppStyles._();
 

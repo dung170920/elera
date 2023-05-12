@@ -9,3 +9,4 @@ export 'inbox/inbox_screen.dart';
 export 'my_course/my_course_screen.dart';
 export 'transaction/transaction_screen.dart';
 export 'info/info_screen.dart';
+export 'notification/notification_screen.dart';

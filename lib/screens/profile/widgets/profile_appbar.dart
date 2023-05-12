@@ -27,7 +27,7 @@ class ProfileAppBar extends StatelessWidget {
             onTap: () => showDialog(
               context: context,
               builder: (context) => AppDialog(
-                status: StatusEnum.INFO,
+                status: StatusType.INFO,
                 title: 'Are you sure?',
                 subTitle: 'Are you sure?',
                 primaryButton: AppElevatedButton.primary(
@@ -45,7 +45,7 @@ class ProfileAppBar extends StatelessWidget {
             child: Icon(
               MyIcons.solidLogOut,
               size: 28.w,
-              color: StatusEnum.ERROR.color,
+              color: StatusType.ERROR.color,
             ),
           ),
         ],

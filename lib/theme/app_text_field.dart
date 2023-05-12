@@ -1,3 +1,4 @@
+import 'package:elera/constants/constants.dart';
 import 'package:elera/theme/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -130,7 +131,7 @@ class _AppTextFieldState extends State<AppTextField> {
             errorText: widget.errorText,
             errorStyle: AppTextStyle.bodyMedium(
               FontWeight.w500,
-              StatusEnum.ERROR.color,
+              StatusType.ERROR.color,
             ),
             errorMaxLines: 3,
             hintText: widget.hintText,

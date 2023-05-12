@@ -1,3 +1,4 @@
+import 'package:elera/constants/constants.dart';
 import 'package:elera/theme/theme.dart';
 import 'package:elera/utils/utils.dart';
 import 'package:flutter/material.dart';
@@ -21,7 +22,7 @@ class AppDialog extends StatelessWidget {
   final ElevatedButton? primaryButton;
   final ElevatedButton? secondaryButton;
   final IconData? icon;
-  final StatusEnum status;
+  final StatusType status;
 
   @override
   Widget build(BuildContext context) {

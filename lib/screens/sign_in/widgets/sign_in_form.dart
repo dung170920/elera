@@ -1,5 +1,6 @@
 import 'package:elera/screens/sign_in/cubit/sign_in_cubit.dart';
 import 'package:elera/theme/theme.dart';
+import 'package:elera/constants/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -30,14 +31,14 @@ class _SignInFormState extends State<SignInForm> {
           AppSnackbar.show(
               context: context,
               title: state.errorMessage ?? 'Login failed',
-              status: StatusEnum.ERROR);
+              status: StatusType.ERROR);
         }
 
         if (state.status == FormzSubmissionStatus.success) {
           AppSnackbar.show(
               context: context,
               title: 'Login successfully',
-              status: StatusEnum.SUCCESS);
+              status: StatusType.SUCCESS);
         }
       },
       child: BlocBuilder<SignInCubit, SignInState>(

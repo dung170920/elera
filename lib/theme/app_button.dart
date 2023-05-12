@@ -1,3 +1,4 @@
+import 'package:elera/constants/constants.dart';
 import 'package:elera/theme/theme.dart';
 import 'package:elera/utils/utils.dart';
 import 'package:flutter/material.dart';
@@ -15,7 +16,7 @@ extension AppElevatedButton on ElevatedButton {
       style: ElevatedButton.styleFrom(
         fixedSize: Size.fromWidth(width ?? double.maxFinite),
         backgroundColor: color ?? AppColors.primaryColor,
-        disabledBackgroundColor: StatusEnum.DISABLED_BUTTON.color,
+        disabledBackgroundColor: StatusType.DISABLED_BUTTON.color,
         padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 18.w),
         textStyle: AppTextStyle.bodyLarge(FontWeight.bold),
         shape: RoundedRectangleBorder(
@@ -39,7 +40,7 @@ extension AppElevatedButton on ElevatedButton {
         backgroundColor: color != null
             ? color.withOpacity(0.1)
             : AppColors.primaryColor.withOpacity(0.1),
-        disabledBackgroundColor: StatusEnum.DISABLED_BUTTON.color,
+        disabledBackgroundColor: StatusType.DISABLED_BUTTON.color,
         elevation: 0,
         padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 18.w),
         textStyle: AppTextStyle.bodyLarge(FontWeight.bold),

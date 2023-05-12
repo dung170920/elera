@@ -35,32 +35,35 @@ class TopMentor extends StatelessWidget {
               scrollDirection: Axis.horizontal,
               child: Wrap(
                 spacing: 16.w,
-                children: List.generate(
-                  20,
-                  (index) => Column(
-                    children: [
-                      Container(
-                        width: 70.w,
-                        height: 70.w,
-                        decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          image: DecorationImage(
-                            image: AssetImage(
-                              logo,
+                children: Data.getMentorList()
+                    .map(
+                      (e) => Column(
+                        children: [
+                          Container(
+                            width: 70.w,
+                            height: 70.w,
+                            decoration: BoxDecoration(
+                              shape: BoxShape.circle,
+                              image: DecorationImage(
+                                image: NetworkImage(
+                                  e.avatar ?? '',
+                                ),
+                                fit: BoxFit.cover,
+                              ),
                             ),
                           ),
-                        ),
+                          SizedBox(
+                            height: 8.w,
+                          ),
+                          Text(
+                            e.name.split(" ").first,
+                            style: AppTextStyle.bodyLarge(FontWeight.w600),
+                            overflow: TextOverflow.ellipsis,
+                          )
+                        ],
                       ),
-                      SizedBox(
-                        height: 8.w,
-                      ),
-                      Text(
-                        'Jacob',
-                        style: AppTextStyle.bodyLarge(FontWeight.w600),
-                      )
-                    ],
-                  ),
-                ),
+                    )
+                    .toList(),
               ),
             ),
           ),

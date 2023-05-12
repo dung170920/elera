@@ -1,3 +1,4 @@
+import 'package:elera/constants/constants.dart';
 import 'package:elera/screens/sign_up/cubit/sign_up_cubit.dart';
 import 'package:elera/theme/theme.dart';
 import 'package:flutter/material.dart';
@@ -30,7 +31,7 @@ class _SignUpFormState extends State<SignUpForm> {
           AppSnackbar.show(
             context: context,
             title: state.errorMessage ?? 'Sign up failed',
-            status: StatusEnum.ERROR,
+            status: StatusType.ERROR,
           );
         }
       },

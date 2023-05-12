@@ -1,3 +1,4 @@
+import 'package:elera/constants/constants.dart';
 import 'package:elera/models/models.dart';
 import 'package:elera/screens/profile/cubit/profile_cubit.dart';
 import 'package:elera/theme/theme.dart';
@@ -50,7 +51,7 @@ class CourseCard extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         AppTag.inverted(
-                            status: StatusEnum.INFO, text: course.type ?? ''),
+                            status: StatusType.INFO, text: course.type ?? ''),
                         InkWell(
                           child: Icon(
                             MyIcons.bookmark,
@@ -105,7 +106,7 @@ class CourseCard extends StatelessWidget {
                         Icon(
                           MyIcons.solidStarHalf,
                           size: 20,
-                          color: StatusEnum.WARNING.color,
+                          color: StatusType.WARNING.color,
                         ),
                         SizedBox(
                           width: 4.w,

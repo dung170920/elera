@@ -1,3 +1,4 @@
+import 'package:elera/constants/constants.dart';
 import 'package:elera/theme/theme.dart';
 import 'package:elera/utils/utils.dart';
 import 'package:flutter/material.dart';
@@ -5,7 +6,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 extension AppTag on Widget {
   static Widget solid({
-    required StatusEnum status,
+    required StatusType status,
     required String text,
   }) {
     return Container(
@@ -25,7 +26,7 @@ extension AppTag on Widget {
   }
 
   static Widget outlined({
-    required StatusEnum status,
+    required StatusType status,
     required String text,
   }) {
     return Container(
@@ -45,7 +46,7 @@ extension AppTag on Widget {
   }
 
   static Widget inverted({
-    required StatusEnum status,
+    required StatusType status,
     required String text,
     // ThemeMode mode = ThemeMode.light,
   }) {

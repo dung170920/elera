@@ -1,5 +1,6 @@
 import 'package:elera/theme/theme.dart';
 import 'package:elera/utils/utils.dart';
+import 'package:elera/constants/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -66,7 +67,7 @@ class AppTheme {
         borderRadius: radiusCircular(12),
         gapPadding: 12.w,
         borderSide: BorderSide(
-          color: StatusEnum.ERROR.color,
+          color: StatusType.ERROR.color,
         ),
       ),
       focusedErrorBorder: OutlineInputBorder(
@@ -153,7 +154,7 @@ class AppTheme {
         borderRadius: radiusCircular(12),
         gapPadding: 12.w,
         borderSide: BorderSide(
-          color: StatusEnum.ERROR.color,
+          color: StatusType.ERROR.color,
         ),
       ),
       focusedErrorBorder: OutlineInputBorder(

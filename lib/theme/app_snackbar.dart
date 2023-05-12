@@ -1,3 +1,4 @@
+import 'package:elera/constants/constants.dart';
 import 'package:elera/theme/theme.dart';
 import 'package:elera/utils/utils.dart';
 import 'package:flutter/material.dart';
@@ -7,7 +8,7 @@ class AppSnackbar {
   static void show(
       {required BuildContext context,
       required String title,
-      required StatusEnum status}) {
+      required StatusType status}) {
     final snackBar = SnackBar(
       behavior: SnackBarBehavior.floating,
       backgroundColor: Colors.transparent,

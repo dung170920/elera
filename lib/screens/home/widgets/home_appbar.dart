@@ -1,4 +1,5 @@
 import 'package:elera/constants/constants.dart';
+import 'package:elera/routes/routes.dart';
 import 'package:elera/screens/splash/cubit/splash_cubit.dart';
 import 'package:elera/theme/theme.dart';
 import 'package:flutter/material.dart';
@@ -39,6 +40,8 @@ class HomeAppBar extends StatelessWidget {
             ),
             actions: [
               GestureDetector(
+                onTap: () =>
+                    Navigator.pushNamed(context, AppRoutes.NOTIFICATION),
                 child: Icon(
                   MyIcons.bell,
                   size: 28.w,

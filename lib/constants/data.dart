@@ -148,6 +148,56 @@ class Data {
     return list;
   }
 
+  static List<MentorModel> getMentorList() {
+    List<MentorModel> list = [];
+    list.add(
+      MentorModel(
+        id: '1',
+        avatar:
+            'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80',
+        name: 'Claire Ordonez',
+        job: 'VP of Sales',
+      ),
+    );
+    list.add(
+      MentorModel(
+        id: '2',
+        avatar:
+            'https://images.unsplash.com/photo-1599566150163-29194dcaad36?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80',
+        name: 'Jacob Kulikowski',
+        job: 'Marketing Analyst',
+      ),
+    );
+    list.add(
+      MentorModel(
+        id: '3',
+        avatar:
+            'https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=461&q=80',
+        name: 'Priscilla Ehrman',
+        job: 'UX/UI Designer',
+      ),
+    );
+    list.add(
+      MentorModel(
+        id: '4',
+        avatar:
+            'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=580&q=80',
+        name: 'Wade Chenail',
+        job: 'Manager, Solution Engineering',
+      ),
+    );
+    list.add(
+      MentorModel(
+        id: '5',
+        avatar:
+            'https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=580&q=80',
+        name: 'Benny Spanbauer',
+        job: 'Senior Product Manager',
+      ),
+    );
+    return list;
+  }
+
   static List<TextModel> getProfileActionList() {
     List<TextModel> list = [];
     list.add(
@@ -192,12 +242,12 @@ class Data {
         iconData: MyIcons.lock,
       ),
     );
-    list.add(
-      TextModel(
-        title: "Help Center",
-        iconData: MyIcons.commentQuestion,
-      ),
-    );
+    // list.add(
+    //   TextModel(
+    //     title: "Help Center",
+    //     iconData: MyIcons.commentQuestion,
+    //   ),
+    // );
     // list.add(
     //   TextModel(
     //     title: "Invite Friends",

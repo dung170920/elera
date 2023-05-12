@@ -1,13 +1,13 @@
 import 'package:elera/routes/pages.dart';
 import 'package:elera/routes/routes.dart';
 import 'package:elera/screens/profile/cubit/profile_cubit.dart';
-import 'package:elera/theme/theme.dart';
 import 'package:elera/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 void main() async {
+  Bloc.observer = MyBlocObserver();
   await Global.init();
   runApp(const MyApp());
 }
@@ -34,7 +34,6 @@ class MyApp extends StatelessWidget {
               title: 'Elera',
               debugShowCheckedModeBanner: false,
               initialRoute: AppRoutes.SPLASH,
-              //navigatorObservers: [AppPages.observer],
               onGenerateRoute: AppPages.GenerateRouteSettings,
               theme: state.theme,
               builder: (context, child) => ScrollConfiguration(

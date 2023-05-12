@@ -10,4 +10,5 @@ class AppRoutes {
   static const INBOX = '/inbox';
   static const TRANSACTION = '/transaction';
   static const INFO = '/info';
+  static const NOTIFICATION = '/notification';
 }
