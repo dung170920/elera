@@ -15,7 +15,7 @@ class LetInCubit extends Cubit<LetInState> {
     try {
       await _authService.logInWithGoogle();
       emit(state.copyWith(status: FormzSubmissionStatus.success));
-    } on FirebaseAuthExceptions catch (e) {
+    } on AppExceptions catch (e) {
       emit(
         state.copyWith(
           errorMessage: e.message,

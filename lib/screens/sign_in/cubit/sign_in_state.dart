@@ -13,6 +13,7 @@ class SignInState extends Equatable {
     this.errorMessage,
   });
 
+  //The default value of an optional parameter must be constant. -> can't set to default constructor
   factory SignInState.inital() {
     return SignInState(
         email: EmailInput.pure(),

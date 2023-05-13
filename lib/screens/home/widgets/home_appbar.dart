@@ -30,7 +30,7 @@ class HomeAppBar extends StatelessWidget {
                 Text(
                   'Welcome back',
                   style: AppTextStyle.bodyLarge(
-                      null, AppColors.greyScaleColor[600]),
+                      FontWeight.normal, AppColors.greyScaleColor[600]),
                 ),
                 Text(
                   context.read<SplashCubit>().state.user.name ?? '',

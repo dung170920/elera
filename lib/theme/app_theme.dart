@@ -14,10 +14,11 @@ class AppTheme {
     primaryColor: AppColors.primaryColor,
     scaffoldBackgroundColor: AppColors.lightColor,
     textTheme: Typography.englishLike2018.apply(
-        fontSizeFactor: 1.sp,
-        bodyColor: AppColors.greyScaleColor[900],
-        displayColor: AppColors.greyScaleColor[900],
-        fontFamily: GoogleFonts.urbanist().fontFamily),
+      fontSizeFactor: 1.sp,
+      bodyColor: AppColors.greyScaleColor[900],
+      displayColor: AppColors.greyScaleColor[900],
+      fontFamily: GoogleFonts.urbanist().fontFamily,
+    ),
     bottomNavigationBarTheme: BottomNavigationBarThemeData(
       backgroundColor: AppColors.lightColor,
       elevation: 0,
@@ -35,6 +36,7 @@ class AppTheme {
       backgroundColor: AppColors.lightColor,
     ),
     appBarTheme: AppBarTheme(
+      titleTextStyle: AppTextStyle.h4(AppColors.greyScaleColor[900]),
       iconTheme: IconThemeData(
         color: AppColors.greyScaleColor[900],
       ),
@@ -48,6 +50,7 @@ class AppTheme {
     bottomAppBarTheme: BottomAppBarTheme(color: AppColors.lightColor),
     inputDecorationTheme: InputDecorationTheme(
       fillColor: AppColors.greyScaleColor[50]!,
+      iconColor: AppColors.greyScaleColor[900],
       border: OutlineInputBorder(
         borderRadius: radiusCircular(12),
         gapPadding: 12.w,
@@ -107,7 +110,7 @@ class AppTheme {
     appBarTheme: AppBarTheme(
       backgroundColor: AppColors.darkColor[1],
       elevation: 0,
-      titleTextStyle: TextStyle(color: AppColors.lightColor),
+      titleTextStyle: AppTextStyle.h4(AppColors.lightColor),
       systemOverlayStyle: const SystemUiOverlayStyle(
         statusBarIconBrightness: Brightness.dark,
         statusBarBrightness: Brightness.dark,
@@ -131,6 +134,7 @@ class AppTheme {
     ),
     inputDecorationTheme: InputDecorationTheme(
       fillColor: AppColors.darkColor[2],
+      iconColor: AppColors.lightColor,
       border: OutlineInputBorder(
         borderRadius: radiusCircular(12),
         gapPadding: 12.w,

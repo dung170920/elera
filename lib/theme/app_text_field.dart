@@ -127,7 +127,6 @@ class _AppTextFieldState extends State<AppTextField> {
           keyboardType: widget.textFieldType,
           decoration: InputDecoration(
             filled: true,
-            focusColor: AppColors.lightColor,
             errorText: widget.errorText,
             errorStyle: AppTextStyle.bodyMedium(
               FontWeight.w500,
@@ -139,6 +138,12 @@ class _AppTextFieldState extends State<AppTextField> {
                 AppTextStyle.bodyMedium(null, AppColors.greyScaleColor[500]),
             fillColor: widget.focus != null && widget.focus!.hasFocus
                 ? AppColors.primaryColor.withOpacity(0.08)
+                : null,
+            prefixIconColor: widget.focus != null && !widget.focus!.hasFocus
+                ? AppColors.greyScaleColor[500]
+                : null,
+            suffixIconColor: widget.focus != null && !widget.focus!.hasFocus
+                ? AppColors.greyScaleColor[500]
                 : null,
             suffixIcon: widget.isPassword
                 ? GestureDetector(

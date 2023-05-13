@@ -29,9 +29,9 @@ class AuthService {
 
       await user.user!.updateDisplayName(name);
     } on FirebaseAuthException catch (e) {
-      throw FirebaseAuthExceptions.fromCode(e.code);
+      throw AppExceptions.fromCode(e.code);
     } catch (_) {
-      throw FirebaseAuthExceptions();
+      throw AppExceptions();
     }
   }
 
@@ -41,9 +41,9 @@ class AuthService {
       await firebaseAuth.signInWithEmailAndPassword(
           email: email, password: password);
     } on FirebaseAuthException catch (e) {
-      throw FirebaseAuthExceptions.fromCode(e.code);
+      throw AppExceptions.fromCode(e.code);
     } catch (e) {
-      throw FirebaseAuthExceptions();
+      throw AppExceptions();
     }
   }
 
@@ -59,9 +59,9 @@ class AuthService {
       await firebaseAuth.signInWithCredential(credential);
     } on FirebaseAuthException catch (e) {
       print(e.code);
-      throw FirebaseAuthExceptions.fromCode(e.code);
+      throw AppExceptions.fromCode(e.code);
     } catch (_) {
-      throw const FirebaseAuthExceptions();
+      throw const AppExceptions();
     }
   }
 
@@ -71,9 +71,9 @@ class AuthService {
         firebaseAuth.signOut(),
       ]);
     } on FirebaseAuthException catch (e) {
-      throw FirebaseAuthExceptions.fromCode(e.code);
+      throw AppExceptions.fromCode(e.code);
     } catch (e) {
-      throw FirebaseAuthExceptions();
+      throw AppExceptions();
     }
   }
 }

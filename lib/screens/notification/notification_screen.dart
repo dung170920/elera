@@ -1,7 +1,9 @@
 import 'package:elera/constants/constants.dart';
 import 'package:elera/models/models.dart';
+import 'package:elera/screens/notification/cubit/notification_cubit.dart';
 import 'package:elera/screens/notification/widgets/widgets.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class NotificationScreen extends StatefulWidget {
@@ -19,18 +21,36 @@ class _NotificationScreenState extends State<NotificationScreen> {
         child: NotificationAppBar(),
         preferredSize: Size.fromHeight(90.w),
       ),
-      body: ListView.builder(
-        itemBuilder: (context, index) => NotificationCard(
-          notification: NotificationModel(
-            createdDate: DateTime.now(),
-            id: '1',
-            title: 'Payment Successfully',
-            subTitle:
-                "You have successfully booked the Art Workshops. The event will be held on Sunday, December 22, 2022, 13.00 - 14.00 PM. Don't forget to activate your reminder. Enjoy the event!",
-            isRead: false,
-            type: NotificationType.PAYMENT_SUCCESS,
-          ),
-        ),
+      body: BlocBuilder<NotificationCubit, NotificationState>(
+        builder: (context, state) {
+          switch (state.status) {
+            case ListStatus.loading:
+              return Center(
+                child: CircularProgressIndicator(),
+              );
+
+            case ListStatus.success:
+              return state.items.isEmpty
+                  ? Center(
+                      child: Text('List is empty!'),
+                    )
+                  : ListView.separated(
+                      padding: EdgeInsets.all(24.w),
+                      itemCount: state.items.length,
+                      itemBuilder: (context, index) => NotificationCard(
+                        notification: state.items[index],
+                      ),
+                      separatorBuilder: (context, index) => SizedBox(
+                        height: 24.w,
+                      ),
+                    );
+
+            case ListStatus.failure:
+              return Center(
+                child: Text('Something went wrong!'),
+              );
+          }
+        },
       ),
     );
   }

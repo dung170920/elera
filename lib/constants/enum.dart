@@ -27,3 +27,7 @@ enum NotificationType {
 
   const NotificationType(this.color, this.icon);
 }
+
+enum ListStatus { loading, success, failure }
+
+enum ThemeModes { light, dark }

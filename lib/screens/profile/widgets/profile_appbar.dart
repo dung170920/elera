@@ -20,7 +20,6 @@ class ProfileAppBar extends StatelessWidget {
         ),
         title: Text(
           'Profile',
-          style: AppTextStyle.h4(),
         ),
         actions: [
           GestureDetector(

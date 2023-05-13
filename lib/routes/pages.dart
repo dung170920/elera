@@ -115,7 +115,9 @@ class AppPages {
         page: NotificationScreen(),
         bloc: BlocProvider(
           lazy: true,
-          create: (_) => NotificationCubit(),
+          create: (_) => NotificationCubit(
+            service: NotificationService(),
+          )..fetchList(),
         ),
       ),
     ];

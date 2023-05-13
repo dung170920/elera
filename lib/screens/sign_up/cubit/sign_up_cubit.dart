@@ -72,7 +72,7 @@ class SignUpCubit extends Cubit<SignUpState> {
             email: email.value, password: password.value, name: name.value);
 
         emit(state.copyWith(status: FormzSubmissionStatus.success));
-      } on FirebaseAuthExceptions catch (e) {
+      } on AppExceptions catch (e) {
         emit(state.copyWith(
           status: FormzSubmissionStatus.failure,
           errorMessage: e.message,
