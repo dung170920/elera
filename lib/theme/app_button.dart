@@ -64,6 +64,7 @@ extension AppOutlinedButton on OutlinedButton {
     return OutlinedButton(
       style: OutlinedButton.styleFrom(
         fixedSize: Size.fromWidth(width ?? double.maxFinite),
+        padding: EdgeInsets.symmetric(horizontal: 32.w, vertical: 18.w),
         shape: RoundedRectangleBorder(
           borderRadius: radiusCircular(radius),
         ),

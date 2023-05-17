@@ -9,7 +9,8 @@ class CourseModel extends Equatable {
   final double? price;
   final double? salePrice;
   final double? rate;
-  final int? totalRate;
+  final int? numberVote;
+  final double? totalDuration;
 
   const CourseModel({
     required this.id,
@@ -19,7 +20,8 @@ class CourseModel extends Equatable {
     this.price,
     this.salePrice,
     this.rate,
-    this.totalRate,
+    this.numberVote,
+    this.totalDuration,
   });
 
   static const empty = CourseModel(id: '');
@@ -29,7 +31,7 @@ class CourseModel extends Equatable {
 
   @override
   List<Object?> get props =>
-      [id, name, type, img, price, salePrice, rate, totalRate];
+      [id, name, type, img, price, salePrice, rate, numberVote, totalDuration];
 
   CourseModel copyWith({
     String? id,
@@ -39,7 +41,8 @@ class CourseModel extends Equatable {
     double? price,
     double? salePrice,
     double? rate,
-    int? totalRate,
+    int? numberVote,
+    double? totalDuration,
   }) {
     return CourseModel(
       id: id ?? this.id,
@@ -49,12 +52,10 @@ class CourseModel extends Equatable {
       price: price ?? this.price,
       salePrice: salePrice ?? this.salePrice,
       rate: rate ?? this.rate,
-      totalRate: totalRate ?? this.totalRate,
+      numberVote: numberVote ?? this.numberVote,
+      totalDuration: totalDuration ?? this.totalDuration,
     );
   }
-
-  @override
-  bool get stringify => true;
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -65,7 +66,8 @@ class CourseModel extends Equatable {
       'price': price,
       'salePrice': salePrice,
       'rate': rate,
-      'totalRate': totalRate,
+      'numberVote': numberVote,
+      'totalDuration': totalDuration,
     };
   }
 
@@ -78,7 +80,9 @@ class CourseModel extends Equatable {
       price: map['price'] != null ? map['price'] as double : null,
       salePrice: map['salePrice'] != null ? map['salePrice'] as double : null,
       rate: map['rate'] != null ? map['rate'] as double : null,
-      totalRate: map['totalRate'] != null ? map['totalRate'] as int : null,
+      numberVote: map['numberVote'] != null ? map['numberVote'] as int : null,
+      totalDuration:
+          map['totalDuration'] != null ? map['totalDuration'] as double : null,
     );
   }
 

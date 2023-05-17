@@ -74,7 +74,7 @@ class Data {
   static Widget getPage(int index) {
     List<Widget> list = [
       HomeBody(),
-      MyCourseScreen(),
+      MyCoursesScreen(),
       InboxScreen(),
       TransactionScreen(),
       ProfileScreen(),
@@ -116,7 +116,7 @@ class Data {
         price: 80,
         salePrice: 48,
         rate: 4.8,
-        totalRate: 8289,
+        numberVote: 8289,
         type: '3D Design',
       ),
     );
@@ -128,7 +128,7 @@ class Data {
         name: 'Wordpress Website Design',
         price: 46,
         rate: 4.9,
-        totalRate: 10298,
+        numberVote: 10298,
         type: 'Programming',
       ),
     );
@@ -141,7 +141,7 @@ class Data {
         price: 72,
         salePrice: 44,
         rate: 4.8,
-        totalRate: 9928,
+        numberVote: 9928,
         type: 'Programming',
       ),
     );

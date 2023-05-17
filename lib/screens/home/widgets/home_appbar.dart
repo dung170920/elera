@@ -1,5 +1,6 @@
 import 'package:elera/constants/constants.dart';
 import 'package:elera/routes/routes.dart';
+import 'package:elera/screens/notification/cubit/notification_cubit.dart';
 import 'package:elera/screens/splash/cubit/splash_cubit.dart';
 import 'package:elera/theme/theme.dart';
 import 'package:flutter/material.dart';
@@ -42,9 +43,27 @@ class HomeAppBar extends StatelessWidget {
               GestureDetector(
                 onTap: () =>
                     Navigator.pushNamed(context, AppRoutes.NOTIFICATION),
-                child: Icon(
-                  MyIcons.bell,
-                  size: 28.w,
+                child: Stack(
+                  children: [
+                    Icon(
+                      MyIcons.bell,
+                      size: 28.w,
+                    ),
+                    context
+                            .watch<NotificationCubit>()
+                            .state
+                            .items
+                            .any((element) => !element.isRead)
+                        ? Positioned(
+                            right: 3.w,
+                            top: 1.w,
+                            child: CircleAvatar(
+                              backgroundColor: StatusType.ERROR.color,
+                              radius: 4.w,
+                            ),
+                          )
+                        : Container(),
+                  ],
                 ),
               ),
             ],

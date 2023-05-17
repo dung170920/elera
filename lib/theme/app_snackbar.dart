@@ -22,13 +22,13 @@ class AppSnackbar {
         decoration: BoxDecoration(
           color: AppColors.lightColor,
           borderRadius: radiusCircular(),
-          boxShadow: [
-            BoxShadow(
-              color: AppColors.shadowColor,
-              offset: const Offset(-5, 10),
-              blurRadius: 60,
-            ),
-          ],
+          // boxShadow: [
+          //   BoxShadow(
+          //     color: AppColors.shadowColor,
+          //     offset: const Offset(-5, 10),
+          //     blurRadius: 60,
+          //   ),
+          // ],
         ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,

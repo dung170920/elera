@@ -1,5 +1,6 @@
 import 'package:elera/constants/constants.dart';
-import 'package:elera/models/models.dart';
+import 'package:elera/theme/theme.dart';
+import 'package:elera/widgets/widgets.dart';
 import 'package:elera/screens/notification/cubit/notification_cubit.dart';
 import 'package:elera/screens/notification/widgets/widgets.dart';
 import 'package:flutter/material.dart';
@@ -17,40 +18,88 @@ class _NotificationScreenState extends State<NotificationScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: PreferredSize(
-        child: NotificationAppBar(),
-        preferredSize: Size.fromHeight(90.w),
+      appBar: NavBar(
+        isBack: true,
+        title: 'Notification',
+        actions: [
+          GestureDetector(
+            onTap: () {
+              showMenu(
+                context: context,
+                position: RelativeRect.fromLTRB(1.sw, 90.w, 24.w, 1.sw),
+                items: [
+                  PopupMenuItem(
+                    onTap: () => context.read<NotificationCubit>().readList(),
+                    child: Row(
+                      children: [
+                        Icon(
+                          MyIcons.checkDouble,
+                          color: StatusType.SUCCESS.color,
+                        ),
+                        SizedBox(
+                          width: 8.w,
+                        ),
+                        Text('Read as all'),
+                      ],
+                    ),
+                  ),
+                  PopupMenuItem(
+                    onTap: () => context.read<NotificationCubit>().deleteList(),
+                    child: Row(
+                      children: [
+                        Icon(
+                          MyIcons.trash,
+                          color: StatusType.ERROR.color,
+                        ),
+                        SizedBox(
+                          width: 8.w,
+                        ),
+                        Text('Remove all'),
+                      ],
+                    ),
+                  )
+                ],
+              );
+            },
+            child: Icon(
+              MyIcons.moreHorizontalCircle,
+              size: 28.w,
+            ),
+          ),
+        ],
       ),
-      body: BlocBuilder<NotificationCubit, NotificationState>(
-        builder: (context, state) {
-          switch (state.status) {
-            case ListStatus.loading:
-              return Center(
-                child: CircularProgressIndicator(),
-              );
+      body: SafeArea(
+        child: BlocBuilder<NotificationCubit, NotificationState>(
+          builder: (context, state) {
+            switch (state.status) {
+              case ListStatus.loading:
+                return Center(
+                  child: CircularProgressIndicator(),
+                );
 
-            case ListStatus.success:
-              return state.items.isEmpty
-                  ? Center(
-                      child: Text('List is empty!'),
-                    )
-                  : ListView.separated(
-                      padding: EdgeInsets.all(24.w),
-                      itemCount: state.items.length,
-                      itemBuilder: (context, index) => NotificationCard(
-                        notification: state.items[index],
-                      ),
-                      separatorBuilder: (context, index) => SizedBox(
-                        height: 24.w,
-                      ),
-                    );
+              case ListStatus.success:
+                return state.items.isEmpty
+                    ? Center(
+                        child: Text('List is empty!'),
+                      )
+                    : ListView.separated(
+                        padding: EdgeInsets.all(24.w),
+                        itemCount: state.items.length,
+                        itemBuilder: (context, index) => NotificationCard(
+                          notification: state.items[index],
+                        ),
+                        separatorBuilder: (context, index) => SizedBox(
+                          height: 24.w,
+                        ),
+                      );
 
-            case ListStatus.failure:
-              return Center(
-                child: Text('Something went wrong!'),
-              );
-          }
-        },
+              case ListStatus.failure:
+                return Center(
+                  child: Text('Something went wrong!'),
+                );
+            }
+          },
+        ),
       ),
     );
   }

@@ -57,7 +57,7 @@ class _HomeBodyState extends State<HomeBody> {
             child: TopMentor(),
           ),
           SliverToBoxAdapter(
-            child: PopuplarCourses(),
+            child: PopularCourses(),
           ),
         ],
       ),

@@ -1,11 +1,12 @@
 import 'package:elera/constants/constants.dart';
 import 'package:elera/models/models.dart';
 import 'package:elera/routes/routes.dart';
+import 'package:elera/screens/courses/cubit/courses_cubit.dart';
 import 'package:elera/screens/home/cubit/home_cubit.dart';
 import 'package:elera/screens/inbox/cubit/inbox_cubit.dart';
 import 'package:elera/screens/info/cubit/info_cubit.dart';
 import 'package:elera/screens/let_in/cubit/let_in_cubit.dart';
-import 'package:elera/screens/my_course/cubit/my_course_cubit.dart';
+import 'package:elera/screens/my_courses/cubit/my_courses_cubit.dart';
 import 'package:elera/screens/notification/cubit/notification_cubit.dart';
 import 'package:elera/screens/profile/cubit/profile_cubit.dart';
 import 'package:elera/screens/sign_in/cubit/sign_in_cubit.dart';
@@ -71,11 +72,11 @@ class AppPages {
         ),
       ),
       RouteModel(
-        path: AppRoutes.MY_COURSE,
-        page: MyCourseScreen(),
+        path: AppRoutes.MY_COURSES,
+        page: MyCoursesScreen(),
         bloc: BlocProvider(
           lazy: true,
-          create: (_) => MyCourseCubit(),
+          create: (_) => MyCoursesCubit(),
         ),
       ),
       RouteModel(
@@ -118,6 +119,14 @@ class AppPages {
           create: (_) => NotificationCubit(
             service: NotificationService(),
           )..fetchList(),
+        ),
+      ),
+      RouteModel(
+        path: AppRoutes.COURSES,
+        page: CoursesScreen(),
+        bloc: BlocProvider(
+          lazy: true,
+          create: (_) => CoursesCubit(),
         ),
       ),
     ];

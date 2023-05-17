@@ -20,17 +20,9 @@ class _SignInScreenState extends State<SignInScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        leading: GestureDetector(
-          onTap: () => Navigator.pop(context),
-          child: Padding(
-            padding: EdgeInsets.only(left: 8.w),
-            child: Icon(
-              MyIcons.arrowLeftSmall,
-              size: 28.w,
-            ),
-          ),
-        ),
+      appBar: NavBar(
+        isBack: true,
+        title: '',
       ),
       body: SafeArea(
         child: SingleChildScrollView(

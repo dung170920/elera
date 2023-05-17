@@ -133,7 +133,7 @@ class CourseCard extends StatelessWidget {
                         ),
                         Expanded(
                           child: Text(
-                            '${formatCurrency(price: double.parse(course.totalRate!.toString()))} students',
+                            '${formatCurrency(price: double.parse(course.numberVote!.toString()))} students',
                             style: AppTextStyle.bodySmall(
                               FontWeight.w500,
                               AppColors.greyScaleColor[700],

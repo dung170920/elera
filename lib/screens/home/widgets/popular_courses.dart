@@ -1,12 +1,12 @@
 import 'package:elera/constants/constants.dart';
+import 'package:elera/routes/routes.dart';
 import 'package:elera/theme/theme.dart';
-import 'package:elera/utils/utils.dart';
 import 'package:elera/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class PopuplarCourses extends StatelessWidget {
-  const PopuplarCourses({super.key});
+class PopularCourses extends StatelessWidget {
+  const PopularCourses({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +23,8 @@ class PopuplarCourses extends StatelessWidget {
                 style: AppTextStyle.h6(),
               ),
               TextButton(
-                onPressed: () {},
+                onPressed: () =>
+                    Navigator.pushNamed(context, AppRoutes.COURSES),
                 child: Text(
                   'See All',
                   style: AppTextStyle.bodyLarge(
@@ -32,56 +33,6 @@ class PopuplarCourses extends StatelessWidget {
               ),
             ],
           ),
-          // Padding(
-          //   padding: EdgeInsets.symmetric(vertical: 24.w),
-          //   child: SingleChildScrollView(
-          //     scrollDirection: Axis.horizontal,
-          //     child: Wrap(
-          //       spacing: 12.w,
-          //       runAlignment: WrapAlignment.start,
-          //       children: [
-          //         Chip(
-          //           label: Text('All'),
-          //           labelStyle: AppTextStyle.bodyLarge(
-          //             FontWeight.w600,
-          //             AppColors.primaryColor,
-          //           ),
-          //           labelPadding: EdgeInsets.zero,
-          //           visualDensity: VisualDensity.compact,
-          //           elevation: 0,
-          //           padding:
-          //               EdgeInsets.symmetric(horizontal: 20.w, vertical: 8.w),
-          //           backgroundColor: AppColors.lightColor,
-          //           shape: StadiumBorder(
-          //             side: BorderSide(
-          //               color: AppColors.primaryColor,
-          //               width: 1,
-          //             ),
-          //           ),
-          //         ),
-          //         Chip(
-          //           label: Text('3D Design'),
-          //           labelStyle: AppTextStyle.bodyLarge(
-          //             FontWeight.w600,
-          //             AppColors.primaryColor,
-          //           ),
-          //           labelPadding: EdgeInsets.zero,
-          //           visualDensity: VisualDensity.compact,
-          //           elevation: 0,
-          //           padding:
-          //               EdgeInsets.symmetric(horizontal: 20.w, vertical: 8.w),
-          //           backgroundColor: AppColors.lightColor,
-          //           shape: StadiumBorder(
-          //             side: BorderSide(
-          //               color: AppColors.primaryColor,
-          //               width: 1,
-          //             ),
-          //           ),
-          //         ),
-          //       ],
-          //     ),
-          //   ),
-          // ),
           Padding(
             padding: EdgeInsets.only(bottom: 16.w),
             child: ListView.separated(

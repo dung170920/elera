@@ -47,6 +47,23 @@ class AppTheme {
         statusBarBrightness: Brightness.light,
       ),
     ),
+    chipTheme: ChipThemeData(
+      labelStyle: AppTextStyle.bodyLarge(
+        FontWeight.w600,
+        AppColors.primaryColor,
+      ),
+      labelPadding: EdgeInsets.zero,
+      pressElevation: 0,
+      elevation: 0,
+      padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 8.w),
+      backgroundColor: AppColors.lightColor,
+      shape: StadiumBorder(
+        side: BorderSide(
+          color: AppColors.primaryColor,
+          width: 1,
+        ),
+      ),
+    ),
     bottomAppBarTheme: BottomAppBarTheme(color: AppColors.lightColor),
     inputDecorationTheme: InputDecorationTheme(
       fillColor: AppColors.greyScaleColor[50]!,
@@ -79,6 +96,20 @@ class AppTheme {
         borderSide: BorderSide(color: AppColors.primaryColor),
       ),
     ),
+    outlinedButtonTheme: OutlinedButtonThemeData(
+      style: OutlinedButton.styleFrom(
+        backgroundColor: AppColors.lightColor,
+        disabledBackgroundColor: AppColors.greyScaleColor[100]!,
+        foregroundColor: AppColors.greyScaleColor[900],
+        shape: RoundedRectangleBorder(
+          side: BorderSide(
+            color: AppColors.greyScaleColor[200]!,
+            width: 1,
+          ),
+        ),
+        elevation: 0,
+      ),
+    ),
   );
 
   static final ThemeData darkTheme = ThemeData(
@@ -102,6 +133,23 @@ class AppTheme {
     dividerTheme: DividerThemeData(
       color: AppColors.darkColor[3],
     ),
+    chipTheme: ChipThemeData(
+      labelStyle: AppTextStyle.bodyLarge(
+        FontWeight.w600,
+        AppColors.primaryColor,
+      ),
+      labelPadding: EdgeInsets.zero,
+      pressElevation: 0,
+      elevation: 0,
+      padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 8.w),
+      backgroundColor: AppColors.darkColor[1],
+      shape: StadiumBorder(
+        side: BorderSide(
+          color: AppColors.primaryColor,
+          width: 1,
+        ),
+      ),
+    ),
     cardColor: AppColors.darkColor[2],
     dialogTheme: DialogTheme(
       shape: shapeRadius(24),
@@ -121,7 +169,6 @@ class AppTheme {
       style: OutlinedButton.styleFrom(
         backgroundColor: AppColors.darkColor[2],
         disabledBackgroundColor: AppColors.greyScaleColor[700]!,
-        padding: EdgeInsets.symmetric(horizontal: 32.w, vertical: 18.w),
         foregroundColor: AppColors.lightColor,
         shape: RoundedRectangleBorder(
           side: BorderSide(
