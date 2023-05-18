@@ -12,4 +12,5 @@ class AppRoutes {
   static const INFO = '/info';
   static const NOTIFICATION = '/notification';
   static const COURSES = '/courses';
+  static const MENTORS = '/mentors';
 }

@@ -1,4 +1,5 @@
 import 'package:elera/constants/constants.dart';
+import 'package:elera/routes/routes.dart';
 import 'package:elera/theme/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -20,7 +21,8 @@ class TopMentor extends StatelessWidget {
                 style: AppTextStyle.h6(),
               ),
               TextButton(
-                onPressed: () {},
+                onPressed: () =>
+                    Navigator.pushNamed(context, AppRoutes.MENTORS),
                 child: Text(
                   'See All',
                   style: AppTextStyle.bodyLarge(

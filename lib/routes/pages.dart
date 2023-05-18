@@ -6,6 +6,7 @@ import 'package:elera/screens/home/cubit/home_cubit.dart';
 import 'package:elera/screens/inbox/cubit/inbox_cubit.dart';
 import 'package:elera/screens/info/cubit/info_cubit.dart';
 import 'package:elera/screens/let_in/cubit/let_in_cubit.dart';
+import 'package:elera/screens/mentors/cubit/mentors_cubit.dart';
 import 'package:elera/screens/my_courses/cubit/my_courses_cubit.dart';
 import 'package:elera/screens/notification/cubit/notification_cubit.dart';
 import 'package:elera/screens/profile/cubit/profile_cubit.dart';
@@ -127,6 +128,14 @@ class AppPages {
         bloc: BlocProvider(
           lazy: true,
           create: (_) => CoursesCubit(),
+        ),
+      ),
+      RouteModel(
+        path: AppRoutes.MENTORS,
+        page: MentorsScreen(),
+        bloc: BlocProvider(
+          lazy: true,
+          create: (_) => MentorsCubit(),
         ),
       ),
     ];

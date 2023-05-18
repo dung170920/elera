@@ -13,12 +13,12 @@ class AppTheme {
     primarySwatch: createMaterialColor(AppColors.primaryColor),
     primaryColor: AppColors.primaryColor,
     scaffoldBackgroundColor: AppColors.lightColor,
-    textTheme: Typography.englishLike2018.apply(
-      fontSizeFactor: 1.sp,
-      bodyColor: AppColors.greyScaleColor[900],
-      displayColor: AppColors.greyScaleColor[900],
-      fontFamily: GoogleFonts.urbanist().fontFamily,
-    ),
+    textTheme: ThemeData.light().textTheme.apply(
+          fontSizeFactor: 1.sp,
+          bodyColor: AppColors.greyScaleColor[900],
+          displayColor: AppColors.greyScaleColor[900],
+          fontFamily: GoogleFonts.urbanist().fontFamily,
+        ),
     bottomNavigationBarTheme: BottomNavigationBarThemeData(
       backgroundColor: AppColors.lightColor,
       elevation: 0,
@@ -55,8 +55,13 @@ class AppTheme {
       labelPadding: EdgeInsets.zero,
       pressElevation: 0,
       elevation: 0,
-      padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 8.w),
+      padding: EdgeInsets.symmetric(horizontal: 20.w),
       backgroundColor: AppColors.lightColor,
+      selectedColor: AppColors.primaryColor,
+      secondaryLabelStyle: AppTextStyle.bodyLarge(
+        FontWeight.w600,
+        AppColors.lightColor,
+      ),
       shape: StadiumBorder(
         side: BorderSide(
           color: AppColors.primaryColor,
@@ -116,12 +121,12 @@ class AppTheme {
     primarySwatch: createMaterialColor(AppColors.primaryColor),
     primaryColor: AppColors.primaryColor,
     scaffoldBackgroundColor: AppColors.darkColor[1],
-    textTheme: Typography.englishLike2018.apply(
-      displayColor: AppColors.lightColor,
-      fontSizeFactor: 1.sp,
-      bodyColor: AppColors.lightColor,
-      fontFamily: GoogleFonts.urbanist().fontFamily,
-    ),
+    textTheme: ThemeData.dark().textTheme.apply(
+          displayColor: AppColors.lightColor,
+          fontSizeFactor: 1.sp,
+          bodyColor: AppColors.lightColor,
+          fontFamily: GoogleFonts.urbanist().fontFamily,
+        ),
     splashColor: Colors.transparent,
     highlightColor: Colors.transparent,
     bottomNavigationBarTheme: BottomNavigationBarThemeData(
@@ -141,7 +146,7 @@ class AppTheme {
       labelPadding: EdgeInsets.zero,
       pressElevation: 0,
       elevation: 0,
-      padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 8.w),
+      padding: EdgeInsets.symmetric(horizontal: 20.w),
       backgroundColor: AppColors.darkColor[1],
       shape: StadiumBorder(
         side: BorderSide(

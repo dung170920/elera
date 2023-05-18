@@ -39,6 +39,7 @@ class NavBar extends StatelessWidget with PreferredSizeWidget {
               ),
         title: Text(
           title,
+          style: AppTextStyle.h4(),
         ),
         actions: actions,
       ),

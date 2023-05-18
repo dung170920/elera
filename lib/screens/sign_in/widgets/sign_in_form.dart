@@ -28,17 +28,17 @@ class _SignInFormState extends State<SignInForm> {
     return BlocListener<SignInCubit, SignInState>(
       listener: (context, state) {
         if (state.status == FormzSubmissionStatus.failure) {
-          AppSnackbar.show(
-              context: context,
-              title: state.errorMessage ?? 'Login failed',
-              status: StatusType.ERROR);
+          context.showSnackBar(
+            StatusType.ERROR,
+            state.errorMessage ?? 'Login failed',
+          );
         }
 
         if (state.status == FormzSubmissionStatus.success) {
-          AppSnackbar.show(
-              context: context,
-              title: 'Login successfully',
-              status: StatusType.SUCCESS);
+          context.showSnackBar(
+            StatusType.SUCCESS,
+            'Login successfully',
+          );
         }
       },
       child: BlocBuilder<SignInCubit, SignInState>(

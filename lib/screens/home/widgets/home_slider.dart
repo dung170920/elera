@@ -14,17 +14,16 @@ class HomeSlider extends StatelessWidget {
       padding: EdgeInsets.symmetric(horizontal: 32.w),
       margin: EdgeInsets.all(24.w),
       decoration: BoxDecoration(
-          image: DecorationImage(
-            image: AssetImage(
-              sliderDecor,
-            ),
-            fit: BoxFit.cover,
+        image: DecorationImage(
+          image: AssetImage(
+            sliderDecor,
           ),
-          color: AppColors.primaryColor,
-          borderRadius: radiusCircular(AppStyles.DEFAULT_LARGE_RADIUS),
-          boxShadow: [
-            AppStyles.buttonShadow[1]!,
-          ]),
+          fit: BoxFit.cover,
+        ),
+        color: AppColors.primaryColor,
+        borderRadius: radiusCircular(AppStyles.DEFAULT_LARGE_RADIUS),
+        boxShadow: AppStyles.buttonShadow[1]!,
+      ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [

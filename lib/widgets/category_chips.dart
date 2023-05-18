@@ -15,8 +15,13 @@ class CategoryChips extends StatelessWidget {
           spacing: 12.w,
           runAlignment: WrapAlignment.start,
           children: [
-            Chip(
-              label: Text('All'),
+            ChoiceChip(
+              selectedColor: AppColors.primaryColor,
+              label: Text(
+                'All',
+              ),
+              selected: true,
+              onSelected: (value) {},
             ),
             Chip(
               label: Text('3D Design'),

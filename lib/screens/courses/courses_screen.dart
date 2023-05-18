@@ -26,22 +26,25 @@ class CoursesScreen extends StatelessWidget {
       body: SafeArea(
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: 24.w),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              CategoryChips(),
-              Padding(
-                padding: EdgeInsets.only(bottom: 16.w),
-                child: ListView.separated(
-                  physics: NeverScrollableScrollPhysics(),
-                  shrinkWrap: true,
-                  itemBuilder: (context, index) =>
-                      CourseCard(course: Data.getCourseList()[index]),
-                  itemCount: Data.getCourseList().length,
-                  separatorBuilder: (context, index) => SizedBox(height: 16.w),
-                ),
-              )
-            ],
+          child: SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                CategoryChips(),
+                Padding(
+                  padding: EdgeInsets.only(bottom: 16.w),
+                  child: ListView.separated(
+                    physics: NeverScrollableScrollPhysics(),
+                    shrinkWrap: true,
+                    itemBuilder: (context, index) =>
+                        CourseCard(course: Data.getCourseList()[index]),
+                    itemCount: Data.getCourseList().length,
+                    separatorBuilder: (context, index) =>
+                        SizedBox(height: 16.w),
+                  ),
+                )
+              ],
+            ),
           ),
         ),
       ),

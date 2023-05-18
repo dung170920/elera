@@ -11,3 +11,4 @@ export 'transaction/transaction_screen.dart';
 export 'info/info_screen.dart';
 export 'notification/notification_screen.dart';
 export 'courses/courses_screen.dart';
+export 'mentors/mentors_screen.dart';

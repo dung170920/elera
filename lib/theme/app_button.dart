@@ -10,15 +10,19 @@ extension AppElevatedButton on ElevatedButton {
     VoidCallback? onPressed,
     required Widget child,
     double? width,
+    ButtonSize size = ButtonSize.large,
     double? radius,
   }) {
     return ElevatedButton(
       style: ElevatedButton.styleFrom(
-        fixedSize: Size.fromWidth(width ?? double.maxFinite),
+        fixedSize: size == ButtonSize.large
+            ? Size.fromWidth(width ?? double.maxFinite)
+            : null,
         backgroundColor: color ?? AppColors.primaryColor,
         disabledBackgroundColor: StatusType.DISABLED_BUTTON.color,
-        padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 18.w),
-        textStyle: AppTextStyle.bodyLarge(FontWeight.bold),
+        padding: size == ButtonSize.small
+            ? EdgeInsets.symmetric(horizontal: 16.w, vertical: 6.w)
+            : EdgeInsets.symmetric(horizontal: 16.w, vertical: 18.w),
         shape: RoundedRectangleBorder(
           borderRadius: radiusCircular(radius),
         ),

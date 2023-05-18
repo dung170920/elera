@@ -31,3 +31,5 @@ enum NotificationType {
 enum ListStatus { loading, success, failure }
 
 enum ThemeModes { light, dark }
+
+enum ButtonSize { small, large }

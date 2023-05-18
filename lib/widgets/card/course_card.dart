@@ -23,9 +23,7 @@ class CourseCard extends StatelessWidget {
                 ? AppColors.lightColor
                 : AppColors.darkColor[2],
             borderRadius: radiusCircular(AppStyles.DEFAULT_LARGE_RADIUS),
-            boxShadow: [
-              AppStyles.cardShadow[2]!,
-            ],
+            boxShadow: AppStyles.cardShadow[2]!,
           ),
           width: double.maxFinite,
           child: Row(

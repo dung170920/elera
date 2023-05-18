@@ -28,10 +28,9 @@ class _SignUpFormState extends State<SignUpForm> {
     return BlocListener<SignUpCubit, SignUpState>(
       listener: (context, state) {
         if (state.status == FormzSubmissionStatus.failure) {
-          AppSnackbar.show(
-            context: context,
-            title: state.errorMessage ?? 'Sign up failed',
-            status: StatusType.ERROR,
+          context.showSnackBar(
+            StatusType.ERROR,
+            state.errorMessage ?? 'Register failed',
           );
         }
       },
