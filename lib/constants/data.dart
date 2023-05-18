@@ -1,4 +1,5 @@
 import 'package:elera/models/models.dart';
+import 'package:elera/routes/routes.dart';
 import 'package:elera/screens/home/widgets/widgets.dart';
 import 'package:elera/screens/screens.dart';
 import 'package:elera/theme/theme.dart';
@@ -204,50 +205,58 @@ class Data {
       TextModel(
         title: 'Profile',
         iconData: MyIcons.user,
+        path: AppRoutes.INFO_EDIT,
       ),
     );
     list.add(
       TextModel(
         title: 'Notification',
         iconData: MyIcons.bell,
+        path: AppRoutes.INFO_EDIT,
       ),
     );
     list.add(
       TextModel(
         title: "Payment",
         iconData: MyIcons.wallet,
+        path: AppRoutes.INFO_EDIT,
       ),
     );
     list.add(
       TextModel(
         title: "Security",
         iconData: MyIcons.shieldCheck,
+        path: AppRoutes.INFO_EDIT,
       ),
     );
     list.add(
       TextModel(
         title: "Language",
         iconData: MyIcons.globe,
+        path: AppRoutes.INFO_EDIT,
       ),
     );
     list.add(
       TextModel(
         title: "Dark Mode",
         iconData: MyIcons.brushAlt,
+        path: AppRoutes.INFO_EDIT,
       ),
     );
     list.add(
       TextModel(
         title: "Privacy Policy",
         iconData: MyIcons.lock,
+        path: AppRoutes.INFO_EDIT,
       ),
     );
-    // list.add(
-    //   TextModel(
-    //     title: "Help Center",
-    //     iconData: MyIcons.commentQuestion,
-    //   ),
-    // );
+    list.add(
+      TextModel(
+        title: "Help Center",
+        iconData: MyIcons.commentQuestion,
+        path: AppRoutes.INFO_EDIT,
+      ),
+    );
     // list.add(
     //   TextModel(
     //     title: "Invite Friends",

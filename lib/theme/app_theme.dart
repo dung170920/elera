@@ -13,12 +13,12 @@ class AppTheme {
     primarySwatch: createMaterialColor(AppColors.primaryColor),
     primaryColor: AppColors.primaryColor,
     scaffoldBackgroundColor: AppColors.lightColor,
-    textTheme: ThemeData.light().textTheme.apply(
-          fontSizeFactor: 1.sp,
-          bodyColor: AppColors.greyScaleColor[900],
-          displayColor: AppColors.greyScaleColor[900],
-          fontFamily: GoogleFonts.urbanist().fontFamily,
-        ),
+    textTheme: Typography.englishLike2014.apply(
+      fontSizeFactor: 1.sp,
+      bodyColor: AppColors.greyScaleColor[900],
+      displayColor: AppColors.greyScaleColor[900],
+      fontFamily: GoogleFonts.urbanist().fontFamily,
+    ),
     bottomNavigationBarTheme: BottomNavigationBarThemeData(
       backgroundColor: AppColors.lightColor,
       elevation: 0,
@@ -121,12 +121,12 @@ class AppTheme {
     primarySwatch: createMaterialColor(AppColors.primaryColor),
     primaryColor: AppColors.primaryColor,
     scaffoldBackgroundColor: AppColors.darkColor[1],
-    textTheme: ThemeData.dark().textTheme.apply(
-          displayColor: AppColors.lightColor,
-          fontSizeFactor: 1.sp,
-          bodyColor: AppColors.lightColor,
-          fontFamily: GoogleFonts.urbanist().fontFamily,
-        ),
+    textTheme: Typography.englishLike2014.apply(
+      displayColor: AppColors.lightColor,
+      fontSizeFactor: 1.sp,
+      bodyColor: AppColors.lightColor,
+      fontFamily: GoogleFonts.urbanist().fontFamily,
+    ),
     splashColor: Colors.transparent,
     highlightColor: Colors.transparent,
     bottomNavigationBarTheme: BottomNavigationBarThemeData(

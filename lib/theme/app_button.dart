@@ -44,6 +44,7 @@ extension AppElevatedButton on ElevatedButton {
         backgroundColor: color != null
             ? color.withOpacity(0.1)
             : AppColors.primaryColor.withOpacity(0.1),
+        foregroundColor: color ?? AppColors.primaryColor,
         disabledBackgroundColor: StatusType.DISABLED_BUTTON.color,
         elevation: 0,
         padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 18.w),

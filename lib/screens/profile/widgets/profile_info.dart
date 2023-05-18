@@ -17,14 +17,13 @@ class ProfileInfo extends StatelessWidget {
         Stack(
           children: [
             Positioned(
-              child: Container(
-                height: 120.w,
-                width: 120.w,
-                child: user.avatar != null
-                    ? Image.network(
+              child: CircleAvatar(
+                radius: 60.w,
+                backgroundImage: user.avatar != null
+                    ? NetworkImage(
                         user.avatar!,
                       )
-                    : Image.asset(logo),
+                    : AssetImage(logo) as ImageProvider,
               ),
             ),
             Positioned(

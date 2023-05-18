@@ -35,9 +35,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       context.read<SplashCubit>().onAuthLogoutRequested(),
                 ),
                 secondaryButton: AppElevatedButton.secondary(
-                  child: Text('Logout'),
+                  child: Text('Cancel'),
                   onPressed: () =>
-                      context.read<SplashCubit>().onAuthLogoutRequested(),
+                      Navigator.of(context, rootNavigator: true).pop(),
                 ),
               ),
             ),

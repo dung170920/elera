@@ -8,7 +8,7 @@ export 'profile/profile_screen.dart';
 export 'inbox/inbox_screen.dart';
 export 'my_courses/my_courses_screen.dart';
 export 'transaction/transaction_screen.dart';
-export 'info/info_screen.dart';
+export 'info_edit/info_edit_screen.dart';
 export 'notification/notification_screen.dart';
 export 'courses/courses_screen.dart';
 export 'mentors/mentors_screen.dart';
