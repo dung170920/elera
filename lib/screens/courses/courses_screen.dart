@@ -30,7 +30,12 @@ class CoursesScreen extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                CategoryChips(),
+                Chips(
+                  list: [
+                    Text('All'),
+                  ],
+                  selected: 0,
+                ),
                 Padding(
                   padding: EdgeInsets.only(bottom: 16.w),
                   child: ListView.separated(

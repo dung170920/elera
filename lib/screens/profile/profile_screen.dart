@@ -27,14 +27,16 @@ class _ProfileScreenState extends State<ProfileScreen> {
               context: context,
               builder: (context) => AppDialog(
                 status: StatusType.INFO,
-                title: 'Are you sure?',
-                subTitle: 'Are you sure?',
+                title: 'Logout',
+                subTitle: 'Are you sure to log out?',
                 primaryButton: AppElevatedButton.primary(
-                  child: Text('Logout'),
+                  radius: 100,
+                  child: Text('Yes, Logout'),
                   onPressed: () =>
                       context.read<SplashCubit>().onAuthLogoutRequested(),
                 ),
                 secondaryButton: AppElevatedButton.secondary(
+                  radius: 100,
                   child: Text('Cancel'),
                   onPressed: () =>
                       Navigator.of(context, rootNavigator: true).pop(),

@@ -41,7 +41,7 @@ class AppTheme {
         color: AppColors.greyScaleColor[900],
       ),
       elevation: 0,
-      backgroundColor: AppColors.lightColor,
+      backgroundColor: Colors.transparent,
       systemOverlayStyle: const SystemUiOverlayStyle(
         statusBarIconBrightness: Brightness.light,
         statusBarBrightness: Brightness.light,
@@ -161,7 +161,7 @@ class AppTheme {
       backgroundColor: AppColors.darkColor[2],
     ),
     appBarTheme: AppBarTheme(
-      backgroundColor: AppColors.darkColor[1],
+      backgroundColor: Colors.transparent,
       elevation: 0,
       titleTextStyle: AppTextStyle.h4(AppColors.lightColor),
       systemOverlayStyle: const SystemUiOverlayStyle(

@@ -1,6 +1,7 @@
 import 'package:elera/constants/constants.dart';
 import 'package:elera/models/models.dart';
 import 'package:elera/routes/routes.dart';
+import 'package:elera/screens/course_detail/cubit/course_detail_cubit.dart';
 import 'package:elera/screens/courses/cubit/courses_cubit.dart';
 import 'package:elera/screens/home/cubit/home_cubit.dart';
 import 'package:elera/screens/inbox/cubit/inbox_cubit.dart';
@@ -131,6 +132,14 @@ class AppPages {
         ),
       ),
       RouteModel(
+        path: AppRoutes.COURSE_DETAIL,
+        page: CourseDetailScreen(),
+        bloc: BlocProvider(
+          lazy: true,
+          create: (_) => CourseDetailCubit(),
+        ),
+      ),
+      RouteModel(
         path: AppRoutes.MENTORS,
         page: MentorsScreen(),
         bloc: BlocProvider(
@@ -138,6 +147,14 @@ class AppPages {
           create: (_) => MentorsCubit(),
         ),
       ),
+      // RouteModel(
+      //   path: AppRoutes.LESSONS,
+      //   page: LessonsScreen(),
+      //   bloc: BlocProvider(
+      //     lazy: true,
+      //     create: (_) => LessonsCubit(),
+      //   ),
+      // ),
     ];
   }
 

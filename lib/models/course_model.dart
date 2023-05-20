@@ -11,6 +11,7 @@ class CourseModel extends Equatable {
   final double? rate;
   final int? numberVote;
   final double? totalDuration;
+  final int? totalStudents;
 
   const CourseModel({
     required this.id,
@@ -22,6 +23,7 @@ class CourseModel extends Equatable {
     this.rate,
     this.numberVote,
     this.totalDuration,
+    this.totalStudents,
   });
 
   static const empty = CourseModel(id: '');
@@ -30,8 +32,18 @@ class CourseModel extends Equatable {
   bool get isNotEmpty => this != CourseModel.empty;
 
   @override
-  List<Object?> get props =>
-      [id, name, type, img, price, salePrice, rate, numberVote, totalDuration];
+  List<Object?> get props => [
+        id,
+        name,
+        type,
+        img,
+        price,
+        salePrice,
+        rate,
+        numberVote,
+        totalDuration,
+        totalStudents
+      ];
 
   CourseModel copyWith({
     String? id,
@@ -43,6 +55,7 @@ class CourseModel extends Equatable {
     double? rate,
     int? numberVote,
     double? totalDuration,
+    int? totalStudents,
   }) {
     return CourseModel(
       id: id ?? this.id,
@@ -54,6 +67,7 @@ class CourseModel extends Equatable {
       rate: rate ?? this.rate,
       numberVote: numberVote ?? this.numberVote,
       totalDuration: totalDuration ?? this.totalDuration,
+      totalStudents: totalStudents ?? this.totalStudents,
     );
   }
 

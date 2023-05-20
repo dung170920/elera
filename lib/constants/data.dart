@@ -119,6 +119,8 @@ class Data {
         rate: 4.8,
         numberVote: 8289,
         type: '3D Design',
+        totalStudents: 9838,
+        totalDuration: 2.5,
       ),
     );
     list.add(
@@ -131,6 +133,8 @@ class Data {
         rate: 4.9,
         numberVote: 10298,
         type: 'Programming',
+        totalStudents: 9838,
+        totalDuration: 2.5,
       ),
     );
     list.add(
@@ -144,6 +148,8 @@ class Data {
         rate: 4.8,
         numberVote: 9928,
         type: 'Programming',
+        totalStudents: 9838,
+        totalDuration: 2.5,
       ),
     );
     return list;

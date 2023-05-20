@@ -33,7 +33,7 @@ class AccountCard extends StatelessWidget {
                 height: 4.w,
               ),
               Text(
-                'Front end Developer',
+                'React, Flutter Mentor',
                 style: AppTextStyle.bodyMedium(
                     FontWeight.w500, AppColors.greyScaleColor[700]),
               ),

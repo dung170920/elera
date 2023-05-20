@@ -12,3 +12,4 @@ export 'info_edit/info_edit_screen.dart';
 export 'notification/notification_screen.dart';
 export 'courses/courses_screen.dart';
 export 'mentors/mentors_screen.dart';
+export 'course_detail/course_detail_screen.dart';
