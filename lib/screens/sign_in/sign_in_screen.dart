@@ -65,9 +65,9 @@ class _SignInScreenState extends State<SignInScreen> {
                   direction: Axis.horizontal,
                   children: Data.getThirdSignInList()
                       .map(
-                        (e) => Expanded(
+                        (e) => SizedBox(
+                          width: 88.w,
                           child: AppOutlinedButton.primary(
-                            // width: 88.w,
                             child: Image.asset(
                               e.img!,
                               height: 24.w,

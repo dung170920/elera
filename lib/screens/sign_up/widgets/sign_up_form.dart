@@ -121,11 +121,13 @@ class _SignUpFormState extends State<SignUpForm> {
                   onPressed: state.status == FormzSubmissionStatus.inProgress
                       ? null
                       : () => context.read<SignUpCubit>().signUpSubmitted(),
-                  child: Text(
-                    'Sign up',
-                    style: AppTextStyle.bodyLarge(
-                      FontWeight.bold,
-                      AppColors.lightColor,
+                  child: Center(
+                    child: Text(
+                      'Sign up',
+                      style: AppTextStyle.bodyLarge(
+                        FontWeight.bold,
+                        AppColors.lightColor,
+                      ),
                     ),
                   ),
                 ),

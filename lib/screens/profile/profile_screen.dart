@@ -29,17 +29,35 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 status: StatusType.INFO,
                 title: 'Logout',
                 subTitle: 'Are you sure to log out?',
-                primaryButton: AppElevatedButton.primary(
-                  radius: 100,
-                  child: Text('Yes, Logout'),
-                  onPressed: () =>
-                      context.read<SplashCubit>().onAuthLogoutRequested(),
-                ),
-                secondaryButton: AppElevatedButton.secondary(
-                  radius: 100,
-                  child: Text('Cancel'),
-                  onPressed: () =>
-                      Navigator.of(context, rootNavigator: true).pop(),
+                buttons: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    AppElevatedButton.primary(
+                      radius: 100,
+                      child: Center(
+                        child: Text(
+                          'Yes, Logout',
+                          style: AppTextStyle.bodyLarge(
+                              FontWeight.bold, AppColors.lightColor),
+                        ),
+                      ),
+                      onPressed: () =>
+                          context.read<SplashCubit>().onAuthLogoutRequested(),
+                    ),
+                    SizedBox(height: 12.w),
+                    AppElevatedButton.secondary(
+                      radius: 100,
+                      child: Center(
+                        child: Text(
+                          'Cancel',
+                          style: AppTextStyle.bodyLarge(
+                              FontWeight.bold, AppColors.primaryColor),
+                        ),
+                      ),
+                      onPressed: () =>
+                          Navigator.of(context, rootNavigator: true).pop(),
+                    ),
+                  ],
                 ),
               ),
             ),

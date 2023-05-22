@@ -107,10 +107,12 @@ class _LetInScreenState extends State<LetInScreen> {
                   context,
                   AppRoutes.SIGN_IN,
                 ),
-                child: Text(
-                  'Sign in with password',
-                  style: AppTextStyle.bodyLarge(
-                      FontWeight.bold, AppColors.lightColor),
+                child: Center(
+                  child: Text(
+                    'Sign in with password',
+                    style: AppTextStyle.bodyLarge(
+                        FontWeight.bold, AppColors.lightColor),
+                  ),
                 ),
               ),
               SizedBox(

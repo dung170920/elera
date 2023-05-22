@@ -9,8 +9,7 @@ class AppDialog extends StatelessWidget {
     super.key,
     required this.title,
     required this.subTitle,
-    this.primaryButton,
-    this.secondaryButton,
+    this.buttons,
     this.icon,
     required this.status,
     this.isLoading = false,
@@ -19,8 +18,7 @@ class AppDialog extends StatelessWidget {
   final String title;
   final String subTitle;
   final bool isLoading;
-  final ElevatedButton? primaryButton;
-  final ElevatedButton? secondaryButton;
+  final Widget? buttons;
   final IconData? icon;
   final StatusType status;
 
@@ -77,16 +75,7 @@ class AppDialog extends StatelessWidget {
             SizedBox(
               height: 32.w,
             ),
-            isLoading
-                ? CircularProgressIndicator()
-                : Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      primaryButton!,
-                      SizedBox(height: 12.w),
-                      secondaryButton!,
-                    ],
-                  )
+            isLoading ? CircularProgressIndicator() : buttons!
           ],
         ),
       ),

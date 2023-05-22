@@ -89,11 +89,13 @@ class _SignInFormState extends State<SignInForm> {
                 onPressed: state.status == FormzSubmissionStatus.inProgress
                     ? null
                     : () => context.read<SignInCubit>().signInSubmitted(),
-                child: Text(
-                  'Sign in',
-                  style: AppTextStyle.bodyLarge(
-                    FontWeight.bold,
-                    AppColors.lightColor,
+                child: Center(
+                  child: Text(
+                    'Sign in',
+                    style: AppTextStyle.bodyLarge(
+                      FontWeight.bold,
+                      AppColors.lightColor,
+                    ),
                   ),
                 ),
               ),

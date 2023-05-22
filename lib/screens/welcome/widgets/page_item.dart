@@ -73,10 +73,12 @@ class PageItem extends StatelessWidget {
             color: AppColors.primaryColor,
             radius: 100,
             onPressed: onTap,
-            child: Text(
-              total == index + 1 ? 'Get Started' : 'Next',
-              style:
-                  AppTextStyle.bodyLarge(FontWeight.bold, AppColors.lightColor),
+            child: Center(
+              child: Text(
+                total == index + 1 ? 'Get Started' : 'Next',
+                style: AppTextStyle.bodyLarge(
+                    FontWeight.bold, AppColors.lightColor),
+              ),
             ),
           ),
         ],

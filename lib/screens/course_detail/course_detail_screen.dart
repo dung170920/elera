@@ -74,10 +74,12 @@ class _CourseDetailScreenState extends State<CourseDetailScreen>
         padding: EdgeInsets.all(24.w),
         child: AppElevatedButton.primary(
           onPressed: () {},
-          child: Text(
-            'Enroll Course - \$40',
-            style:
-                AppTextStyle.bodyLarge(FontWeight.bold, AppColors.lightColor),
+          child: Center(
+            child: Text(
+              'Enroll Course - \$40',
+              style:
+                  AppTextStyle.bodyLarge(FontWeight.bold, AppColors.lightColor),
+            ),
           ),
           radius: 100,
         ),
