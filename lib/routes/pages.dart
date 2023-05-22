@@ -156,14 +156,6 @@ class AppPages {
           create: (_) => MentorDetailCubit(),
         ),
       ),
-      // RouteModel(
-      //   path: AppRoutes.LESSONS,
-      //   page: LessonsScreen(),
-      //   bloc: BlocProvider(
-      //     lazy: true,
-      //     create: (_) => LessonsCubit(),
-      //   ),
-      // ),
     ];
   }
 
