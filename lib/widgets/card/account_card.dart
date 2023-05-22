@@ -4,7 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class AccountCard extends StatelessWidget {
-  const AccountCard({super.key});
+  const AccountCard({super.key, required this.action});
+
+  final Widget action;
 
   @override
   Widget build(BuildContext context) {
@@ -40,18 +42,7 @@ class AccountCard extends StatelessWidget {
             ],
           ),
         ),
-        // SizedBox(
-        //   width: 12.w,
-        // ),
-        // AppElevatedButton.primary(
-        //   child: Text(
-        //     'View',
-        //     style:
-        //         AppTextStyle.bodyMedium(FontWeight.w600, AppColors.lightColor),
-        //   ),
-        //   size: ButtonSize.small,
-        //   radius: 100,
-        // )
+        action,
       ],
     );
   }

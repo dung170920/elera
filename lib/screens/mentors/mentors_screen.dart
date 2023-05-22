@@ -1,3 +1,5 @@
+import 'package:elera/constants/constants.dart';
+import 'package:elera/routes/routes.dart';
 import 'package:elera/theme/theme.dart';
 import 'package:elera/widgets/widgets.dart';
 import 'package:flutter/material.dart';
@@ -32,7 +34,22 @@ class MentorsScreen extends StatelessWidget {
                   padding: EdgeInsets.symmetric(horizontal: 24.w),
                   physics: NeverScrollableScrollPhysics(),
                   shrinkWrap: true,
-                  itemBuilder: (context, index) => AccountCard(),
+                  itemBuilder: (context, index) => AccountCard(
+                    action: Padding(
+                      padding: EdgeInsets.only(left: 12.w),
+                      child: AppElevatedButton.primary(
+                        onPressed: () => Navigator.pushNamed(
+                            context, AppRoutes.MENTOR_DETAIL),
+                        child: Text(
+                          'View',
+                          style: AppTextStyle.bodyMedium(
+                              FontWeight.w600, AppColors.lightColor),
+                        ),
+                        size: ButtonSize.small,
+                        radius: 100,
+                      ),
+                    ),
+                  ),
                   itemCount: 10,
                   separatorBuilder: (context, index) => SizedBox(height: 24.w),
                 ),

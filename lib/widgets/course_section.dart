@@ -8,27 +8,30 @@ class CourseSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ExpansionTile(
-      tilePadding: EdgeInsets.symmetric(horizontal: 24.w),
-      subtitle: Text(
-        '15 mins | 2 lessons',
-        style: AppTextStyle.bodyMedium(
-          FontWeight.bold,
-          AppColors.primaryColor,
+    return Theme(
+      data: ThemeData(dividerColor: Colors.transparent),
+      child: ExpansionTile(
+        tilePadding: EdgeInsets.symmetric(horizontal: 24.w),
+        subtitle: Text(
+          '15 mins | 2 lessons',
+          style: AppTextStyle.bodyMedium(
+            FontWeight.bold,
+            AppColors.primaryColor,
+          ),
         ),
-      ),
-      title: Text(
-        'Section 1 - Introduction',
-        style: AppTextStyle.bodyLarge(
-          FontWeight.bold,
-          AppColors.greyScaleColor[700],
+        title: Text(
+          'Section 1 - Introduction',
+          style: AppTextStyle.bodyLarge(
+            FontWeight.bold,
+            AppColors.greyScaleColor[700],
+          ),
         ),
+        childrenPadding: EdgeInsets.zero,
+        children: [
+          LessonCard(),
+          LessonCard(),
+        ],
       ),
-      childrenPadding: EdgeInsets.zero,
-      children: [
-        LessonCard(),
-        LessonCard(),
-      ],
     );
   }
 }

@@ -32,4 +32,4 @@ enum ListStatus { loading, success, failure }
 
 enum ThemeModes { light, dark }
 
-enum ButtonSize { small, large }
+enum ButtonSize { small, medium, large }

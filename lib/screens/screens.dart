@@ -13,3 +13,4 @@ export 'notification/notification_screen.dart';
 export 'courses/courses_screen.dart';
 export 'mentors/mentors_screen.dart';
 export 'course_detail/course_detail_screen.dart';
+export 'mentor_detail/mentor_detail_screen.dart';

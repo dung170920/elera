@@ -2,8 +2,8 @@ import 'package:elera/theme/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class CourseTabbar extends StatelessWidget {
-  const CourseTabbar({super.key, required this.tabController});
+class MentorTabBar extends StatelessWidget {
+  const MentorTabBar({super.key, required this.tabController});
 
   final TabController tabController;
 
@@ -34,10 +34,10 @@ class CourseTabbar extends StatelessWidget {
         ),
         tabs: [
           Tab(
-            text: 'About',
+            text: 'Courses',
           ),
           Tab(
-            text: 'Lessons',
+            text: 'Students',
           ),
           Tab(
             text: 'Reviews',

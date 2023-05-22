@@ -9,20 +9,18 @@ extension AppElevatedButton on ElevatedButton {
     Color? color,
     VoidCallback? onPressed,
     required Widget child,
-    double? width,
     ButtonSize size = ButtonSize.large,
     double? radius,
   }) {
     return ElevatedButton(
       style: ElevatedButton.styleFrom(
-        fixedSize: size == ButtonSize.large
-            ? Size.fromWidth(width ?? double.maxFinite)
-            : null,
         backgroundColor: color ?? AppColors.primaryColor,
         disabledBackgroundColor: StatusType.DISABLED_BUTTON.color,
         padding: size == ButtonSize.small
             ? EdgeInsets.symmetric(horizontal: 16.w, vertical: 6.w)
-            : EdgeInsets.symmetric(horizontal: 16.w, vertical: 18.w),
+            : size == ButtonSize.medium
+                ? EdgeInsets.symmetric(horizontal: 24.w, vertical: 10.w)
+                : EdgeInsets.symmetric(horizontal: 16.w, vertical: 18.w),
         shape: RoundedRectangleBorder(
           borderRadius: radiusCircular(radius),
         ),
@@ -33,12 +31,13 @@ extension AppElevatedButton on ElevatedButton {
     );
   }
 
-  static ElevatedButton secondary(
-      {Color? color,
-      VoidCallback? onPressed,
-      required Widget child,
-      double? width,
-      double? radius}) {
+  static ElevatedButton secondary({
+    Color? color,
+    VoidCallback? onPressed,
+    required Widget child,
+    ButtonSize size = ButtonSize.large,
+    double? radius,
+  }) {
     return ElevatedButton(
       style: ElevatedButton.styleFrom(
         backgroundColor: color != null
@@ -47,12 +46,15 @@ extension AppElevatedButton on ElevatedButton {
         foregroundColor: color ?? AppColors.primaryColor,
         disabledBackgroundColor: StatusType.DISABLED_BUTTON.color,
         elevation: 0,
-        padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 18.w),
+        padding: size == ButtonSize.small
+            ? EdgeInsets.symmetric(horizontal: 16.w, vertical: 6.w)
+            : size == ButtonSize.medium
+                ? EdgeInsets.symmetric(horizontal: 24.w, vertical: 10.w)
+                : EdgeInsets.symmetric(horizontal: 16.w, vertical: 18.w),
         textStyle: AppTextStyle.bodyLarge(FontWeight.bold),
         shape: RoundedRectangleBorder(
           borderRadius: radiusCircular(radius),
         ),
-        fixedSize: Size.fromWidth(width ?? double.maxFinite),
       ),
       onPressed: onPressed,
       child: child,
@@ -63,13 +65,19 @@ extension AppElevatedButton on ElevatedButton {
 extension AppOutlinedButton on OutlinedButton {
   static OutlinedButton primary(
       {VoidCallback? onPressed,
+      ButtonSize size = ButtonSize.large,
       required Widget child,
-      double? width,
+      Color? color,
       double? radius}) {
     return OutlinedButton(
       style: OutlinedButton.styleFrom(
-        fixedSize: Size.fromWidth(width ?? double.maxFinite),
-        padding: EdgeInsets.symmetric(horizontal: 32.w, vertical: 18.w),
+        foregroundColor: color,
+        side: color != null ? BorderSide(color: color) : null,
+        padding: size == ButtonSize.small
+            ? EdgeInsets.symmetric(horizontal: 16.w, vertical: 6.w)
+            : size == ButtonSize.medium
+                ? EdgeInsets.symmetric(horizontal: 24.w, vertical: 10.w)
+                : EdgeInsets.symmetric(horizontal: 16.w, vertical: 18.w),
         shape: RoundedRectangleBorder(
           borderRadius: radiusCircular(radius),
         ),

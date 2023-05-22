@@ -10,76 +10,74 @@ class CourseAppBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Stack(
-        children: [
-          Container(
-            height: 300.w,
-            decoration: BoxDecoration(
-              image: DecorationImage(
-                fit: BoxFit.fill,
-                image: NetworkImage(
-                  course.img!,
-                ),
+    return Stack(
+      children: [
+        Container(
+          height: 0.35.sh,
+          decoration: BoxDecoration(
+            image: DecorationImage(
+              fit: BoxFit.fill,
+              image: NetworkImage(
+                course.img!,
               ),
             ),
-            child: Center(
-              child: Container(
-                padding: EdgeInsets.all(8.w),
+          ),
+          child: Center(
+            child: Container(
+              padding: EdgeInsets.all(8.w),
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                color: AppColors.lightColor.withOpacity(0.6),
+              ),
+              child: Icon(
+                MyIcons.solidPlayCircle,
+                color: AppColors.primaryColor,
+                size: 40.w,
+              ),
+            ),
+          ),
+        ),
+        Positioned(
+          left: 24.w,
+          right: 24.w,
+          top: 40.w,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Container(
+                height: 36.w,
+                width: 36.w,
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
                   color: AppColors.lightColor.withOpacity(0.6),
                 ),
-                child: Icon(
-                  MyIcons.solidPlayCircle,
-                  color: AppColors.primaryColor,
-                  size: 40.w,
+                child: IconButton(
+                  onPressed: () => Navigator.pop(context),
+                  icon: Icon(
+                    MyIcons.solidArrowLeftSmall,
+                    color: AppColors.greyScaleColor[900],
+                  ),
                 ),
               ),
-            ),
-          ),
-          Positioned(
-            left: 24.w,
-            right: 24.w,
-            top: 40.w,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Container(
-                  height: 36.w,
-                  width: 36.w,
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    color: AppColors.lightColor.withOpacity(0.6),
-                  ),
-                  child: IconButton(
-                    onPressed: () => Navigator.pop(context),
-                    icon: Icon(
-                      MyIcons.solidArrowLeftSmall,
-                      color: AppColors.greyScaleColor[900],
-                    ),
+              Container(
+                height: 36.w,
+                width: 36.w,
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  color: AppColors.lightColor.withOpacity(0.6),
+                ),
+                child: IconButton(
+                  onPressed: () => Navigator.pop(context),
+                  icon: Icon(
+                    MyIcons.bookmark,
+                    color: AppColors.greyScaleColor[900],
                   ),
                 ),
-                Container(
-                  height: 36.w,
-                  width: 36.w,
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    color: AppColors.lightColor.withOpacity(0.6),
-                  ),
-                  child: IconButton(
-                    onPressed: () => Navigator.pop(context),
-                    icon: Icon(
-                      MyIcons.bookmark,
-                      color: AppColors.greyScaleColor[900],
-                    ),
-                  ),
-                ),
-              ],
-            ),
+              ),
+            ],
           ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }

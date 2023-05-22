@@ -65,21 +65,23 @@ class _SignInScreenState extends State<SignInScreen> {
                   direction: Axis.horizontal,
                   children: Data.getThirdSignInList()
                       .map(
-                        (e) => AppOutlinedButton.primary(
-                          width: 88.w,
-                          child: Image.asset(
-                            e.img!,
-                            height: 24.w,
-                            width: 24.w,
+                        (e) => Expanded(
+                          child: AppOutlinedButton.primary(
+                            // width: 88.w,
+                            child: Image.asset(
+                              e.img!,
+                              height: 24.w,
+                              width: 24.w,
+                            ),
+                            onPressed: () {
+                              switch (e.img) {
+                                case google:
+                                  context.read<LetInCubit>().signInWithGoogle();
+                                  break;
+                                default:
+                              }
+                            },
                           ),
-                          onPressed: () {
-                            switch (e.img) {
-                              case google:
-                                context.read<LetInCubit>().signInWithGoogle();
-                                break;
-                              default:
-                            }
-                          },
                         ),
                       )
                       .toList(),

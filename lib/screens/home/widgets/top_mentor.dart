@@ -39,30 +39,34 @@ class TopMentor extends StatelessWidget {
                 spacing: 16.w,
                 children: Data.getMentorList()
                     .map(
-                      (e) => Column(
-                        children: [
-                          Container(
-                            width: 70.w,
-                            height: 70.w,
-                            decoration: BoxDecoration(
-                              shape: BoxShape.circle,
-                              image: DecorationImage(
-                                image: NetworkImage(
-                                  e.avatar ?? '',
+                      (e) => GestureDetector(
+                        onTap: () => Navigator.pushNamed(
+                            context, AppRoutes.MENTOR_DETAIL),
+                        child: Column(
+                          children: [
+                            Container(
+                              width: 70.w,
+                              height: 70.w,
+                              decoration: BoxDecoration(
+                                shape: BoxShape.circle,
+                                image: DecorationImage(
+                                  image: NetworkImage(
+                                    e.avatar ?? '',
+                                  ),
+                                  fit: BoxFit.cover,
                                 ),
-                                fit: BoxFit.cover,
                               ),
                             ),
-                          ),
-                          SizedBox(
-                            height: 8.w,
-                          ),
-                          Text(
-                            e.name.split(" ").first,
-                            style: AppTextStyle.bodyLarge(FontWeight.w600),
-                            overflow: TextOverflow.ellipsis,
-                          )
-                        ],
+                            SizedBox(
+                              height: 8.w,
+                            ),
+                            Text(
+                              e.name.split(" ").first,
+                              style: AppTextStyle.bodyLarge(FontWeight.w600),
+                              overflow: TextOverflow.ellipsis,
+                            )
+                          ],
+                        ),
                       ),
                     )
                     .toList(),
