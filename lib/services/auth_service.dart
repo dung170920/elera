@@ -38,8 +38,9 @@ class AuthService {
   Future<void> signInWithEmailAndPassword(
       {required String email, required String password}) async {
     try {
-      await firebaseAuth.signInWithEmailAndPassword(
+      var user = await firebaseAuth.signInWithEmailAndPassword(
           email: email, password: password);
+      print(await user.user!.getIdToken());
     } on FirebaseAuthException catch (e) {
       throw AppExceptions.fromCode(e.code);
     } catch (e) {
@@ -56,7 +57,8 @@ class AuthService {
         idToken: googleAuth.idToken,
       );
 
-      await firebaseAuth.signInWithCredential(credential);
+      var user = await firebaseAuth.signInWithCredential(credential);
+      print(await user.user!.getIdToken());
     } on FirebaseAuthException catch (e) {
       print(e.code);
       throw AppExceptions.fromCode(e.code);

@@ -1,6 +1,8 @@
 import 'package:elera/screens/home/widgets/widgets.dart';
+import 'package:elera/screens/splash/cubit/splash_cubit.dart';
 import 'package:elera/theme/theme.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class HomeBody extends StatefulWidget {

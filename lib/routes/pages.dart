@@ -18,7 +18,7 @@ import 'package:elera/screens/splash/cubit/splash_cubit.dart';
 import 'package:elera/screens/transaction/cubit/transaction_cubit.dart';
 import 'package:elera/screens/welcome/cubit/welcome_cubit.dart';
 import 'package:elera/services/services.dart';
-import 'package:elera/utils/global.dart';
+import 'package:elera/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:elera/screens/screens.dart';
@@ -26,6 +26,7 @@ import 'package:elera/screens/screens.dart';
 class AppPages {
   static List<RouteModel> Routes() {
     final AuthService _authService = AuthService();
+
     return [
       RouteModel(
         path: AppRoutes.SPLASH,
@@ -174,10 +175,12 @@ class AppPages {
 
     return MaterialPageRoute(
         builder: (_) => BlocListener<SplashCubit, SplashState>(
-              listener: (context, state) {
-                if (state.status == AuthStatus.authenticated)
+              listener: (context, state) async {
+                if (state.status == AuthStatus.authenticated) {
+                  await getUserById(state.user.id);
                   Navigator.pushNamedAndRemoveUntil(
                       context, AppRoutes.HOME, (route) => false);
+                }
 
                 if (state.status == AuthStatus.unAuthenticated)
                   Navigator.pushNamedAndRemoveUntil(

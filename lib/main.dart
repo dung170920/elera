@@ -1,6 +1,8 @@
 import 'package:elera/routes/pages.dart';
 import 'package:elera/routes/routes.dart';
 import 'package:elera/screens/profile/cubit/profile_cubit.dart';
+import 'package:elera/screens/splash/cubit/splash_cubit.dart';
+import 'package:elera/services/auth_service.dart';
 import 'package:elera/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

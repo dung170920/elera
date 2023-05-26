@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:elera/constants/constants.dart';
+import 'package:elera/utils/utils.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:elera/models/models.dart';
@@ -19,7 +20,7 @@ class SplashCubit extends Cubit<SplashState> {
               : SplashState.unAuthenticated(),
         ) {
     _userSubscription = authService.user.listen(
-      (user) {
+      (user) async {
         print('user: $user');
         onAuthUserChanged(user);
       },
