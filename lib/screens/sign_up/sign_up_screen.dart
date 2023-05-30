@@ -1,10 +1,8 @@
 import 'package:elera/routes/routes.dart';
-import 'package:elera/screens/sign_in/cubit/sign_in_cubit.dart';
 import 'package:elera/screens/sign_up/widgets/widgets.dart';
 import 'package:elera/theme/theme.dart';
 import 'package:elera/widgets/widgets.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class SignUpScreen extends StatefulWidget {

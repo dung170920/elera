@@ -26,13 +26,15 @@ import 'package:elera/screens/screens.dart';
 class AppPages {
   static List<RouteModel> Routes() {
     final AuthService _authService = AuthService();
+    final UserService _userService = UserService();
 
     return [
       RouteModel(
         path: AppRoutes.SPLASH,
         page: SplashScreen(),
         bloc: BlocProvider(
-          create: (_) => SplashCubit(authService: _authService),
+          create: (_) =>
+              SplashCubit(authService: _authService, userService: _userService),
         ),
       ),
       RouteModel(
@@ -48,7 +50,7 @@ class AppPages {
         page: LetInScreen(),
         bloc: BlocProvider(
           lazy: true,
-          create: (_) => LetInCubit(_authService),
+          create: (_) => LetInCubit(_authService, _userService),
         ),
       ),
       RouteModel(
@@ -64,7 +66,7 @@ class AppPages {
         page: SignUpScreen(),
         bloc: BlocProvider(
           lazy: true,
-          create: (_) => SignUpCubit(_authService),
+          create: (_) => SignUpCubit(_authService, _userService),
         ),
       ),
       RouteModel(
@@ -169,27 +171,28 @@ class AppPages {
   }
 
   static Route GenerateRouteSettings(RouteSettings settings) {
+    // final UserService _userService = UserService();
     var route = Routes().where((element) => element.path == settings.name);
     bool firstTime =
         Global.storageService.getBool(Preferences.OPEN_FIRST_TIME_KEY);
 
     return MaterialPageRoute(
-        builder: (_) => BlocListener<SplashCubit, SplashState>(
-              listener: (context, state) async {
-                if (state.status == AuthStatus.authenticated) {
-                  await getUserById(state.user.id);
-                  Navigator.pushNamedAndRemoveUntil(
-                      context, AppRoutes.HOME, (route) => false);
-                }
+      builder: (_) => BlocListener<SplashCubit, SplashState>(
+        listener: (context, state) async {
+          if (state.status == AuthStatus.authenticated) {
+            Navigator.pushNamedAndRemoveUntil(
+                context, AppRoutes.HOME, (route) => false);
+          }
 
-                if (state.status == AuthStatus.unAuthenticated)
-                  Navigator.pushNamedAndRemoveUntil(
-                      context,
-                      !firstTime ? AppRoutes.WELCOME : AppRoutes.LET_IN,
-                      (route) => false);
-              },
-              child: route.first.page,
-            ),
-        settings: settings);
+          if (state.status == AuthStatus.unAuthenticated)
+          Navigator.pushNamedAndRemoveUntil(
+              context,
+              !firstTime ? AppRoutes.WELCOME : AppRoutes.LET_IN,
+              (route) => false);
+        },
+        child: route.first.page,
+      ),
+      settings: settings,
+    );
   }
 }

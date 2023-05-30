@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'package:elera/models/models.dart';
 import 'package:elera/utils/utils.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
@@ -7,14 +6,15 @@ import 'package:google_sign_in/google_sign_in.dart';
 class AuthService {
   final FirebaseAuth firebaseAuth = FirebaseAuth.instance;
   final GoogleSignIn _googleSignIn = GoogleSignIn.standard();
-  var currentUser = UserModel.empty;
 
-  Stream<UserModel> get user {
-    return firebaseAuth.authStateChanges().map((firebaseUser) {
-      final user = firebaseUser?.toUser ?? UserModel.empty;
-      currentUser = user;
-      return user;
-    });
+  Stream<User?> get user {
+    return firebaseAuth.authStateChanges();
+    // .map((firebaseUser) {
+
+    //   final user = firebaseUser?.toUser ?? UserModel.empty;
+    //   currentUser = user;
+    //   return user;
+    // });
   }
 
   Future<void> signUp(
@@ -38,9 +38,8 @@ class AuthService {
   Future<void> signInWithEmailAndPassword(
       {required String email, required String password}) async {
     try {
-      var user = await firebaseAuth.signInWithEmailAndPassword(
+      await firebaseAuth.signInWithEmailAndPassword(
           email: email, password: password);
-      print(await user.user!.getIdToken());
     } on FirebaseAuthException catch (e) {
       throw AppExceptions.fromCode(e.code);
     } catch (e) {
@@ -57,8 +56,7 @@ class AuthService {
         idToken: googleAuth.idToken,
       );
 
-      var user = await firebaseAuth.signInWithCredential(credential);
-      print(await user.user!.getIdToken());
+      await firebaseAuth.signInWithCredential(credential);
     } on FirebaseAuthException catch (e) {
       print(e.code);
       throw AppExceptions.fromCode(e.code);
@@ -80,14 +78,14 @@ class AuthService {
   }
 }
 
-extension on User {
-  UserModel get toUser {
-    return UserModel(
-      id: uid,
-      email: email,
-      name: displayName,
-      avatar: photoURL,
-      phoneNumber: phoneNumber,
-    );
-  }
-}
+// extension on User {
+//   UserModel get toUser {
+//     return UserModel(
+//       id: uid,
+//       email: email,
+//       name: displayName,
+//       avatar: photoURL,
+//       phoneNumber: phoneNumber,
+//     );
+//   }
+// }

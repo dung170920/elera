@@ -3,12 +3,19 @@ import 'package:elera/utils/utils.dart';
 
 var apiUrl = "user";
 
-Future<UserModel> getUserById(String id) async =>
-    DioManager().dio.get("$apiUrl/$id").then((response) {
-      print("id");
-      print(response);
-      return UserModel(id: id);
-    }).catchError((error) {
-      print(error.toString());
-      return UserModel.empty;
-    });
+class UserService {
+  Future<UserModel> getUserById(String id) async =>
+      DioManager().dio.get("$apiUrl/$id").then((response) {
+        return UserModel.fromJson(response.data);
+      }).catchError((error) {
+        print(error.toString());
+        return UserModel.empty;
+      });
+
+  Future<void> register() async =>
+      DioManager().dio.post("$apiUrl/register").then((response) {
+        print("response $response");
+      }).catchError((error) {
+        print(error.toString());
+      });
+}

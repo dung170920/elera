@@ -35,12 +35,13 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                       total: Data.getWelcomeList().length,
                       onTap: () {
                         if (state.index < Data.getWelcomeList().length - 1) {
+                          pageController.animateToPage(state.index + 1,
+                              duration: Duration(microseconds: 500),
+                              curve: Curves.bounceIn);
                           context
                               .read<WelcomeCubit>()
                               .onPageChange(state.index + 1);
-                          pageController.animateToPage(state.index,
-                              duration: Duration(microseconds: 500),
-                              curve: Curves.bounceIn);
+                          print(state.index);
                         } else {
                           Global.storageService
                               .setBool(Preferences.OPEN_FIRST_TIME_KEY, true);

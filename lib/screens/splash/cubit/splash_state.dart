@@ -9,7 +9,7 @@ class SplashState extends Equatable {
     this.user = UserModel.empty,
   });
 
-  const SplashState.authenicated(UserModel user)
+  const SplashState.authenticated(UserModel user)
       : this._(
           status: AuthStatus.authenticated,
           user: user,

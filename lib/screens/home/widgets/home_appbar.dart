@@ -3,7 +3,6 @@ import 'package:elera/routes/routes.dart';
 import 'package:elera/screens/notification/cubit/notification_cubit.dart';
 import 'package:elera/screens/splash/cubit/splash_cubit.dart';
 import 'package:elera/theme/theme.dart';
-import 'package:elera/utils/common.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -35,7 +34,7 @@ class HomeAppBar extends StatelessWidget {
                       FontWeight.normal, AppColors.greyScaleColor[600]),
                 ),
                 Text(
-                  context.read<SplashCubit>().state.user.name ?? '',
+                  context.read<SplashCubit>().state.user.fullName ?? '',
                   style: AppTextStyle.h5(),
                 ),
               ],

@@ -47,7 +47,7 @@ class ProfileInfo extends StatelessWidget {
           height: 12.w,
         ),
         Text(
-          user.name ?? '',
+          user.fullName ?? '',
           style: AppTextStyle.h4(),
         ),
         SizedBox(

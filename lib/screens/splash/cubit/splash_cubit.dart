@@ -1,6 +1,6 @@
 import 'dart:async';
 import 'package:elera/constants/constants.dart';
-import 'package:elera/utils/utils.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:elera/models/models.dart';
@@ -9,18 +9,22 @@ import 'package:elera/services/services.dart';
 part 'splash_state.dart';
 
 class SplashCubit extends Cubit<SplashState> {
-  StreamSubscription<UserModel>? _userSubscription;
+  StreamSubscription<User?>? _userSubscription;
   final AuthService authService;
+  final UserService userService;
 
-  SplashCubit({required AuthService authService})
+  SplashCubit(
+      {required AuthService authService, required UserService userService})
       : authService = authService,
+        userService = userService,
         super(
-          authService.currentUser.isNotEmpty
-              ? SplashState.authenicated(authService.currentUser)
-              : SplashState.unAuthenticated(),
-        ) {
+            // authService.currentUser.isNotEmpty
+            //     ? SplashState.authenticated(authService.currentUser)
+            //     : SplashState.unAuthenticated(),
+            SplashState.unAuthenticated()) {
     _userSubscription = authService.user.listen(
-      (user) async {
+      (firebaseUser) async {
+        var user = await userService.getUserById(firebaseUser?.uid ?? "");
         print('user: $user');
         onAuthUserChanged(user);
       },
@@ -29,7 +33,7 @@ class SplashCubit extends Cubit<SplashState> {
 
   void onAuthUserChanged(user) => emit(
         user.isNotEmpty
-            ? SplashState.authenicated(user)
+            ? SplashState.authenticated(user)
             : SplashState.unAuthenticated(),
       );
 

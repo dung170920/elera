@@ -1,3 +1,4 @@
+import 'dart:io';
 import 'package:dio/dio.dart';
 import 'package:elera/services/services.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -11,7 +12,7 @@ class ApiInterceptor extends Interceptor {
   @override
   Future<void> onRequest(
       RequestOptions options, RequestInterceptorHandler handler) async {
-    options.baseUrl = "https://localhost:7012/api/";
+    options.baseUrl = "https://10.0.2.2:7012/api/";
     final user = FirebaseAuth.instance.currentUser;
     if (user != null) {
       final token = await user.getIdToken();
@@ -24,8 +25,7 @@ class ApiInterceptor extends Interceptor {
 
   @override
   void onResponse(Response response, ResponseInterceptorHandler handler) {
-    // Thực hiện các xử lý sau khi nhận phản hồi từ server
-    // Ví dụ: xử lý phản hồi, chuyển đổi dữ liệu, ...
+    print("response ${response.data}");
 
     return super.onResponse(response, handler);
   }
@@ -38,7 +38,6 @@ class ApiInterceptor extends Interceptor {
       final user = FirebaseAuth.instance.currentUser;
       if (user != null) {
         final newToken = await user.getIdToken(true);
-        print(newToken);
         error.requestOptions.headers['Authorization'] = 'Bearer $newToken';
         final options = Options(
           method: error.requestOptions.method,
@@ -52,10 +51,9 @@ class ApiInterceptor extends Interceptor {
         );
         sent = false;
         return handler.resolve(response);
-      } else {
-        sent = false;
-        authService.logOut();
       }
+      sent = false;
+      await authService.logOut();
     }
     return super.onError(error, handler);
   }
