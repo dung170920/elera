@@ -1,4 +1,3 @@
-import 'dart:io';
 import 'package:elera/routes/pages.dart';
 import 'package:elera/routes/routes.dart';
 import 'package:elera/screens/profile/cubit/profile_cubit.dart';
@@ -7,17 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class MyHttpOverrides extends HttpOverrides {
-  @override
-  HttpClient createHttpClient(SecurityContext? context) {
-    return super.createHttpClient(context)
-      ..badCertificateCallback =
-          (X509Certificate cert, String host, int port) => true;
-  }
-}
-
 void main() async {
-  HttpOverrides.global = MyHttpOverrides();
   Bloc.observer = MyBlocObserver();
   await Global.init();
   runApp(const MyApp());

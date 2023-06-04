@@ -106,100 +106,46 @@ class Data {
     return list;
   }
 
-  static List<CourseModel> getCourseList() {
-    List<CourseModel> list = [];
+  static List<UserModel> getMentorList() {
+    List<UserModel> list = [];
     list.add(
-      CourseModel(
-        id: '1',
-        img:
-            'https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80',
-        name: '3D Design Illustration',
-        price: 80,
-        salePrice: 48,
-        rate: 4.8,
-        numberVote: 8289,
-        type: '3D Design',
-        totalStudents: 9838,
-        totalDuration: 2.5,
-      ),
-    );
-    list.add(
-      CourseModel(
-        id: '2',
-        img:
-            'https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80',
-        name: 'Wordpress Website Design',
-        price: 46,
-        rate: 4.9,
-        numberVote: 10298,
-        type: 'Programming',
-        totalStudents: 9838,
-        totalDuration: 2.5,
-      ),
-    );
-    list.add(
-      CourseModel(
-        id: '3',
-        img:
-            'https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80',
-        name: 'Flutter Mobile Apps',
-        price: 72,
-        salePrice: 44,
-        rate: 4.8,
-        numberVote: 9928,
-        type: 'Programming',
-        totalStudents: 9838,
-        totalDuration: 2.5,
-      ),
-    );
-    return list;
-  }
-
-  static List<MentorModel> getMentorList() {
-    List<MentorModel> list = [];
-    list.add(
-      MentorModel(
+      UserModel(
         id: '1',
         avatar:
             'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80',
         name: 'Claire Ordonez',
-        job: 'VP of Sales',
       ),
     );
     list.add(
-      MentorModel(
+      UserModel(
         id: '2',
         avatar:
             'https://images.unsplash.com/photo-1599566150163-29194dcaad36?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80',
         name: 'Jacob Kulikowski',
-        job: 'Marketing Analyst',
       ),
     );
     list.add(
-      MentorModel(
+      UserModel(
         id: '3',
         avatar:
             'https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=461&q=80',
         name: 'Priscilla Ehrman',
-        job: 'UX/UI Designer',
       ),
     );
     list.add(
-      MentorModel(
+      UserModel(
         id: '4',
         avatar:
             'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=580&q=80',
         name: 'Wade Chenail',
-        job: 'Manager, Solution Engineering',
       ),
     );
     list.add(
-      MentorModel(
+      UserModel(
         id: '5',
         avatar:
             'https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=580&q=80',
         name: 'Benny Spanbauer',
-        job: 'Senior Product Manager',
       ),
     );
     return list;

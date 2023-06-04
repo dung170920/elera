@@ -33,7 +33,7 @@ class CourseCard extends StatelessWidget {
             ClipRRect(
               borderRadius: radiusCircular(20),
               child: Image.network(
-                course.img ?? '',
+                course.imageUrl ?? '',
                 width: 120.w,
                 height: 120.w,
                 fit: BoxFit.cover,
@@ -51,7 +51,7 @@ class CourseCard extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       AppTag.inverted(
-                          status: StatusType.INFO, text: course.type ?? ''),
+                          status: StatusType.INFO, text: course.type!.name),
                       InkWell(
                         child: Icon(
                           MyIcons.bookmark,
@@ -64,39 +64,43 @@ class CourseCard extends StatelessWidget {
                     height: 12.w,
                   ),
                   Text(
-                    course.name ?? '',
+                    course.title ?? '',
                     style: AppTextStyle.h6(),
                     overflow: TextOverflow.ellipsis,
                   ),
                   SizedBox(
                     height: 12.w,
                   ),
-                  course.salePrice != null
-                      ? Row(
-                          children: [
-                            Text(
-                              formatCurrency(
-                                  price: course.salePrice!, symbol: '\$'),
-                              style: AppTextStyle.h6(AppColors.primaryColor),
-                            ),
-                            SizedBox(
-                              width: 8.w,
-                            ),
-                            Text(
-                              formatCurrency(
-                                  price: course.price!, symbol: '\$'),
-                              style: AppTextStyle.bodySmall(
-                                FontWeight.w500,
-                                AppColors.greyScaleColor[700],
-                              ).copyWith(
-                                  decoration: TextDecoration.lineThrough),
-                            ),
-                          ],
-                        )
-                      : Text(
-                          formatCurrency(price: course.price!, symbol: '\$'),
-                          style: AppTextStyle.h6(AppColors.primaryColor),
-                        ),
+                  Text(
+                    formatCurrency(price: course.price!, symbol: '\$'),
+                    style: AppTextStyle.h6(AppColors.primaryColor),
+                  ),
+                  // course.salePrice != null
+                  //     ? Row(
+                  //         children: [
+                  //           Text(
+                  //             formatCurrency(
+                  //                 price: course.salePrice!, symbol: '\$'),
+                  //             style: AppTextStyle.h6(AppColors.primaryColor),
+                  //           ),
+                  //           SizedBox(
+                  //             width: 8.w,
+                  //           ),
+                  //           Text(
+                  //             formatCurrency(
+                  //                 price: course.price!, symbol: '\$'),
+                  //             style: AppTextStyle.bodySmall(
+                  //               FontWeight.w500,
+                  //               AppColors.greyScaleColor[700],
+                  //             ).copyWith(
+                  //                 decoration: TextDecoration.lineThrough),
+                  //           ),
+                  //         ],
+                  //       )
+                  //     : Text(
+                  //         formatCurrency(price: course.price!, symbol: '\$'),
+                  //         style: AppTextStyle.h6(AppColors.primaryColor),
+                  //       ),
                   SizedBox(
                     height: 12.w,
                   ),
@@ -133,7 +137,7 @@ class CourseCard extends StatelessWidget {
                       ),
                       Expanded(
                         child: Text(
-                          '${formatCurrency(price: double.parse(course.numberVote!.toString()))} students',
+                          '${formatCurrency(price: double.parse(course.studentsCount!.toString()))} students',
                           style: AppTextStyle.bodySmall(
                             FontWeight.w500,
                             AppColors.greyScaleColor[700],

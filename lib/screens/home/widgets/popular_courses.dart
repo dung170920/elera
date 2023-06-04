@@ -1,4 +1,5 @@
 import 'package:elera/constants/constants.dart';
+import 'package:elera/models/course_model.dart';
 import 'package:elera/routes/routes.dart';
 import 'package:elera/theme/theme.dart';
 import 'package:elera/widgets/widgets.dart';
@@ -39,8 +40,8 @@ class PopularCourses extends StatelessWidget {
               physics: NeverScrollableScrollPhysics(),
               shrinkWrap: true,
               itemBuilder: (context, index) =>
-                  CourseCard(course: Data.getCourseList()[index]),
-              itemCount: Data.getCourseList().length,
+                  CourseCard(course: CourseModel.empty),
+              itemCount: 0,
               separatorBuilder: (context, index) => SizedBox(height: 16.w),
             ),
           )

@@ -30,7 +30,7 @@ class InfoEditScreen extends StatelessWidget {
                   children: [
                     AppTextField(
                       hintText: 'Full name',
-                      initialValue: user.fullName!,
+                      initialValue: user.name!,
                       onChanged: context.read<InfoEditCubit>().onNameChanged,
                       errorText: !state.name.isPure && state.name.error != null
                           ? state.name.error?.text

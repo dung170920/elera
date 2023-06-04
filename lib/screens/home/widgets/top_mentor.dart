@@ -61,7 +61,7 @@ class TopMentor extends StatelessWidget {
                               height: 8.w,
                             ),
                             Text(
-                              e.name.split(" ").first,
+                              e.name != null ? e.name!.split(" ").first : "",
                               style: AppTextStyle.bodyLarge(FontWeight.w600),
                               overflow: TextOverflow.ellipsis,
                             )

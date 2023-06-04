@@ -1,6 +1,5 @@
 import 'package:elera/routes/routes.dart';
 import 'package:elera/screens/let_in/cubit/let_in_cubit.dart';
-import 'package:elera/screens/sign_in/cubit/sign_in_cubit.dart';
 import 'package:elera/screens/sign_in/widgets/widgets.dart';
 import 'package:elera/theme/theme.dart';
 import 'package:elera/constants/constants.dart';
@@ -74,12 +73,12 @@ class _SignInScreenState extends State<SignInScreen> {
                               width: 24.w,
                             ),
                             onPressed: () {
-                              switch (e.img) {
-                                case google:
-                                  context.read<LetInCubit>().signInWithGoogle();
-                                  break;
-                                default:
-                              }
+                              // switch (e.img) {
+                              //   case google:
+                              //     context.read<LetInCubit>().signInWithGoogle();
+                              //     break;
+                              //   default:
+                              // }
                             },
                           ),
                         ),

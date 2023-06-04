@@ -32,9 +32,9 @@ class _CourseDetailScreenState extends State<CourseDetailScreen>
 
   @override
   Widget build(BuildContext context) {
-    course = Data.getCourseList().firstWhere(
-      (element) => element.id == ModalRoute.of(context)!.settings.arguments,
-    );
+    // course = Data.getCourseList().firstWhere(
+    //   (element) => element.id == ModalRoute.of(context)!.settings.arguments,
+    // );
 
     return Scaffold(
       body: DefaultTabController(

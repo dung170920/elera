@@ -49,14 +49,14 @@ class _LetInScreenState extends State<LetInScreen> {
                             margin: EdgeInsets.only(bottom: 16.w),
                             child: AppOutlinedButton.primary(
                               onPressed: () {
-                                switch (e.img) {
-                                  case google:
-                                    context
-                                        .read<LetInCubit>()
-                                        .signInWithGoogle();
-                                    break;
-                                  default:
-                                }
+                                // switch (e.img) {
+                                //   case google:
+                                //     context
+                                //         .read<LetInCubit>()
+                                //         .signInWithGoogle();
+                                //     break;
+                                //   default:
+                                // }
                               },
                               child: Row(
                                 mainAxisAlignment: MainAxisAlignment.center,

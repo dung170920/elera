@@ -148,6 +148,10 @@ class AppTheme {
       elevation: 0,
       padding: EdgeInsets.symmetric(horizontal: 20.w),
       backgroundColor: AppColors.darkColor[1],
+      secondaryLabelStyle: AppTextStyle.bodyLarge(
+        FontWeight.w600,
+        AppColors.lightColor,
+      ),
       shape: StadiumBorder(
         side: BorderSide(
           color: AppColors.primaryColor,

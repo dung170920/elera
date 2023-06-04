@@ -12,7 +12,7 @@ class ProfileCubit extends Cubit<ProfileState> {
       : super(
           ProfileState(
             theme: Global.storageService.getString(Preferences.APP_MODE_KEY) ==
-                    ThemeModes.dark
+                    ThemeModes.dark.name
                 ? AppTheme.darkTheme
                 : AppTheme.lightTheme,
           ),

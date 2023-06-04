@@ -34,7 +34,7 @@ class HomeAppBar extends StatelessWidget {
                       FontWeight.normal, AppColors.greyScaleColor[600]),
                 ),
                 Text(
-                  context.read<SplashCubit>().state.user.fullName ?? '',
+                  context.read<SplashCubit>().state.user.name ?? '',
                   style: AppTextStyle.h5(),
                 ),
               ],

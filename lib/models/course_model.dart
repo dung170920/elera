@@ -1,32 +1,36 @@
-import 'dart:convert';
+import 'package:elera/models/models.dart';
 import 'package:equatable/equatable.dart';
 
 class CourseModel extends Equatable {
   final String id;
-  final String? type;
-  final String? name;
-  final String? img;
+  final CourseTypeModel? type;
+  final UserModel? mentor;
+  final String? title;
+  final String? description;
+  final String? imageUrl;
+  final String? trailerUrl;
   final double? price;
-  final double? salePrice;
   final double? rate;
-  final int? numberVote;
-  final double? totalDuration;
-  final int? totalStudents;
+  final bool? isDisable;
+  final int? studentsCount;
+  final int? reviewsCount;
 
   const CourseModel({
     required this.id,
     this.type,
-    this.name,
-    this.img,
+    this.mentor,
+    this.title,
+    this.description,
+    this.imageUrl,
+    this.trailerUrl,
     this.price,
-    this.salePrice,
+    this.isDisable,
     this.rate,
-    this.numberVote,
-    this.totalDuration,
-    this.totalStudents,
+    this.studentsCount,
+    this.reviewsCount,
   });
 
-  static const empty = CourseModel(id: '');
+  static const empty = CourseModel(id: "");
 
   bool get isEmpty => this == CourseModel.empty;
   bool get isNotEmpty => this != CourseModel.empty;
@@ -34,74 +38,71 @@ class CourseModel extends Equatable {
   @override
   List<Object?> get props => [
         id,
-        name,
+        title,
+        description,
         type,
-        img,
+        mentor,
+        imageUrl,
+        trailerUrl,
         price,
-        salePrice,
+        isDisable,
         rate,
-        numberVote,
-        totalDuration,
-        totalStudents
+        studentsCount,
+        reviewsCount,
       ];
 
   CourseModel copyWith({
     String? id,
-    String? type,
-    String? name,
-    String? img,
+    CourseTypeModel? type,
+    String? title,
+    UserModel? mentor,
+    String? description,
+    String? imageUrl,
+    String? trailerUrl,
     double? price,
-    double? salePrice,
+    bool? isDisable,
     double? rate,
-    int? numberVote,
-    double? totalDuration,
-    int? totalStudents,
+    int? studentsCount,
+    int? reviewsCount,
   }) {
     return CourseModel(
       id: id ?? this.id,
       type: type ?? this.type,
-      name: name ?? this.name,
-      img: img ?? this.img,
+      title: title ?? this.title,
+      description: description ?? this.description,
+      imageUrl: imageUrl ?? this.imageUrl,
+      trailerUrl: trailerUrl ?? this.trailerUrl,
       price: price ?? this.price,
-      salePrice: salePrice ?? this.salePrice,
+      mentor: mentor ?? this.mentor,
       rate: rate ?? this.rate,
-      numberVote: numberVote ?? this.numberVote,
-      totalDuration: totalDuration ?? this.totalDuration,
-      totalStudents: totalStudents ?? this.totalStudents,
+      studentsCount: studentsCount ?? this.studentsCount,
+      reviewsCount: reviewsCount ?? this.reviewsCount,
+      isDisable: isDisable ?? this.isDisable,
     );
   }
 
-  Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'id': id,
-      'type': type,
-      'name': name,
-      'img': img,
-      'price': price,
-      'salePrice': salePrice,
-      'rate': rate,
-      'numberVote': numberVote,
-      'totalDuration': totalDuration,
-    };
-  }
-
-  factory CourseModel.fromMap(Map<String, dynamic> map) {
+  factory CourseModel.fromJson(Map<String, dynamic> map) {
     return CourseModel(
-      id: map['id'] as String,
-      type: map['type'] != null ? map['type'] as String : null,
-      name: map['name'] != null ? map['name'] as String : null,
-      img: map['img'] != null ? map['img'] as String : null,
-      price: map['price'] != null ? map['price'] as double : null,
-      salePrice: map['salePrice'] != null ? map['salePrice'] as double : null,
-      rate: map['rate'] != null ? map['rate'] as double : null,
-      numberVote: map['numberVote'] != null ? map['numberVote'] as int : null,
-      totalDuration:
-          map['totalDuration'] != null ? map['totalDuration'] as double : null,
+      id: map['id'],
+      type: map['courseType'] != null
+          ? CourseTypeModel.fromJson(map['courseType'] as Map<String, dynamic>)
+          : null,
+      mentor: map['mentor'] != null
+          ? UserModel.fromJson(map['mentor'] as Map<String, dynamic>)
+          : null,
+      title: map['title'] != null ? map['title'] as String : null,
+      description:
+          map['description'] != null ? map['description'] as String : null,
+      imageUrl: map['imageUrl'] != null ? map['imageUrl'] as String : null,
+      trailerUrl:
+          map['trailerUrl'] != null ? map['trailerUrl'] as String : null,
+      price: map['price'] != null ? map['price'].toDouble() : null,
+      rate: map['rate'] != null ? map['rate'].toDouble() : null,
+      isDisable: map['isDisable'] != null ? map['isDisable'] as bool : null,
+      studentsCount:
+          map['studentsCount'] != null ? map['studentsCount'] as int : null,
+      reviewsCount:
+          map['reviewsCount'] != null ? map['reviewsCount'] as int : null,
     );
   }
-
-  String toJson() => json.encode(toMap());
-
-  factory CourseModel.fromJson(String source) =>
-      CourseModel.fromMap(json.decode(source) as Map<String, dynamic>);
 }

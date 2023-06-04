@@ -26,15 +26,13 @@ import 'package:elera/screens/screens.dart';
 class AppPages {
   static List<RouteModel> Routes() {
     final AuthService _authService = AuthService();
-    final UserService _userService = UserService();
 
     return [
       RouteModel(
         path: AppRoutes.SPLASH,
         page: SplashScreen(),
         bloc: BlocProvider(
-          create: (_) =>
-              SplashCubit(authService: _authService, userService: _userService),
+          create: (_) => SplashCubit(authService: _authService),
         ),
       ),
       RouteModel(
@@ -50,7 +48,7 @@ class AppPages {
         page: LetInScreen(),
         bloc: BlocProvider(
           lazy: true,
-          create: (_) => LetInCubit(_authService, _userService),
+          create: (_) => LetInCubit(_authService),
         ),
       ),
       RouteModel(
@@ -66,7 +64,7 @@ class AppPages {
         page: SignUpScreen(),
         bloc: BlocProvider(
           lazy: true,
-          create: (_) => SignUpCubit(_authService, _userService),
+          create: (_) => SignUpCubit(_authService),
         ),
       ),
       RouteModel(
@@ -132,7 +130,7 @@ class AppPages {
         page: CoursesScreen(),
         bloc: BlocProvider(
           lazy: true,
-          create: (_) => CoursesCubit(),
+          create: (_) => CoursesCubit(CourseService())..fetchList(),
         ),
       ),
       RouteModel(
@@ -171,7 +169,6 @@ class AppPages {
   }
 
   static Route GenerateRouteSettings(RouteSettings settings) {
-    // final UserService _userService = UserService();
     var route = Routes().where((element) => element.path == settings.name);
     bool firstTime =
         Global.storageService.getBool(Preferences.OPEN_FIRST_TIME_KEY);
@@ -185,10 +182,10 @@ class AppPages {
           }
 
           if (state.status == AuthStatus.unAuthenticated)
-          Navigator.pushNamedAndRemoveUntil(
-              context,
-              !firstTime ? AppRoutes.WELCOME : AppRoutes.LET_IN,
-              (route) => false);
+            Navigator.pushNamedAndRemoveUntil(
+                context,
+                !firstTime ? AppRoutes.WELCOME : AppRoutes.LET_IN,
+                (route) => false);
         },
         child: route.first.page,
       ),

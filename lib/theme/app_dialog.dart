@@ -46,7 +46,7 @@ class AppDialog extends StatelessWidget {
                 child: Icon(
                   icon ?? status.icon,
                   color: Colors.white,
-                  size: 50,
+                  size: 50.w,
                 ),
               ),
             ),

@@ -45,7 +45,7 @@ class SignInCubit extends Cubit<SignInState> {
       );
       try {
         await _authService.signInWithEmailAndPassword(
-            email: email.value, password: password.value);
+            {"email": email.value, "password": password.value});
 
         emit(state.copyWith(status: FormzSubmissionStatus.success));
       } on AppExceptions catch (e) {

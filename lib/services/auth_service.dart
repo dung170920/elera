@@ -1,91 +1,78 @@
 import 'dart:async';
+import 'package:elera/constants/constants.dart';
 import 'package:elera/utils/utils.dart';
-import 'package:firebase_auth/firebase_auth.dart';
+// import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:jwt_decoder/jwt_decoder.dart';
 
 class AuthService {
-  final FirebaseAuth firebaseAuth = FirebaseAuth.instance;
+  var apiUrl = "auth";
   final GoogleSignIn _googleSignIn = GoogleSignIn.standard();
+  final _controller = StreamController<String>.broadcast();
+  Stream<String> get accessToken async* {
+    String token = Global.storageService.getString(Preferences.ACCESS_TOKEN);
 
-  Stream<User?> get user {
-    return firebaseAuth.authStateChanges();
-    // .map((firebaseUser) {
+    if (token.isEmpty) {
+      yield "";
+    } else {
+      bool isExpired = JwtDecoder.isExpired(token);
 
-    //   final user = firebaseUser?.toUser ?? UserModel.empty;
-    //   currentUser = user;
-    //   return user;
-    // });
-  }
-
-  Future<void> signUp(
-      {required String email,
-      required String password,
-      required String name}) async {
-    try {
-      var user = await firebaseAuth.createUserWithEmailAndPassword(
-        email: email,
-        password: password,
-      );
-
-      await user.user!.updateDisplayName(name);
-    } on FirebaseAuthException catch (e) {
-      throw AppExceptions.fromCode(e.code);
-    } catch (_) {
-      throw AppExceptions();
+      yield isExpired ? "" : token;
     }
+
+    yield* _controller.stream;
   }
 
-  Future<void> signInWithEmailAndPassword(
-      {required String email, required String password}) async {
-    try {
-      await firebaseAuth.signInWithEmailAndPassword(
-          email: email, password: password);
-    } on FirebaseAuthException catch (e) {
-      throw AppExceptions.fromCode(e.code);
-    } catch (e) {
-      throw AppExceptions();
-    }
+  void storeToken(String token) async {
+    await Global.storageService.setString(Preferences.ACCESS_TOKEN, token);
+    print("stored");
   }
 
-  Future<void> logInWithGoogle() async {
-    try {
-      final googleUser = await _googleSignIn.signIn();
-      final googleAuth = await googleUser!.authentication;
-      final credential = GoogleAuthProvider.credential(
-        accessToken: googleAuth.accessToken,
-        idToken: googleAuth.idToken,
-      );
+  Future<void> signUp(params) =>
+      DioManager().dio.post("$apiUrl/register", data: params).then((response) {
+        _controller.sink.add(response.data['result']);
+        storeToken(response.data['result']);
+      }).catchError((error) {
+        print(error.toString());
+      });
 
-      await firebaseAuth.signInWithCredential(credential);
-    } on FirebaseAuthException catch (e) {
-      print(e.code);
-      throw AppExceptions.fromCode(e.code);
-    } catch (_) {
-      throw const AppExceptions();
-    }
-  }
+  Future<void> signInWithEmailAndPassword(params) => DioManager()
+          .dio
+          .post("$apiUrl/login", data: params)
+          .then((response) async {
+        _controller.sink.add(response.data['result']);
+        storeToken(response.data['result']);
+      }).catchError((error) {
+        print(error.toString());
+      });
+
+  // Future<void> logInWithGoogle() async {
+  //   try {
+  //     final googleUser = await _googleSignIn.signIn();
+  //     final googleAuth = await googleUser!.authentication;
+  //     // final credential = GoogleAuthProvider.credential(
+  //     //   accessToken: googleAuth.accessToken,
+  //     //   idToken: googleAuth.idToken,
+  //     // );
+
+  //     // await firebaseAuth.signInWithCredential(credential);
+  //   } on FirebaseAuthException catch (e) {
+  //     print(e.code);
+  //     throw AppExceptions.fromCode(e.code);
+  //   } catch (_) {
+  //     throw const AppExceptions();
+  //   }
+  // }
 
   Future<void> logOut() async {
     try {
       Future.wait([
-        firebaseAuth.signOut(),
+        Global.storageService.remove(Preferences.ACCESS_TOKEN),
+        Global.storageService.remove(Preferences.REFRESH_TOKEN),
       ]);
-    } on FirebaseAuthException catch (e) {
-      throw AppExceptions.fromCode(e.code);
+      _controller.add("");
     } catch (e) {
       throw AppExceptions();
     }
   }
 }
-
-// extension on User {
-//   UserModel get toUser {
-//     return UserModel(
-//       id: uid,
-//       email: email,
-//       name: displayName,
-//       avatar: photoURL,
-//       phoneNumber: phoneNumber,
-//     );
-//   }
-// }

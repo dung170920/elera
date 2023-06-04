@@ -1,47 +1,42 @@
 import 'dart:async';
 import 'package:elera/constants/constants.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:elera/models/models.dart';
 import 'package:elera/services/services.dart';
+import 'package:jwt_decoder/jwt_decoder.dart';
 
 part 'splash_state.dart';
 
 class SplashCubit extends Cubit<SplashState> {
-  StreamSubscription<User?>? _userSubscription;
+  late StreamSubscription<String> _authTokenSubscription;
   final AuthService authService;
-  final UserService userService;
 
-  SplashCubit(
-      {required AuthService authService, required UserService userService})
+  SplashCubit({required AuthService authService})
       : authService = authService,
-        userService = userService,
-        super(
-            // authService.currentUser.isNotEmpty
-            //     ? SplashState.authenticated(authService.currentUser)
-            //     : SplashState.unAuthenticated(),
-            SplashState.unAuthenticated()) {
-    _userSubscription = authService.user.listen(
-      (firebaseUser) async {
-        var user = await userService.getUserById(firebaseUser?.uid ?? "");
-        print('user: $user');
-        onAuthUserChanged(user);
-      },
-    );
+        super(SplashState.unAuthenticated()) {
+    _authTokenSubscription = authService.accessToken.listen((token) {
+      print("token: $token");
+      onAuthUserChanged(token);
+    });
   }
 
-  void onAuthUserChanged(user) => emit(
-        user.isNotEmpty
-            ? SplashState.authenticated(user)
-            : SplashState.unAuthenticated(),
-      );
+  void onAuthUserChanged(String token) async {
+    if (token.isNotEmpty) {
+      Map<String, dynamic> decodedToken = JwtDecoder.decode(token);
+      emit(SplashState.authenticated(UserModel.fromJson(decodedToken), token));
+    } else {
+      emit(SplashState.unAuthenticated());
+    }
+  }
 
-  void onAuthLogoutRequested() => unawaited(authService.logOut());
+  void onAuthLogoutRequested() {
+    unawaited(authService.logOut());
+  }
 
   @override
   Future<void> close() {
-    _userSubscription?.cancel();
+    _authTokenSubscription.cancel();
     return super.close();
   }
 }

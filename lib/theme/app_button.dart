@@ -40,11 +40,13 @@ extension AppElevatedButton on ElevatedButton {
   }) {
     return ElevatedButton(
       style: ElevatedButton.styleFrom(
+        shadowColor: Colors.transparent,
         backgroundColor: color != null
             ? color.withOpacity(0.1)
             : AppColors.primaryColor.withOpacity(0.1),
         foregroundColor: color ?? AppColors.primaryColor,
-        disabledBackgroundColor: StatusType.DISABLED_BUTTON.color,
+        disabledBackgroundColor:
+            StatusType.DISABLED_BUTTON.color.withOpacity(0.1),
         elevation: 0,
         padding: size == ButtonSize.small
             ? EdgeInsets.symmetric(horizontal: 16.w, vertical: 6.w)

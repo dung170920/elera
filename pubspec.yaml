@@ -27,6 +27,7 @@ dependencies:
   flutter_native_splash: ^2.2.19
   dio: ^5.1.2
   readmore: ^2.2.0
+  jwt_decoder: ^2.0.1
 
 dev_dependencies:
   flutter_test:

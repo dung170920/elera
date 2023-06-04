@@ -1,4 +1,5 @@
 import 'package:elera/constants/constants.dart';
+import 'package:elera/models/models.dart';
 import 'package:elera/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -20,8 +21,8 @@ class MentorCourses extends StatelessWidget {
                 physics: NeverScrollableScrollPhysics(),
                 shrinkWrap: true,
                 itemBuilder: (context, index) =>
-                    CourseCard(course: Data.getCourseList()[index]),
-                itemCount: Data.getCourseList().length,
+                    CourseCard(course: CourseModel.empty),
+                itemCount: 0,
                 separatorBuilder: (context, index) => SizedBox(height: 16.w),
               ),
             )

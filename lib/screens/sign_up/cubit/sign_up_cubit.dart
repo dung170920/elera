@@ -8,10 +8,8 @@ part 'sign_up_state.dart';
 
 class SignUpCubit extends Cubit<SignUpState> {
   final AuthService _authService;
-  final UserService _userService;
 
-  SignUpCubit(this._authService, this._userService)
-      : super(SignUpState.inital());
+  SignUpCubit(this._authService) : super(SignUpState.inital());
 
   void onNameChanged(String name) => emit(
         state.copyWith(
@@ -70,10 +68,12 @@ class SignUpCubit extends Cubit<SignUpState> {
         ),
       );
       try {
-        await _authService.signUp(
-            email: email.value, password: password.value, name: name.value);
-
-        await _userService.register();
+        await _authService.signUp({
+          "email": email.value,
+          "password": password.value,
+          "name": name.value,
+          "confirmPassword": rePassword.value
+        });
 
         emit(state.copyWith(status: FormzSubmissionStatus.success));
       } on AppExceptions catch (e) {

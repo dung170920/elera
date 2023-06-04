@@ -19,12 +19,12 @@ class CourseInfo extends StatelessWidget {
         runSpacing: 20.w,
         children: [
           Text(
-            course.name!,
+            course.title!,
             style: AppTextStyle.h3(),
           ),
           Row(
             children: [
-              AppTag.inverted(status: StatusType.INFO, text: course.type ?? ''),
+              AppTag.inverted(status: StatusType.INFO, text: course.type!.name),
               SizedBox(
                 width: 16.w,
               ),
@@ -36,12 +36,12 @@ class CourseInfo extends StatelessWidget {
               SizedBox(
                 width: 4.w,
               ),
-              Text(
-                course.rate!.toString(),
-                style: AppTextStyle.bodyLarge(
-                  FontWeight.w500,
-                ),
-              ),
+              // Text(
+              //   course.rate!.toString(),
+              //   style: AppTextStyle.bodyLarge(
+              //     FontWeight.w500,
+              //   ),
+              // ),
               SizedBox(
                 width: 4.w,
               ),
@@ -54,37 +54,41 @@ class CourseInfo extends StatelessWidget {
               SizedBox(
                 width: 4.w,
               ),
-              Text(
-                '${formatCurrency(price: double.parse(course.numberVote!.toString()))} reviews',
-                style: AppTextStyle.bodyLarge(
-                  FontWeight.w500,
-                ),
-                overflow: TextOverflow.ellipsis,
-              ),
+              // Text(
+              //   '${formatCurrency(price: double.parse(course.numberVote!.toString()))} reviews',
+              //   style: AppTextStyle.bodyLarge(
+              //     FontWeight.w500,
+              //   ),
+              //   overflow: TextOverflow.ellipsis,
+              // ),
             ],
           ),
-          course.salePrice != null
-              ? Row(
-                  children: [
-                    Text(
-                      formatCurrency(price: course.salePrice!, symbol: '\$'),
-                      style: AppTextStyle.h3(AppColors.primaryColor),
-                    ),
-                    SizedBox(
-                      width: 12.w,
-                    ),
-                    Text(
-                      formatCurrency(price: course.price!, symbol: '\$'),
-                      style: AppTextStyle.h5(
-                        AppColors.greyScaleColor[500],
-                      ).copyWith(decoration: TextDecoration.lineThrough),
-                    ),
-                  ],
-                )
-              : Text(
-                  formatCurrency(price: course.price!, symbol: '\$'),
-                  style: AppTextStyle.h3(AppColors.primaryColor),
-                ),
+          Text(
+            formatCurrency(price: course.price!, symbol: '\$'),
+            style: AppTextStyle.h3(AppColors.primaryColor),
+          ),
+          // course.salePrice != null
+          //     ? Row(
+          //         children: [
+          //           Text(
+          //             formatCurrency(price: course.salePrice!, symbol: '\$'),
+          //             style: AppTextStyle.h3(AppColors.primaryColor),
+          //           ),
+          //           SizedBox(
+          //             width: 12.w,
+          //           ),
+          //           Text(
+          //             formatCurrency(price: course.price!, symbol: '\$'),
+          //             style: AppTextStyle.h5(
+          //               AppColors.greyScaleColor[500],
+          //             ).copyWith(decoration: TextDecoration.lineThrough),
+          //           ),
+          //         ],
+          //       )
+          //     : Text(
+          //         formatCurrency(price: course.price!, symbol: '\$'),
+          //         style: AppTextStyle.h3(AppColors.primaryColor),
+          //       ),
           Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -98,13 +102,13 @@ class CourseInfo extends StatelessWidget {
                   SizedBox(
                     width: 4.w,
                   ),
-                  Text(
-                    '${formatCurrency(price: double.parse(course.numberVote!.toString()))} students',
-                    style: AppTextStyle.bodyLarge(
-                      FontWeight.w500,
-                      AppColors.greyScaleColor[800],
-                    ),
-                  )
+                  // Text(
+                  //   '${formatCurrency(price: double.parse(course.numberVote!.toString()))} students',
+                  //   style: AppTextStyle.bodyLarge(
+                  //     FontWeight.w500,
+                  //     AppColors.greyScaleColor[800],
+                  //   ),
+                  // )
                 ],
               ),
               Row(
@@ -116,13 +120,13 @@ class CourseInfo extends StatelessWidget {
                   SizedBox(
                     width: 4.w,
                   ),
-                  Text(
-                    '${course.totalDuration ?? 0} hours',
-                    style: AppTextStyle.bodyLarge(
-                      FontWeight.w500,
-                      AppColors.greyScaleColor[800],
-                    ),
-                  )
+                  // Text(
+                  //   '${course.totalDuration ?? 0} hours',
+                  //   style: AppTextStyle.bodyLarge(
+                  //     FontWeight.w500,
+                  //     AppColors.greyScaleColor[800],
+                  //   ),
+                  // )
                 ],
               ),
               Row(

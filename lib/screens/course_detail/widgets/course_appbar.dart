@@ -18,7 +18,7 @@ class CourseAppBar extends StatelessWidget {
             image: DecorationImage(
               fit: BoxFit.fill,
               image: NetworkImage(
-                course.img!,
+                course.imageUrl!,
               ),
             ),
           ),
