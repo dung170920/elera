@@ -3,10 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class Chips extends StatelessWidget {
-  const Chips({super.key, required this.list, required this.selected});
+  const Chips(
+      {super.key, required this.list, required this.selected, this.onChange});
 
   final List<Widget> list;
   final int selected;
+  final void Function(int)? onChange;
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +25,8 @@ class Chips extends StatelessWidget {
                   selectedColor: AppColors.primaryColor,
                   label: e,
                   selected: list.indexOf(e) == selected,
-                  onSelected: (value) {},
+                  onSelected: (bool select) =>
+                      select ? onChange!(list.indexOf(e)) : null,
                 ),
               )
               .toList(),

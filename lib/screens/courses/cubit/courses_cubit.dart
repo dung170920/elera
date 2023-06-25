@@ -8,17 +8,23 @@ import 'package:equatable/equatable.dart';
 part 'courses_state.dart';
 
 class CoursesCubit extends Cubit<CoursesState> {
-  final CourseService service;
+  final CourseService courseService;
+  final CourseTypeService courseTypeService;
 
-  CoursesCubit(this.service) : super(CoursesState.loading());
+  CoursesCubit(this.courseService, this.courseTypeService)
+      : super(CoursesState.loading());
 
-  Future<void> fetchList() async {
+  Future<void> init() async {
     try {
-      final items = await service.getCourses(state.list.toJson());
-      print(items);
-      emit(CoursesState.success(items));
+      final courses = await courseService.getCourses(state.list.toJson());
+      final types = await courseTypeService.getCourseTypes();
+      emit(CoursesState.success(courses, types));
     } on AppExceptions catch (e) {
       emit(CoursesState.failure(e.message));
     }
+  }
+
+  void changeSelectedType(int type) {
+    emit(state.copyWith(selectedType: type));
   }
 }

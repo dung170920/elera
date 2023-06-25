@@ -39,10 +39,11 @@ class CoursesScreen extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Chips(
-                            list: [
-                              Text('All'),
-                            ],
-                            selected: 0,
+                            list: state.types.map((e) => Text(e.name)).toList(),
+                            selected: state.selectedType,
+                            onChange: (value) => context
+                                .read<CoursesCubit>()
+                                .changeSelectedType(value),
                           ),
                           state.list.isNotEmpty
                               ? Padding(

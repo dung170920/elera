@@ -130,7 +130,8 @@ class AppPages {
         page: CoursesScreen(),
         bloc: BlocProvider(
           lazy: true,
-          create: (_) => CoursesCubit(CourseService())..fetchList(),
+          create: (_) =>
+              CoursesCubit(CourseService(), CourseTypeService())..init(),
         ),
       ),
       RouteModel(
