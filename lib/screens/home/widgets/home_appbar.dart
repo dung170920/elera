@@ -6,6 +6,7 @@ import 'package:elera/theme/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:magicon/magicon.dart';
 
 class HomeAppBar extends StatelessWidget {
   const HomeAppBar({super.key});
@@ -46,7 +47,7 @@ class HomeAppBar extends StatelessWidget {
                 child: Stack(
                   children: [
                     Icon(
-                      MyIcons.bell,
+                      Magicon.bell,
                       size: 28.w,
                     ),
                     context

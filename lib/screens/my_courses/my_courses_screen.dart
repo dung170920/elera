@@ -1,4 +1,4 @@
-import 'package:elera/theme/theme.dart';
+import 'package:magicon/magicon.dart';
 import 'package:elera/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -21,7 +21,7 @@ class _MyCoursesScreenState extends State<MyCoursesScreen> {
           GestureDetector(
             onTap: () {},
             child: Icon(
-              MyIcons.search,
+              Magicon.search,
               size: 28.w,
             ),
           )

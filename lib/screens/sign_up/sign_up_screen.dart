@@ -4,6 +4,7 @@ import 'package:elera/theme/theme.dart';
 import 'package:elera/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:magicon/magicon.dart';
 
 class SignUpScreen extends StatefulWidget {
   const SignUpScreen({super.key});
@@ -22,7 +23,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
           child: Padding(
             padding: EdgeInsets.only(left: 8.w),
             child: Icon(
-              MyIcons.arrowLeftSmall,
+              Magicon.arrowLeftSmall,
               size: 28.w,
             ),
           ),

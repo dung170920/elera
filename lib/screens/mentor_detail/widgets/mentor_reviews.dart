@@ -2,6 +2,7 @@ import 'package:elera/theme/theme.dart';
 import 'package:elera/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:magicon/magicon.dart';
 
 class MentorReviews extends StatelessWidget {
   const MentorReviews({Key? key}) : super(key: key);
@@ -19,7 +20,7 @@ class MentorReviews extends StatelessWidget {
                 Row(
                   children: [
                     Icon(
-                      MyIcons.solidStar,
+                      Magicon.solidStar,
                       size: 16.w,
                       color: AppColors.lightColor,
                     ),
@@ -34,7 +35,7 @@ class MentorReviews extends StatelessWidget {
                   (index) => Row(
                     children: [
                       Icon(
-                        MyIcons.solidStar,
+                        Magicon.solidStar,
                         size: 16.w,
                         color: AppColors.primaryColor,
                       ),

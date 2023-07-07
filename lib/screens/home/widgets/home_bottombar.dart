@@ -1,5 +1,4 @@
 import 'package:elera/screens/home/cubit/home_cubit.dart';
-import 'package:elera/screens/profile/cubit/profile_cubit.dart';
 import 'package:elera/theme/theme.dart';
 import 'package:elera/constants/constants.dart';
 import 'package:flutter/material.dart';

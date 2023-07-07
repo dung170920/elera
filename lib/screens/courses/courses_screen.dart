@@ -5,6 +5,7 @@ import 'package:elera/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:magicon/magicon.dart';
 
 class CoursesScreen extends StatelessWidget {
   const CoursesScreen({super.key});
@@ -21,7 +22,7 @@ class CoursesScreen extends StatelessWidget {
               GestureDetector(
                 onTap: () {},
                 child: Icon(
-                  MyIcons.search,
+                  Magicon.search,
                   size: 28.w,
                 ),
               )
@@ -30,7 +31,7 @@ class CoursesScreen extends StatelessWidget {
           body: SafeArea(
             child: Padding(
               padding: EdgeInsets.symmetric(horizontal: 24.w),
-              child: state.status == ListStatus.loading
+              child: state.status == LoadStatus.loading
                   ? Center(
                       child: CircularProgressIndicator(),
                     )
@@ -39,7 +40,10 @@ class CoursesScreen extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Chips(
-                            list: state.types.map((e) => Text(e.name)).toList(),
+                            list: [
+                              Text('All'),
+                              ...state.types.map((e) => Text(e.name)).toList(),
+                            ],
                             selected: state.selectedType,
                             onChange: (value) => context
                                 .read<CoursesCubit>()

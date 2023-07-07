@@ -3,6 +3,7 @@ import 'package:elera/theme/theme.dart';
 import 'package:elera/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:magicon/magicon.dart';
 
 extension ShowSnackBarBuildContextExtension on BuildContext {
   void showSnackBar(
@@ -68,7 +69,7 @@ extension ShowSnackBarBuildContextExtension on BuildContext {
               GestureDetector(
                 onTap: () => messengerState.hideCurrentSnackBar(),
                 child: Icon(
-                  MyIcons.times,
+                  Magicon.times,
                   color: AppColors.greyScaleColor[900],
                 ),
               ),

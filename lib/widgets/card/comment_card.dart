@@ -1,6 +1,6 @@
 import 'package:elera/constants/constants.dart';
-import 'package:elera/theme/app_icons.dart';
-import 'package:elera/theme/app_text_style.dart';
+import 'package:magicon/magicon.dart';
+import 'package:elera/theme/theme.dart';
 import 'package:elera/utils/common.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -54,7 +54,7 @@ class CommentCard extends StatelessWidget {
                           children: List.generate(
                             5,
                             (index) => Icon(
-                              MyIcons.solidStar,
+                              Magicon.solidStar,
                               color: StatusType.WARNING.color,
                               size: 16.w,
                             ),
@@ -94,7 +94,7 @@ class CommentCard extends StatelessWidget {
                         mainAxisSize: MainAxisSize.min,
                         children: [
                           Icon(
-                            MyIcons.flag,
+                            Magicon.flag,
                             size: 20.w,
                           ),
                           SizedBox(
@@ -113,7 +113,7 @@ class CommentCard extends StatelessWidget {
                 );
               },
               child: Icon(
-                MyIcons.moreHorizontalCircle,
+                Magicon.moreHorizontalCircle,
                 size: 24.w,
               ),
             ),

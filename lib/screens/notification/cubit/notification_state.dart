@@ -2,7 +2,7 @@ part of 'notification_cubit.dart';
 
 class NotificationState extends Equatable {
   const NotificationState._({
-    this.status = ListStatus.loading,
+    this.status = LoadStatus.loading,
     this.items = const <NotificationModel>[],
     this.errorMessage,
   });
@@ -10,12 +10,12 @@ class NotificationState extends Equatable {
   const NotificationState.loading() : this._();
 
   const NotificationState.success(List<NotificationModel> items)
-      : this._(status: ListStatus.success, items: items);
+      : this._(status: LoadStatus.success, items: items);
 
   const NotificationState.failure(String message)
-      : this._(status: ListStatus.failure, errorMessage: message);
+      : this._(status: LoadStatus.failure, errorMessage: message);
 
-  final ListStatus status;
+  final LoadStatus status;
   final List<NotificationModel> items;
   final String? errorMessage;
 

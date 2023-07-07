@@ -6,6 +6,7 @@ import 'package:elera/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:magicon/magicon.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
@@ -62,7 +63,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
               ),
             ),
             child: Icon(
-              MyIcons.solidLogOut,
+              Magicon.solidLogOut,
               size: 28.w,
               color: StatusType.ERROR.color,
             ),

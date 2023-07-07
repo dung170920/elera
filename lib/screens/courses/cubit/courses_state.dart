@@ -13,7 +13,7 @@ class CoursesState extends Equatable {
   factory CoursesState.loading() {
     return CoursesState(
       types: [],
-      status: ListStatus.loading,
+      status: LoadStatus.loading,
       list: PagedListModel.empty(),
     );
   }
@@ -21,7 +21,7 @@ class CoursesState extends Equatable {
   factory CoursesState.success(
       PagedListModel<CourseModel> list, List<CourseTypeModel> types) {
     return CoursesState(
-      status: ListStatus.success,
+      status: LoadStatus.success,
       list: list,
       types: types,
     );
@@ -29,14 +29,14 @@ class CoursesState extends Equatable {
 
   factory CoursesState.failure(String message) {
     return CoursesState(
-      status: ListStatus.failure,
+      status: LoadStatus.failure,
       errorMessage: message,
       list: PagedListModel.empty<CourseModel>(),
       types: [],
     );
   }
 
-  final ListStatus status;
+  final LoadStatus status;
   final PagedListModel<CourseModel> list;
   final List<CourseTypeModel> types;
   final String? errorMessage;
@@ -46,7 +46,7 @@ class CoursesState extends Equatable {
   List<Object?> get props => [status, list, errorMessage, types, selectedType];
 
   CoursesState copyWith({
-    ListStatus? status,
+    LoadStatus? status,
     PagedListModel<CourseModel>? list,
     List<CourseTypeModel>? types,
     String? errorMessage,

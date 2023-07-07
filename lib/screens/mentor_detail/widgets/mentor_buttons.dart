@@ -2,6 +2,7 @@ import 'package:elera/constants/constants.dart';
 import 'package:elera/theme/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:magicon/magicon.dart';
 
 class MentorButtons extends StatelessWidget {
   const MentorButtons({Key? key}) : super(key: key);
@@ -20,7 +21,7 @@ class MentorButtons extends StatelessWidget {
               child: Row(
                 children: [
                   Icon(
-                    MyIcons.solidCommentDots,
+                    Magicon.solidCommentDots,
                     color: AppColors.lightColor,
                   ),
                   SizedBox(
@@ -49,7 +50,7 @@ class MentorButtons extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Icon(
-                    MyIcons.solidUserPlus,
+                    Magicon.solidUserPlus,
                     color: AppColors.primaryColor,
                   ),
                   SizedBox(

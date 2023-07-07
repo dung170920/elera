@@ -2,6 +2,7 @@ import 'package:elera/models/models.dart';
 import 'package:elera/theme/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:magicon/magicon.dart';
 
 class CourseAppBar extends StatelessWidget {
   const CourseAppBar({super.key, required this.course});
@@ -18,7 +19,7 @@ class CourseAppBar extends StatelessWidget {
             image: DecorationImage(
               fit: BoxFit.fill,
               image: NetworkImage(
-                course.imageUrl!,
+                course.imageUrl ?? "",
               ),
             ),
           ),
@@ -30,7 +31,7 @@ class CourseAppBar extends StatelessWidget {
                 color: AppColors.lightColor.withOpacity(0.6),
               ),
               child: Icon(
-                MyIcons.solidPlayCircle,
+                Magicon.solidPlayCircle,
                 color: AppColors.primaryColor,
                 size: 40.w,
               ),
@@ -54,7 +55,7 @@ class CourseAppBar extends StatelessWidget {
                 child: IconButton(
                   onPressed: () => Navigator.pop(context),
                   icon: Icon(
-                    MyIcons.solidArrowLeftSmall,
+                    Magicon.solidArrowLeftSmall,
                     color: AppColors.greyScaleColor[900],
                   ),
                 ),
@@ -69,7 +70,7 @@ class CourseAppBar extends StatelessWidget {
                 child: IconButton(
                   onPressed: () => Navigator.pop(context),
                   icon: Icon(
-                    MyIcons.bookmark,
+                    Magicon.bookmark,
                     color: AppColors.greyScaleColor[900],
                   ),
                 ),

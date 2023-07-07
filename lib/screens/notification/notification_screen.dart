@@ -1,5 +1,5 @@
 import 'package:elera/constants/constants.dart';
-import 'package:elera/theme/theme.dart';
+import 'package:magicon/magicon.dart';
 import 'package:elera/widgets/widgets.dart';
 import 'package:elera/screens/notification/cubit/notification_cubit.dart';
 import 'package:elera/screens/notification/widgets/widgets.dart';
@@ -33,7 +33,7 @@ class _NotificationScreenState extends State<NotificationScreen> {
                     child: Row(
                       children: [
                         Icon(
-                          MyIcons.checkDouble,
+                          Magicon.checkDouble,
                           color: StatusType.SUCCESS.color,
                         ),
                         SizedBox(
@@ -48,7 +48,7 @@ class _NotificationScreenState extends State<NotificationScreen> {
                     child: Row(
                       children: [
                         Icon(
-                          MyIcons.trash,
+                          Magicon.trash,
                           color: StatusType.ERROR.color,
                         ),
                         SizedBox(
@@ -62,7 +62,7 @@ class _NotificationScreenState extends State<NotificationScreen> {
               );
             },
             child: Icon(
-              MyIcons.moreHorizontalCircle,
+              Magicon.moreHorizontalCircle,
               size: 28.w,
             ),
           ),
@@ -72,12 +72,12 @@ class _NotificationScreenState extends State<NotificationScreen> {
         child: BlocBuilder<NotificationCubit, NotificationState>(
           builder: (context, state) {
             switch (state.status) {
-              case ListStatus.loading:
+              case LoadStatus.loading:
                 return Center(
                   child: CircularProgressIndicator(),
                 );
 
-              case ListStatus.success:
+              case LoadStatus.success:
                 return state.items.isEmpty
                     ? Center(
                         child: Text('List is empty!'),
@@ -93,7 +93,7 @@ class _NotificationScreenState extends State<NotificationScreen> {
                         ),
                       );
 
-              case ListStatus.failure:
+              case LoadStatus.failure:
                 return Center(
                   child: Text('Something went wrong!'),
                 );

@@ -1,9 +1,8 @@
 import 'package:elera/screens/home/widgets/widgets.dart';
-import 'package:elera/screens/splash/cubit/splash_cubit.dart';
 import 'package:elera/theme/theme.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:magicon/magicon.dart';
 
 class HomeBody extends StatefulWidget {
   const HomeBody({super.key});
@@ -37,12 +36,12 @@ class _HomeBodyState extends State<HomeBody> {
                 children: [
                   Expanded(
                     child: AppTextField(
-                      prefix: Icon(MyIcons.search),
+                      prefix: Icon(Magicon.search),
                       hintText: 'Search',
                       focus: _focusNode,
                       sufix: GestureDetector(
                         child: Icon(
-                          MyIcons.solidSlidersHorizontalAlt,
+                          Magicon.solidSlidersHorizontalAlt,
                           color: AppColors.primaryColor,
                         ),
                       ),

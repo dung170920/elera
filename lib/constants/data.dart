@@ -2,9 +2,9 @@ import 'package:elera/models/models.dart';
 import 'package:elera/routes/routes.dart';
 import 'package:elera/screens/home/widgets/widgets.dart';
 import 'package:elera/screens/screens.dart';
-import 'package:elera/theme/theme.dart';
 import 'package:elera/constants/constants.dart';
 import 'package:flutter/widgets.dart';
+import 'package:magicon/magicon.dart';
 
 class Data {
   Data._();
@@ -37,36 +37,36 @@ class Data {
     list.add(
       TextModel(
         title: 'Home',
-        iconData: MyIcons.home,
-        activeIconData: MyIcons.solidHome,
+        iconData: Magicon.home,
+        activeIconData: Magicon.solidHome,
       ),
     );
     list.add(
       TextModel(
         title: 'My Course',
-        iconData: MyIcons.noteText,
-        activeIconData: MyIcons.solidNoteText,
+        iconData: Magicon.noteText,
+        activeIconData: Magicon.solidNoteText,
       ),
     );
     list.add(
       TextModel(
         title: "Inbox",
-        iconData: MyIcons.chatDots,
-        activeIconData: MyIcons.solidChatDots,
+        iconData: Magicon.chatDots,
+        activeIconData: Magicon.solidChatDots,
       ),
     );
     list.add(
       TextModel(
         title: "Transaction",
-        iconData: MyIcons.shoppingCart,
-        activeIconData: MyIcons.solidShoppingCart,
+        iconData: Magicon.shoppingCart,
+        activeIconData: Magicon.solidShoppingCart,
       ),
     );
     list.add(
       TextModel(
         title: "Profile",
-        iconData: MyIcons.user,
-        activeIconData: MyIcons.solidUser,
+        iconData: Magicon.user,
+        activeIconData: Magicon.solidUser,
       ),
     );
     return list;
@@ -156,63 +156,63 @@ class Data {
     list.add(
       TextModel(
         title: 'Profile',
-        iconData: MyIcons.user,
+        iconData: Magicon.user,
         path: AppRoutes.INFO_EDIT,
       ),
     );
     list.add(
       TextModel(
         title: 'Notification',
-        iconData: MyIcons.bell,
+        iconData: Magicon.bell,
         path: AppRoutes.INFO_EDIT,
       ),
     );
     list.add(
       TextModel(
         title: "Payment",
-        iconData: MyIcons.wallet,
+        iconData: Magicon.wallet,
         path: AppRoutes.INFO_EDIT,
       ),
     );
     list.add(
       TextModel(
         title: "Security",
-        iconData: MyIcons.shieldCheck,
+        iconData: Magicon.shieldCheck,
         path: AppRoutes.INFO_EDIT,
       ),
     );
     list.add(
       TextModel(
         title: "Language",
-        iconData: MyIcons.globe,
+        iconData: Magicon.globe,
         path: AppRoutes.INFO_EDIT,
       ),
     );
     list.add(
       TextModel(
         title: "Dark Mode",
-        iconData: MyIcons.brushAlt,
+        iconData: Magicon.brushAlt,
         path: AppRoutes.INFO_EDIT,
       ),
     );
     list.add(
       TextModel(
         title: "Privacy Policy",
-        iconData: MyIcons.lock,
+        iconData: Magicon.lock,
         path: AppRoutes.INFO_EDIT,
       ),
     );
     list.add(
       TextModel(
         title: "Help Center",
-        iconData: MyIcons.commentQuestion,
+        iconData: Magicon.commentQuestion,
         path: AppRoutes.INFO_EDIT,
       ),
     );
     // list.add(
     //   TextModel(
     //     title: "Invite Friends",
-    //     iconData: MyIcons.usersGroup,
+    //     iconData: Magicon.usersGroup,
     //   ),
     // );
     return list;

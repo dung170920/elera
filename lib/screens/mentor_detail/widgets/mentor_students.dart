@@ -2,6 +2,7 @@ import 'package:elera/theme/theme.dart';
 import 'package:elera/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:magicon/magicon.dart';
 
 class MentorStudents extends StatelessWidget {
   const MentorStudents({super.key});
@@ -20,7 +21,7 @@ class MentorStudents extends StatelessWidget {
             child: IconButton(
               onPressed: () {},
               icon: Icon(
-                MyIcons.commentDots,
+                Magicon.commentDots,
                 size: 28.w,
                 color: AppColors.primaryColor,
               ),

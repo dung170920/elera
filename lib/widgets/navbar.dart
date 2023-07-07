@@ -2,6 +2,7 @@ import 'package:elera/constants/constants.dart';
 import 'package:elera/theme/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:magicon/magicon.dart';
 
 class NavBar extends StatelessWidget with PreferredSizeWidget {
   const NavBar(
@@ -29,7 +30,7 @@ class NavBar extends StatelessWidget with PreferredSizeWidget {
             ? GestureDetector(
                 onTap: onTapBack ?? () => Navigator.pop(context),
                 child: Icon(
-                  MyIcons.solidArrowLeftSmall,
+                  Magicon.solidArrowLeftSmall,
                   size: 28.w,
                 ),
               )

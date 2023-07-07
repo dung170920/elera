@@ -3,6 +3,7 @@ import 'package:elera/theme/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:magicon/magicon.dart';
 
 class AppTextField extends StatefulWidget {
   const AppTextField({
@@ -149,8 +150,8 @@ class _AppTextFieldState extends State<AppTextField> {
                 ? GestureDetector(
                     child: Icon(
                       isPasswordVisible
-                          ? MyIcons.solidEye
-                          : MyIcons.solidEyeSlash,
+                          ? Magicon.solidEye
+                          : Magicon.solidEyeSlash,
                     ),
                     onTap: () {
                       isPasswordVisible = !isPasswordVisible;

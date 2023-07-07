@@ -1,5 +1,5 @@
 name: elera
-description: A new Flutter project.
+description: A e-learning project.
 publish_to: "none"
 
 version: 1.0.0+1
@@ -28,6 +28,7 @@ dependencies:
   dio: ^5.1.2
   readmore: ^2.2.0
   jwt_decoder: ^2.0.1
+  magicon: ^0.0.2
 
 dev_dependencies:
   flutter_test:
@@ -38,7 +39,3 @@ flutter:
   uses-material-design: true
   assets:
     - assets/images/
-  fonts:
-    - family: MyIcons
-      fonts:
-        - asset: assets/fonts/MyIcons.ttf

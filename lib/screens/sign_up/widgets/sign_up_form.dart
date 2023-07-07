@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:formz/formz.dart';
+import 'package:magicon/magicon.dart';
 
 class SignUpForm extends StatefulWidget {
   const SignUpForm({super.key});
@@ -44,7 +45,7 @@ class _SignUpFormState extends State<SignUpForm> {
                   label: 'Full name',
                   hintText: 'Full name',
                   textFieldType: TextInputType.name,
-                  prefix: Icon(MyIcons.solidUser),
+                  prefix: Icon(Magicon.solidUser),
                   focus: _focusNodes[0],
                   nextFocus: _focusNodes[1],
                   initialValue: state.name.value,
@@ -62,7 +63,7 @@ class _SignUpFormState extends State<SignUpForm> {
                   label: 'Email',
                   hintText: 'Email',
                   textFieldType: TextInputType.emailAddress,
-                  prefix: Icon(MyIcons.solidEnvelope),
+                  prefix: Icon(Magicon.solidEnvelope),
                   focus: _focusNodes[1],
                   nextFocus: _focusNodes[2],
                   initialValue: state.email.value,
@@ -81,7 +82,7 @@ class _SignUpFormState extends State<SignUpForm> {
                   hintText: 'Password',
                   textFieldType: TextInputType.text,
                   isPassword: true,
-                  prefix: Icon(MyIcons.solidLock),
+                  prefix: Icon(Magicon.solidLock),
                   focus: _focusNodes[2],
                   nextFocus: _focusNodes[3],
                   initialValue: state.password.value,
@@ -101,7 +102,7 @@ class _SignUpFormState extends State<SignUpForm> {
                   hintText: 'Confirm Password',
                   textFieldType: TextInputType.text,
                   isPassword: true,
-                  prefix: Icon(MyIcons.solidLock),
+                  prefix: Icon(Magicon.solidLock),
                   focus: _focusNodes[3],
                   initialValue: state.rePassword.value,
                   errorText:

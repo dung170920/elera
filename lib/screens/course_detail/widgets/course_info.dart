@@ -4,6 +4,7 @@ import 'package:elera/theme/theme.dart';
 import 'package:elera/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:magicon/magicon.dart';
 
 class CourseInfo extends StatelessWidget {
   const CourseInfo({super.key, required this.course});
@@ -29,7 +30,7 @@ class CourseInfo extends StatelessWidget {
                 width: 16.w,
               ),
               Icon(
-                MyIcons.solidStarHalf,
+                Magicon.solidStarHalf,
                 size: 20,
                 color: StatusType.WARNING.color,
               ),
@@ -96,7 +97,7 @@ class CourseInfo extends StatelessWidget {
               Row(
                 children: [
                   Icon(
-                    MyIcons.solidUsersGroup,
+                    Magicon.solidUsersGroup,
                     color: AppColors.primaryColor,
                   ),
                   SizedBox(
@@ -114,7 +115,7 @@ class CourseInfo extends StatelessWidget {
               Row(
                 children: [
                   Icon(
-                    MyIcons.solidClock,
+                    Magicon.solidClock,
                     color: AppColors.primaryColor,
                   ),
                   SizedBox(
@@ -132,7 +133,7 @@ class CourseInfo extends StatelessWidget {
               Row(
                 children: [
                   Icon(
-                    MyIcons.solidNoteText,
+                    Magicon.solidNoteText,
                     color: AppColors.primaryColor,
                   ),
                   SizedBox(

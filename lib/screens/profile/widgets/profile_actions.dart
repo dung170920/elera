@@ -4,6 +4,7 @@ import 'package:elera/theme/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:magicon/magicon.dart';
 
 class ProfileActions extends StatelessWidget {
   const ProfileActions({super.key});
@@ -52,7 +53,7 @@ class ProfileActions extends StatelessWidget {
                                       .read<ProfileCubit>()
                                       .switchTheme(),
                                 )
-                              : Icon(MyIcons.solidAngleRightSmall, size: 28),
+                              : Icon(Magicon.solidAngleRightSmall, size: 28),
                         ],
                       ),
                     ),

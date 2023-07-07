@@ -4,6 +4,7 @@ import 'package:elera/theme/theme.dart';
 import 'package:elera/utils/common.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:magicon/magicon.dart';
 
 class ProfileInfo extends StatelessWidget {
   const ProfileInfo({super.key, required this.user});
@@ -37,7 +38,7 @@ class ProfileInfo extends StatelessWidget {
                       color: AppColors.primaryColor,
                       borderRadius: radiusCircular(6)),
                   child: Icon(
-                    MyIcons.solidCamera,
+                    Magicon.solidCamera,
                     color: AppColors.lightColor,
                     size: 24,
                   ),

@@ -19,6 +19,7 @@ class CourseService {
   Future<CourseModel> getCourseById(String id) =>
       DioManager().dio.get('$apiUrl/$id').then((response) {
         var result = response.data;
+        print(result);
         return CourseModel.fromJson(result);
       }).catchError((error) {
         print(error.toString());

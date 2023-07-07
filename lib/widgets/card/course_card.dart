@@ -1,12 +1,14 @@
 import 'package:elera/constants/constants.dart';
 import 'package:elera/models/models.dart';
 import 'package:elera/routes/routes.dart';
+import 'package:elera/screens/course_detail/cubit/course_detail_cubit.dart';
 import 'package:elera/screens/profile/cubit/profile_cubit.dart';
 import 'package:elera/theme/theme.dart';
 import 'package:elera/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:magicon/magicon.dart';
 
 class CourseCard extends StatelessWidget {
   const CourseCard({super.key, required this.course});
@@ -16,8 +18,10 @@ class CourseCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => Navigator.pushNamed(context, AppRoutes.COURSE_DETAIL,
-          arguments: course.id),
+      onTap: () {
+        context.read<CourseDetailCubit>().getCourse(course.id);
+        Navigator.pushNamed(context, AppRoutes.COURSE_DETAIL);
+      },
       child: Container(
         padding: EdgeInsets.all(20.w),
         decoration: BoxDecoration(
@@ -54,7 +58,7 @@ class CourseCard extends StatelessWidget {
                           status: StatusType.INFO, text: course.type!.name),
                       InkWell(
                         child: Icon(
-                          MyIcons.bookmark,
+                          Magicon.bookmark,
                           color: AppColors.primaryColor,
                         ),
                       ),
@@ -108,7 +112,7 @@ class CourseCard extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       Icon(
-                        MyIcons.solidStarHalf,
+                        Magicon.solidStarHalf,
                         size: 20,
                         color: StatusType.WARNING.color,
                       ),

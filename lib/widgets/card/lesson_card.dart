@@ -4,6 +4,7 @@ import 'package:elera/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:magicon/magicon.dart';
 
 class LessonCard extends StatelessWidget {
   const LessonCard({super.key});
@@ -64,7 +65,7 @@ class LessonCard extends StatelessWidget {
           IconButton(
             onPressed: () {},
             icon: Icon(
-              MyIcons.solidPlayCircle,
+              Magicon.solidPlayCircle,
               color: AppColors.primaryColor,
               size: 28.w,
             ),
