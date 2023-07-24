@@ -2,14 +2,18 @@ import 'package:elera/models/models.dart';
 import 'package:elera/utils/utils.dart';
 
 class CourseTypeService {
-  var apiUrl = "course-types";
+  var apiUrl = "course-type";
 
-  Future<List<CourseTypeModel>> getCourseTypes() =>
+  Future<ApiResponseModel<List<CourseTypeModel>>> getCourseTypes() =>
       DioManager().dio.get(apiUrl).then((response) {
-        List result = response.data;
-        return result.map((e) => CourseTypeModel.fromJson(e)).toList();
+        return ApiResponseModel<List<CourseTypeModel>>.fromJson(
+          response.data,
+          (data) => data
+              .map<CourseTypeModel>((e) => CourseTypeModel.fromJson(e))
+              .toList(),
+        );
       }).catchError((error) {
         print(error.toString());
-        return <CourseTypeModel>[];
+        // return <CourseTypeModel>[];
       });
 }

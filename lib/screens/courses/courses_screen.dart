@@ -1,6 +1,5 @@
 import 'package:elera/constants/constants.dart';
 import 'package:elera/screens/courses/cubit/courses_cubit.dart';
-import 'package:elera/theme/theme.dart';
 import 'package:elera/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -48,6 +47,9 @@ class CoursesScreen extends StatelessWidget {
                             onChange: (value) => context
                                 .read<CoursesCubit>()
                                 .changeSelectedType(value),
+                          ),
+                          SizedBox(
+                            height: 24.w,
                           ),
                           state.list.isNotEmpty
                               ? Padding(

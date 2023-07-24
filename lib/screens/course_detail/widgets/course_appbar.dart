@@ -45,40 +45,22 @@ class CourseAppBar extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Container(
-                padding: EdgeInsets.all(0.1.w),
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  color: AppColors.lightColor.withOpacity(0.6),
-                ),
-                child: Center(
-                  child: IconButton(
-                    onPressed: () => Navigator.pop(context),
-                    icon: Icon(
-                      Magicon.solidArrowLeftSmall,
-                      color: AppColors.greyScaleColor[900],
-                      size: 24.w,
-                    ),
-                  ),
+              IconButton(
+                onPressed: () => Navigator.pop(context),
+                icon: Icon(
+                  Magicon.solidArrowLeftSmall,
+                  color: Colors.white,
+                  size: 28.w,
                 ),
               ),
-              // Container(
-              //   decoration: BoxDecoration(
-              //     shape: BoxShape.circle,
-              //     color: AppColors.lightColor.withOpacity(0.6),
-              //   ),
-              //   padding: EdgeInsets.all(0.1.w),
-              //   child: Center(
-              //     child: IconButton(
-              //       onPressed: () => Navigator.pop(context),
-              //       icon: Icon(
-              //         Magicon.bookmark,
-              //         color: AppColors.greyScaleColor[900],
-              //         size: 28.w,
-              //       ),
-              //     ),
-              //   ),
-              // ),
+              IconButton(
+                onPressed: () => Navigator.pop(context),
+                icon: Icon(
+                  Magicon.bookmark,
+                  color: Colors.white,
+                  size: 28.w,
+                ),
+              ),
             ],
           ),
         ),

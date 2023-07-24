@@ -43,7 +43,7 @@ class Data {
     );
     list.add(
       TextModel(
-        title: 'My Course',
+        title: 'My Courses',
         iconData: Magicon.noteText,
         activeIconData: Magicon.solidNoteText,
       ),

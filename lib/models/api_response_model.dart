@@ -23,9 +23,8 @@ class ApiResponseModel<T> extends Equatable {
     );
   }
 
-  factory ApiResponseModel.fromJson(
-      Map<String, dynamic> map, Function(Map<String, dynamic>) create) {
-    return ApiResponseModel<T>(
+  factory ApiResponseModel.fromJson(Map<String, dynamic> map, Function create) {
+    return ApiResponseModel(
       code: map['code'],
       message: map['message'],
       result: create(map['result']),

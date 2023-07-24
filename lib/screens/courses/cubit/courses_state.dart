@@ -9,7 +9,7 @@ class CoursesState extends Equatable {
     this.selectedType = 0,
   });
 
-  factory CoursesState.loading() {
+  factory CoursesState.init() {
     return CoursesState(
       types: [],
       status: LoadStatus.loading,
