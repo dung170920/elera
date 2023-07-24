@@ -17,7 +17,7 @@ class PagedListModel<T> extends Equatable {
   List<Object?> get props => [data, pageNumber, pageSize, total];
 
   static PagedListModel<T> empty<T>() {
-    return PagedListModel<T>(data: [], pageNumber: 1, pageSize: 10, total: 0);
+    return PagedListModel<T>(data: [], pageNumber: 1, pageSize: 10, total: 1);
   }
 
   bool get isEmpty => this == PagedListModel.empty();
@@ -47,9 +47,9 @@ class PagedListModel<T> extends Equatable {
     });
     return PagedListModel<T>(
       data: data,
-      pageNumber: map['pageNumber'] as int,
-      pageSize: map['pageSize'] as int,
-      total: map['totalPages'] as int,
+      pageNumber: map['pageNumber'],
+      pageSize: map['pageSize'],
+      total: map['totalPages'],
     );
   }
 

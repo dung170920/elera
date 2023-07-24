@@ -73,7 +73,7 @@ class AppPages {
         page: HomeScreen(),
         bloc: BlocProvider(
           lazy: true,
-          create: (_) => HomeCubit(),
+          create: (_) => HomeCubit(CourseService())..init(),
         ),
       ),
       RouteModel(

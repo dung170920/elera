@@ -1,4 +1,3 @@
-import 'package:elera/constants/constants.dart';
 import 'package:elera/models/course_model.dart';
 import 'package:elera/routes/routes.dart';
 import 'package:elera/theme/theme.dart';
@@ -7,7 +6,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class PopularCourses extends StatelessWidget {
-  const PopularCourses({super.key});
+  const PopularCourses({super.key, required this.courses});
+
+  final List<CourseModel> courses;
 
   @override
   Widget build(BuildContext context) {
@@ -40,8 +41,8 @@ class PopularCourses extends StatelessWidget {
               physics: NeverScrollableScrollPhysics(),
               shrinkWrap: true,
               itemBuilder: (context, index) =>
-                  CourseCard(course: CourseModel.empty),
-              itemCount: 0,
+                  CourseCard(course: courses[index]),
+              itemCount: courses.length,
               separatorBuilder: (context, index) => SizedBox(height: 16.w),
             ),
           )
