@@ -32,7 +32,8 @@ class AppPages {
         path: AppRoutes.SPLASH,
         page: SplashScreen(),
         bloc: BlocProvider(
-          create: (_) => SplashCubit(authService: _authService),
+          create: (_) => SplashCubit(
+              authService: _authService, userService: UserService()),
         ),
       ),
       RouteModel(

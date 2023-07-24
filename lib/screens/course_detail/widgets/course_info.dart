@@ -20,8 +20,8 @@ class CourseInfo extends StatelessWidget {
         runSpacing: 20.w,
         children: [
           Text(
-            course.title!,
-            style: AppTextStyle.h3(),
+            course.title ?? "",
+            style: AppTextStyle.h4(),
           ),
           Row(
             children: [
@@ -37,12 +37,12 @@ class CourseInfo extends StatelessWidget {
               SizedBox(
                 width: 4.w,
               ),
-              // Text(
-              //   course.rate!.toString(),
-              //   style: AppTextStyle.bodyLarge(
-              //     FontWeight.w500,
-              //   ),
-              // ),
+              Text(
+                course.rating!.toString(),
+                style: AppTextStyle.bodyLarge(
+                  FontWeight.w500,
+                ),
+              ),
               SizedBox(
                 width: 4.w,
               ),
@@ -55,41 +55,21 @@ class CourseInfo extends StatelessWidget {
               SizedBox(
                 width: 4.w,
               ),
-              // Text(
-              //   '${formatCurrency(price: double.parse(course.numberVote!.toString()))} reviews',
-              //   style: AppTextStyle.bodyLarge(
-              //     FontWeight.w500,
-              //   ),
-              //   overflow: TextOverflow.ellipsis,
-              // ),
+              Text(
+                course.reviewsCount != null
+                    ? '${formatCurrency(price: double.parse(course.reviewsCount.toString()))} reviews'
+                    : "0 review",
+                style: AppTextStyle.bodyLarge(
+                  FontWeight.w500,
+                ),
+                overflow: TextOverflow.ellipsis,
+              ),
             ],
           ),
           Text(
             formatCurrency(price: course.price!, symbol: '\$'),
             style: AppTextStyle.h3(AppColors.primaryColor),
           ),
-          // course.salePrice != null
-          //     ? Row(
-          //         children: [
-          //           Text(
-          //             formatCurrency(price: course.salePrice!, symbol: '\$'),
-          //             style: AppTextStyle.h3(AppColors.primaryColor),
-          //           ),
-          //           SizedBox(
-          //             width: 12.w,
-          //           ),
-          //           Text(
-          //             formatCurrency(price: course.price!, symbol: '\$'),
-          //             style: AppTextStyle.h5(
-          //               AppColors.greyScaleColor[500],
-          //             ).copyWith(decoration: TextDecoration.lineThrough),
-          //           ),
-          //         ],
-          //       )
-          //     : Text(
-          //         formatCurrency(price: course.price!, symbol: '\$'),
-          //         style: AppTextStyle.h3(AppColors.primaryColor),
-          //       ),
           Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -103,13 +83,15 @@ class CourseInfo extends StatelessWidget {
                   SizedBox(
                     width: 4.w,
                   ),
-                  // Text(
-                  //   '${formatCurrency(price: double.parse(course.numberVote!.toString()))} students',
-                  //   style: AppTextStyle.bodyLarge(
-                  //     FontWeight.w500,
-                  //     AppColors.greyScaleColor[800],
-                  //   ),
-                  // )
+                  Text(
+                    course.studentsCount == 0
+                        ? '0 student'
+                        : '${formatCurrency(price: double.parse(course.studentsCount!.toString()))} students',
+                    style: AppTextStyle.bodyLarge(
+                      FontWeight.w500,
+                      AppColors.greyScaleColor[800],
+                    ),
+                  )
                 ],
               ),
               Row(
@@ -121,13 +103,15 @@ class CourseInfo extends StatelessWidget {
                   SizedBox(
                     width: 4.w,
                   ),
-                  // Text(
-                  //   '${course.totalDuration ?? 0} hours',
-                  //   style: AppTextStyle.bodyLarge(
-                  //     FontWeight.w500,
-                  //     AppColors.greyScaleColor[800],
-                  //   ),
-                  // )
+                  Text(
+                    course.courseDuration == 0
+                        ? "0 hour"
+                        : '${Duration(seconds: course.courseDuration!).inHours} hours',
+                    style: AppTextStyle.bodyLarge(
+                      FontWeight.w500,
+                      AppColors.greyScaleColor[800],
+                    ),
+                  )
                 ],
               ),
               Row(
@@ -140,7 +124,10 @@ class CourseInfo extends StatelessWidget {
                     width: 4.w,
                   ),
                   Text(
-                    '124 lesssons',
+                    // course. == 0
+                    //     ? "0 lesson"
+                    //     : '${course.courseDuration} hours',
+                    '124 lessons',
                     style: AppTextStyle.bodyLarge(
                       FontWeight.w500,
                       AppColors.greyScaleColor[800],

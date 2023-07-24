@@ -12,11 +12,10 @@ class CourseDetailCubit extends Cubit<CourseDetailState> {
 
   CourseDetailCubit() : super(CourseDetailState.loading());
 
-  Future<void> getCourse(String id) async {
+  void getCourse(String id) async {
     try {
-      var course = await courseService.getCourseById(id);
-      print(course);
-      emit(CourseDetailState.success(course));
+      var response = await courseService.getCourseById(id);
+      emit(CourseDetailState.success(response.result));
     } on AppExceptions catch (e) {
       emit(CourseDetailState.failure(e.message));
     }

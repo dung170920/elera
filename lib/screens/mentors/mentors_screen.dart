@@ -1,4 +1,5 @@
 import 'package:elera/constants/constants.dart';
+import 'package:elera/models/models.dart';
 import 'package:elera/routes/routes.dart';
 import 'package:elera/theme/theme.dart';
 import 'package:elera/widgets/widgets.dart';
@@ -36,6 +37,7 @@ class MentorsScreen extends StatelessWidget {
                   physics: NeverScrollableScrollPhysics(),
                   shrinkWrap: true,
                   itemBuilder: (context, index) => AccountCard(
+                    user: UserModel.empty,
                     action: Padding(
                       padding: EdgeInsets.only(left: 12.w),
                       child: AppElevatedButton.primary(

@@ -1,6 +1,7 @@
 import 'package:elera/theme/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:tab_indicator_styler/tab_indicator_styler.dart';
 
 class CourseTabbar extends StatelessWidget {
   const CourseTabbar({super.key, required this.tabController});
@@ -21,9 +22,11 @@ class CourseTabbar extends StatelessWidget {
       ),
       child: TabBar(
         controller: tabController,
-        indicatorWeight: 4.w,
-        indicatorColor: AppColors.primaryColor,
         indicatorSize: TabBarIndicatorSize.tab,
+        indicator: MaterialIndicator(
+          tabPosition: TabPosition.bottom,
+          color: AppColors.primaryColor,
+        ),
         unselectedLabelColor: AppColors.greyScaleColor[500],
         labelColor: AppColors.primaryColor,
         unselectedLabelStyle: AppTextStyle.bodyXLarge(

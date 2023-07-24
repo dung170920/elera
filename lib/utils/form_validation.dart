@@ -31,14 +31,14 @@ class PasswordInput extends FormzInput<String, ValidationError> {
   const PasswordInput.dirty([super.value = '']) : super.dirty(); // check lỗi
 
   static final _passwordRegex =
-      RegExp(r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#\$&*~]).{8,}$');
+      RegExp(r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#\$&*~]).{6,20}$');
 
   @override
   ValidationError? validator(String value) {
     return _passwordRegex.hasMatch(value)
         ? null
         : ValidationError(
-            'Password must be at least 8 characters and contain 1 upper character, 1 lower character, 1 number and 1 special character',
+            'Password must contain 6 to 20 characters with at least one of each: uppercase, lowercase, number and special',
           );
   }
 }

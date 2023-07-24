@@ -11,12 +11,11 @@ part 'splash_state.dart';
 class SplashCubit extends Cubit<SplashState> {
   late StreamSubscription<String> _authTokenSubscription;
   final AuthService authService;
+  final UserService userService;
 
-  SplashCubit({required AuthService authService})
-      : authService = authService,
-        super(SplashState.unAuthenticated()) {
-    _authTokenSubscription = authService.accessToken.listen((token) {
-      print("token: $token");
+  SplashCubit({required this.authService, required this.userService})
+      : super(SplashState.unAuthenticated()) {
+    authService.accessToken.listen((token) {
       onAuthUserChanged(token);
     });
   }
@@ -24,7 +23,9 @@ class SplashCubit extends Cubit<SplashState> {
   void onAuthUserChanged(String token) async {
     if (token.isNotEmpty) {
       Map<String, dynamic> decodedToken = JwtDecoder.decode(token);
-      emit(SplashState.authenticated(UserModel.fromJson(decodedToken), token));
+      print("decodedToken: $decodedToken");
+      var result = await userService.getUserById(decodedToken['aud']);
+      emit(SplashState.authenticated(result.result));
     } else {
       emit(SplashState.unAuthenticated());
     }

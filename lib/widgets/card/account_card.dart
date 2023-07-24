@@ -1,34 +1,47 @@
 import 'package:elera/constants/constants.dart';
+import 'package:elera/models/models.dart';
 import 'package:elera/theme/theme.dart';
+import 'package:elera/utils/common.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class AccountCard extends StatelessWidget {
-  const AccountCard({super.key, required this.action});
+  const AccountCard({super.key, required this.action, required this.user});
 
   final Widget action;
+  final UserModel user;
 
   @override
   Widget build(BuildContext context) {
     return Row(
-      crossAxisAlignment: CrossAxisAlignment.start,
+      crossAxisAlignment: CrossAxisAlignment.center,
+      mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        CircleAvatar(
-          child: Image.asset(
-            logo,
-            height: 60.w,
-            width: 60.w,
+        Container(
+          width: 60.w,
+          height: 60.w,
+          decoration: BoxDecoration(
+            borderRadius: radiusCircular(100),
+            image: DecorationImage(
+              image: user.avatar != null
+                  ? NetworkImage(
+                      user.avatar!,
+                    )
+                  : AssetImage(
+                      logo,
+                    ) as ImageProvider,
+            ),
           ),
         ),
         SizedBox(
-          width: 20.w,
+          width: 16.w,
         ),
         Expanded(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                'Nguyen Thi Hoang Dung',
+                user.name ?? "",
                 style: AppTextStyle.h6(),
               ),
               SizedBox(

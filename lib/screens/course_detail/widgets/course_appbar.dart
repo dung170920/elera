@@ -46,35 +46,39 @@ class CourseAppBar extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Container(
-                height: 36.w,
-                width: 36.w,
+                padding: EdgeInsets.all(0.1.w),
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
                   color: AppColors.lightColor.withOpacity(0.6),
                 ),
-                child: IconButton(
-                  onPressed: () => Navigator.pop(context),
-                  icon: Icon(
-                    Magicon.solidArrowLeftSmall,
-                    color: AppColors.greyScaleColor[900],
+                child: Center(
+                  child: IconButton(
+                    onPressed: () => Navigator.pop(context),
+                    icon: Icon(
+                      Magicon.solidArrowLeftSmall,
+                      color: AppColors.greyScaleColor[900],
+                      size: 24.w,
+                    ),
                   ),
                 ),
               ),
-              Container(
-                height: 36.w,
-                width: 36.w,
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  color: AppColors.lightColor.withOpacity(0.6),
-                ),
-                child: IconButton(
-                  onPressed: () => Navigator.pop(context),
-                  icon: Icon(
-                    Magicon.bookmark,
-                    color: AppColors.greyScaleColor[900],
-                  ),
-                ),
-              ),
+              // Container(
+              //   decoration: BoxDecoration(
+              //     shape: BoxShape.circle,
+              //     color: AppColors.lightColor.withOpacity(0.6),
+              //   ),
+              //   padding: EdgeInsets.all(0.1.w),
+              //   child: Center(
+              //     child: IconButton(
+              //       onPressed: () => Navigator.pop(context),
+              //       icon: Icon(
+              //         Magicon.bookmark,
+              //         color: AppColors.greyScaleColor[900],
+              //         size: 28.w,
+              //       ),
+              //     ),
+              //   ),
+              // ),
             ],
           ),
         ),

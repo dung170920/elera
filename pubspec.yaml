@@ -1,5 +1,5 @@
 name: elera
-description: A e-learning project.
+description: An e-learning project.
 publish_to: "none"
 
 version: 1.0.0+1
@@ -28,7 +28,8 @@ dependencies:
   dio: ^5.1.2
   readmore: ^2.2.0
   jwt_decoder: ^2.0.1
-  magicon: ^0.0.2
+  magicon: ^0.0.3
+  tab_indicator_styler: ^2.0.0
 
 dev_dependencies:
   flutter_test:

@@ -38,13 +38,13 @@ class CourseCard extends StatelessWidget {
               borderRadius: radiusCircular(20),
               child: Image.network(
                 course.imageUrl ?? '',
-                width: 120.w,
-                height: 120.w,
+                width: 100.w,
+                height: 100.w,
                 fit: BoxFit.cover,
               ),
             ),
             SizedBox(
-              width: 16.w,
+              width: 12.w,
             ),
             Expanded(
               child: Column(
@@ -56,16 +56,23 @@ class CourseCard extends StatelessWidget {
                     children: [
                       AppTag.inverted(
                           status: StatusType.INFO, text: course.type!.name),
-                      InkWell(
-                        child: Icon(
-                          Magicon.bookmark,
-                          color: AppColors.primaryColor,
-                        ),
-                      ),
+                      course.isBookmarked != null && course.isBookmarked == true
+                          ? InkWell(
+                              child: Icon(
+                                Magicon.solidBookmark,
+                                color: AppColors.primaryColor,
+                              ),
+                            )
+                          : InkWell(
+                              child: Icon(
+                                Magicon.bookmark,
+                                color: AppColors.primaryColor,
+                              ),
+                            ),
                     ],
                   ),
                   SizedBox(
-                    height: 12.w,
+                    height: 8.w,
                   ),
                   Text(
                     course.title ?? '',
@@ -73,40 +80,14 @@ class CourseCard extends StatelessWidget {
                     overflow: TextOverflow.ellipsis,
                   ),
                   SizedBox(
-                    height: 12.w,
+                    height: 4.w,
                   ),
                   Text(
                     formatCurrency(price: course.price!, symbol: '\$'),
                     style: AppTextStyle.h6(AppColors.primaryColor),
                   ),
-                  // course.salePrice != null
-                  //     ? Row(
-                  //         children: [
-                  //           Text(
-                  //             formatCurrency(
-                  //                 price: course.salePrice!, symbol: '\$'),
-                  //             style: AppTextStyle.h6(AppColors.primaryColor),
-                  //           ),
-                  //           SizedBox(
-                  //             width: 8.w,
-                  //           ),
-                  //           Text(
-                  //             formatCurrency(
-                  //                 price: course.price!, symbol: '\$'),
-                  //             style: AppTextStyle.bodySmall(
-                  //               FontWeight.w500,
-                  //               AppColors.greyScaleColor[700],
-                  //             ).copyWith(
-                  //                 decoration: TextDecoration.lineThrough),
-                  //           ),
-                  //         ],
-                  //       )
-                  //     : Text(
-                  //         formatCurrency(price: course.price!, symbol: '\$'),
-                  //         style: AppTextStyle.h6(AppColors.primaryColor),
-                  //       ),
                   SizedBox(
-                    height: 12.w,
+                    height: 8.w,
                   ),
                   Row(
                     crossAxisAlignment: CrossAxisAlignment.center,
@@ -120,7 +101,7 @@ class CourseCard extends StatelessWidget {
                         width: 4.w,
                       ),
                       Text(
-                        course.rate!.toString(),
+                        course.rating!.toString(),
                         style: AppTextStyle.bodySmall(
                           FontWeight.w500,
                           AppColors.greyScaleColor[700],

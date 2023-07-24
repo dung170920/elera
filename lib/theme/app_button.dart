@@ -11,6 +11,7 @@ extension AppElevatedButton on ElevatedButton {
     required Widget child,
     ButtonSize size = ButtonSize.large,
     double? radius,
+    bool isLoading = false,
   }) {
     return ElevatedButton(
       style: ElevatedButton.styleFrom(
@@ -25,9 +26,17 @@ extension AppElevatedButton on ElevatedButton {
           borderRadius: radiusCircular(radius),
         ),
         elevation: 0,
+        maximumSize: Size.fromHeight(58.h),
+        //minimumSize: Size.fromHeight(48.h),
       ),
       onPressed: onPressed,
-      child: child,
+      child: isLoading
+          ? Center(
+              child: CircularProgressIndicator(
+                color: Colors.white,
+              ),
+            )
+          : child,
     );
   }
 

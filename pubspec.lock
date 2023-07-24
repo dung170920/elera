@@ -452,10 +452,10 @@ packages:
     dependency: "direct main"
     description:
       name: magicon
-      sha256: ad55b29fb742d7565f10bd4d880bfe6068cdf7af4a7af9e6a65871b27cab6d0b
+      sha256: "7aef6f1050f5108adb2d8921bb797b497cda1c82200b1229255fc21b4d9492e8"
       url: "https://pub.dev"
     source: hosted
-    version: "0.0.2"
+    version: "0.0.3"
   matcher:
     dependency: transitive
     description:
@@ -757,6 +757,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "3.1.0"
+  tab_indicator_styler:
+    dependency: "direct main"
+    description:
+      name: tab_indicator_styler
+      sha256: "9e7e90367e20f71f3882fc6578fdcced35ab1c66ab20fcb623cdcc20d2796c76"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.0.0"
   term_glyph:
     dependency: transitive
     description:

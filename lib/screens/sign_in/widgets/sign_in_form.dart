@@ -87,6 +87,7 @@ class _SignInFormState extends State<SignInForm> {
               AppElevatedButton.primary(
                 color: AppColors.primaryColor,
                 radius: 100,
+                isLoading: state.status == FormzSubmissionStatus.inProgress,
                 onPressed: state.status == FormzSubmissionStatus.inProgress
                     ? null
                     : () => context.read<SignInCubit>().signInSubmitted(),

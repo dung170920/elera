@@ -49,7 +49,7 @@ class PagedListModel<T> extends Equatable {
       data: data,
       pageNumber: map['pageNumber'] as int,
       pageSize: map['pageSize'] as int,
-      total: map['total'] as int,
+      total: map['totalPages'] as int,
     );
   }
 

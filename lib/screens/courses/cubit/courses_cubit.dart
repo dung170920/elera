@@ -16,9 +16,9 @@ class CoursesCubit extends Cubit<CoursesState> {
 
   Future<void> init() async {
     try {
-      final courses = await courseService.getCourses(state.list.toJson());
+      final response = await courseService.getCourses(state.list.toJson());
       final types = await courseTypeService.getCourseTypes();
-      emit(CoursesState.success(courses, types));
+      emit(CoursesState.success(response.result, types));
     } on AppExceptions catch (e) {
       emit(CoursesState.failure(e.message));
     }

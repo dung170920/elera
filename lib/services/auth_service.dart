@@ -1,37 +1,42 @@
 import 'dart:async';
 import 'package:elera/constants/constants.dart';
+import 'package:elera/models/models.dart';
 import 'package:elera/utils/utils.dart';
-// import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-import 'package:jwt_decoder/jwt_decoder.dart';
 
 class AuthService {
-  var apiUrl = "auth";
+  var apiUrl = "user";
   final GoogleSignIn _googleSignIn = GoogleSignIn.standard();
   final _controller = StreamController<String>.broadcast();
   Stream<String> get accessToken async* {
-    String token = Global.storageService.getString(Preferences.ACCESS_TOKEN);
-
-    if (token.isEmpty) {
-      yield "";
-    } else {
-      bool isExpired = JwtDecoder.isExpired(token);
-
-      yield isExpired ? "" : token;
-    }
+    String accessToken =
+        Global.storageService.getString(Preferences.ACCESS_TOKEN);
+    print("authService: $accessToken");
+    yield accessToken.isEmpty ? "" : accessToken;
 
     yield* _controller.stream;
   }
 
-  void storeToken(String token) async {
-    await Global.storageService.setString(Preferences.ACCESS_TOKEN, token);
-    print("stored");
+  Future<void> storeToken(TokensModel token) async {
+    if (token.accessToken != null) {
+      await Global.storageService
+          .setString(Preferences.ACCESS_TOKEN, token.accessToken!);
+    }
+
+    if (token.refreshToken != null) {
+      await Global.storageService
+          .setString(Preferences.REFRESH_TOKEN, token.refreshToken!);
+    }
   }
 
-  Future<void> signUp(params) =>
-      DioManager().dio.post("$apiUrl/register", data: params).then((response) {
-        _controller.sink.add(response.data['result']);
-        storeToken(response.data['result']);
+  Future<void> signUp(params) => DioManager()
+          .dio
+          .post("$apiUrl/register", data: params)
+          .then((response) async {
+        var result = ApiResponseModel<TokensModel>.fromJson(
+            response.data, (data) => TokensModel.fromJson(data));
+        _controller.sink.add(result.result.accessToken!);
+        await storeToken(result.result);
       }).catchError((error) {
         print(error.toString());
       });
@@ -40,35 +45,49 @@ class AuthService {
           .dio
           .post("$apiUrl/login", data: params)
           .then((response) async {
-        _controller.sink.add(response.data['result']);
-        storeToken(response.data['result']);
+        var result = ApiResponseModel<TokensModel>.fromJson(
+            response.data, (data) => TokensModel.fromJson(data));
+        _controller.sink.add(result.result.accessToken!);
+        await storeToken(result.result);
       }).catchError((error) {
         print(error.toString());
       });
 
-  // Future<void> logInWithGoogle() async {
-  //   try {
-  //     final googleUser = await _googleSignIn.signIn();
-  //     final googleAuth = await googleUser!.authentication;
-  //     // final credential = GoogleAuthProvider.credential(
-  //     //   accessToken: googleAuth.accessToken,
-  //     //   idToken: googleAuth.idToken,
-  //     // );
+  Future<void> logInWithGoogle() async {
+    try {
+      final googleUser = await _googleSignIn.signIn();
+      final googleAuth = await googleUser!.authentication;
+      // final credential = GoogleAuthProvider.credential(
+      //   accessToken: googleAuth.accessToken,
+      //   idToken: googleAuth.idToken,
+      // );
 
-  //     // await firebaseAuth.signInWithCredential(credential);
-  //   } on FirebaseAuthException catch (e) {
-  //     print(e.code);
-  //     throw AppExceptions.fromCode(e.code);
-  //   } catch (_) {
-  //     throw const AppExceptions();
-  //   }
-  // }
+      // await firebaseAuth.signInWithCredential(credential);
+    } catch (e) {
+      throw const AppExceptions();
+    }
+  }
+
+  Future<ApiResponseModel<TokensModel>> getNewAccessToken(params) =>
+      DioManager()
+          .dio
+          .post("$apiUrl/refresh-token", data: params)
+          .then((response) async {
+        var result = ApiResponseModel<TokensModel>.fromJson(
+            response.data, (data) => TokensModel.fromJson(data));
+        _controller.sink.add(result.result.accessToken!);
+        await storeToken(result.result);
+        return result;
+      }).catchError((error) {
+        print(error.toString());
+      });
 
   Future<void> logOut() async {
     try {
       Future.wait([
         Global.storageService.remove(Preferences.ACCESS_TOKEN),
         Global.storageService.remove(Preferences.REFRESH_TOKEN),
+        DioManager().dio.post("$apiUrl/logout")
       ]);
       _controller.add("");
     } catch (e) {

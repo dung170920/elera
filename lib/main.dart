@@ -12,8 +12,6 @@ void main() async {
   runApp(const MyApp());
 }
 
-// final navigatorKey = GlobalKey<NavigatorState>();
-
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
@@ -30,7 +28,6 @@ class MyApp extends StatelessWidget {
         builder: (context, child) => BlocBuilder<ProfileCubit, ProfileState>(
           builder: (context, state) {
             return MaterialApp(
-              // navigatorKey: navigatorKey,
               title: 'Elera',
               debugShowCheckedModeBanner: false,
               initialRoute: AppRoutes.SPLASH,
