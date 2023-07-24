@@ -65,7 +65,9 @@ class _CourseDetailScreenState extends State<CourseDetailScreen>
                           CourseAbout(
                             course: state.course,
                           ),
-                          CourseLessons(),
+                          CourseLessons(
+                            course: state.course,
+                          ),
                           CourseReview()
                         ],
                       ),

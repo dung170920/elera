@@ -1,3 +1,4 @@
+import 'package:elera/models/models.dart';
 import 'package:elera/screens/profile/cubit/profile_cubit.dart';
 import 'package:elera/theme/theme.dart';
 import 'package:elera/utils/utils.dart';
@@ -7,7 +8,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:magicon/magicon.dart';
 
 class LessonCard extends StatelessWidget {
-  const LessonCard({super.key});
+  const LessonCard({super.key, required this.lesson});
+  final CourseLessonModel lesson;
 
   @override
   Widget build(BuildContext context) {
@@ -26,35 +28,35 @@ class LessonCard extends StatelessWidget {
         children: [
           Row(
             children: [
-              Container(
-                height: 44.w,
-                width: 44.w,
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  color: AppColors.primaryColor.withOpacity(0.08),
-                ),
-                child: Center(
-                  child: Text(
-                    '01',
-                    style: AppTextStyle.h6(AppColors.primaryColor),
-                  ),
-                ),
-              ),
-              SizedBox(
-                width: 16.w,
-              ),
+              // Container(
+              //   height: 44.w,
+              //   width: 44.w,
+              //   decoration: BoxDecoration(
+              //     shape: BoxShape.circle,
+              //     color: AppColors.primaryColor.withOpacity(0.08),
+              //   ),
+              //   child: Center(
+              //     child: Text(
+              //       lesson.,
+              //       style: AppTextStyle.h6(AppColors.primaryColor),
+              //     ),
+              //   ),
+              // ),
+              // SizedBox(
+              //   width: 16.w,
+              // ),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    'Why Using Figma',
+                    lesson.title ?? "",
                     style: AppTextStyle.h6(),
                   ),
                   SizedBox(
                     height: 6.w,
                   ),
                   Text(
-                    '10 min',
+                    '${Duration(seconds: lesson.duration ?? 0).inMinutes} min',
                     style: AppTextStyle.bodyMedium(
                         FontWeight.w500, AppColors.greyScaleColor[700]),
                   ),

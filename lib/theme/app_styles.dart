@@ -38,6 +38,13 @@ class AppStyles {
         color: AppColors.shadowColor.withOpacity(0.08),
       )
     ],
+    4: [
+      BoxShadow(
+        blurRadius: 60,
+        offset: Offset(-2, 5),
+        color: AppColors.shadowColor.withOpacity(0.05),
+      )
+    ],
   };
 
   static Map<int, List<BoxShadow>> buttonShadow = {
