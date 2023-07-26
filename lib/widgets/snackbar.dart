@@ -27,7 +27,7 @@ extension ShowSnackBarBuildContextExtension on BuildContext {
           decoration: BoxDecoration(
             color: AppColors.lightColor,
             borderRadius: radiusCircular(),
-            boxShadow: AppStyles.snackbarShadow,
+            boxShadow: AppLayouts.snackbarShadow,
           ),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -53,7 +53,7 @@ extension ShowSnackBarBuildContextExtension on BuildContext {
                         child: Text(
                           message,
                           softWrap: true,
-                          style: AppTextStyle.bodyXLarge(
+                          style: AppTextStyles.bodyXLarge(
                             FontWeight.bold,
                             AppColors.greyScaleColor[900],
                           ),

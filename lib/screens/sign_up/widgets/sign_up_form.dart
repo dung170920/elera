@@ -1,4 +1,5 @@
 import 'package:elera/constants/constants.dart';
+import 'package:elera/widgets/widgets.dart';
 import 'package:elera/screens/sign_up/cubit/sign_up_cubit.dart';
 import 'package:elera/theme/theme.dart';
 import 'package:flutter/material.dart';
@@ -41,7 +42,7 @@ class _SignUpFormState extends State<SignUpForm> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                AppTextField(
+                Input(
                   label: 'Full name',
                   hintText: 'Full name',
                   textFieldType: TextInputType.name,
@@ -59,7 +60,7 @@ class _SignUpFormState extends State<SignUpForm> {
                 SizedBox(
                   height: 20.w,
                 ),
-                AppTextField(
+                Input(
                   label: 'Email',
                   hintText: 'Email',
                   textFieldType: TextInputType.emailAddress,
@@ -77,7 +78,7 @@ class _SignUpFormState extends State<SignUpForm> {
                 SizedBox(
                   height: 20.w,
                 ),
-                AppTextField(
+                Input(
                   label: 'Password',
                   hintText: 'Password',
                   textFieldType: TextInputType.text,
@@ -97,7 +98,7 @@ class _SignUpFormState extends State<SignUpForm> {
                 SizedBox(
                   height: 20.w,
                 ),
-                AppTextField(
+                Input(
                   label: 'Confirm Password',
                   hintText: 'Confirm Password',
                   textFieldType: TextInputType.text,
@@ -125,7 +126,7 @@ class _SignUpFormState extends State<SignUpForm> {
                   child: Center(
                     child: Text(
                       'Sign up',
-                      style: AppTextStyle.bodyLarge(
+                      style: AppTextStyles.bodyLarge(
                         FontWeight.bold,
                         AppColors.lightColor,
                       ),

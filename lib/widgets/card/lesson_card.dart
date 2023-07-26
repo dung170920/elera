@@ -18,7 +18,7 @@ class LessonCard extends StatelessWidget {
       margin: EdgeInsets.only(bottom: 24.w, left: 24.w, right: 24.w),
       decoration: BoxDecoration(
         borderRadius: radiusCircular(16),
-        //boxShadow: AppStyles.cardShadow[2],
+        //boxShadow: AppLayouts.cardShadow[2],
         color: context.read<ProfileCubit>().state.theme == AppTheme.lightTheme
             ? AppColors.lightColor
             : AppColors.darkColor[2],
@@ -38,7 +38,7 @@ class LessonCard extends StatelessWidget {
               //   child: Center(
               //     child: Text(
               //       lesson.,
-              //       style: AppTextStyle.h6(AppColors.primaryColor),
+              //       style: AppTextStyles.h6(AppColors.primaryColor),
               //     ),
               //   ),
               // ),
@@ -50,14 +50,14 @@ class LessonCard extends StatelessWidget {
                 children: [
                   Text(
                     lesson.title ?? "",
-                    style: AppTextStyle.h6(),
+                    style: AppTextStyles.h6(),
                   ),
                   SizedBox(
                     height: 6.w,
                   ),
                   Text(
                     '${Duration(seconds: lesson.duration ?? 0).inMinutes} min',
-                    style: AppTextStyle.bodyMedium(
+                    style: AppTextStyles.bodyMedium(
                         FontWeight.w500, AppColors.greyScaleColor[700]),
                   ),
                 ],

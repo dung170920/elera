@@ -1,8 +1,8 @@
 import 'package:elera/theme/theme.dart';
 import 'package:flutter/material.dart';
 
-class AppStyles {
-  AppStyles._();
+class AppLayouts {
+  AppLayouts._();
 
   static final DEFAULT_RADIUS = 16.0;
   static final DEFAULT_LARGE_RADIUS = 32.0;

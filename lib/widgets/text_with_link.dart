@@ -20,7 +20,7 @@ class TextWithLink extends StatelessWidget {
       children: [
         Text(
           text,
-          style: AppTextStyle.bodyMedium(null, AppColors.greyScaleColor[500]),
+          style: AppTextStyles.bodyMedium(null, AppColors.greyScaleColor[500]),
         ),
         SizedBox(
           width: 8.w,
@@ -29,7 +29,7 @@ class TextWithLink extends StatelessWidget {
           onTap: linkAction,
           child: Text(
             linkText,
-            style: AppTextStyle.bodyMedium(
+            style: AppTextStyles.bodyMedium(
                 FontWeight.w600, AppColors.primaryColor),
           ),
         )

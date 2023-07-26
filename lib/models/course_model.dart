@@ -17,7 +17,7 @@ class CourseModel extends Equatable {
   final int? reviewsCount;
   final bool? isBookmarked;
   final int? courseDuration;
-  final List<CourseSectionModel>? sections;
+  final List<CourseSectionCardModel>? sections;
 
   const CourseModel({
     required this.id,
@@ -64,10 +64,10 @@ class CourseModel extends Equatable {
       ];
 
   factory CourseModel.fromJson(Map<String, dynamic> map) {
-    final list = <CourseSectionModel>[];
+    final list = <CourseSectionCardModel>[];
     if (map['sections'] != null) {
-      map['sections']
-          .forEach((section) => list.add(CourseSectionModel.fromJson(section)));
+      map['sections'].forEach(
+          (section) => list.add(CourseSectionCardModel.fromJson(section)));
     }
 
     return CourseModel(
@@ -110,7 +110,7 @@ class CourseModel extends Equatable {
     int? reviewsCount,
     bool? isBookmarked,
     int? courseDuration,
-    List<CourseSectionModel>? sections,
+    List<CourseSectionCardModel>? sections,
   }) {
     return CourseModel(
       id: id ?? this.id,

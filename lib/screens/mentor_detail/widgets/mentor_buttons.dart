@@ -1,5 +1,6 @@
 import 'package:elera/constants/constants.dart';
 import 'package:elera/theme/theme.dart';
+import 'package:elera/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:magicon/magicon.dart';
@@ -29,7 +30,7 @@ class MentorButtons extends StatelessWidget {
                   ),
                   Text(
                     'Message',
-                    style: AppTextStyle.bodyXLarge(
+                    style: AppTextStyles.bodyXLarge(
                         FontWeight.bold, AppColors.lightColor),
                   )
                 ],
@@ -58,7 +59,7 @@ class MentorButtons extends StatelessWidget {
                   ),
                   Text(
                     'Follow',
-                    style: AppTextStyle.bodyXLarge(
+                    style: AppTextStyles.bodyXLarge(
                         FontWeight.bold, AppColors.primaryColor),
                   )
                 ],

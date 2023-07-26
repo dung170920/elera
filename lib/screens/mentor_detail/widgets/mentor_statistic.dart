@@ -17,12 +17,12 @@ class MentorStatistic extends StatelessWidget {
                 children: [
                   Text(
                     '25',
-                    style: AppTextStyle.h4(),
+                    style: AppTextStyles.h4(),
                   ),
                   SizedBox(height: 8.w),
                   Text(
                     'Courses',
-                    style: AppTextStyle.bodyMedium(
+                    style: AppTextStyles.bodyMedium(
                       FontWeight.w500,
                       AppColors.greyScaleColor[800],
                     ),
@@ -41,12 +41,12 @@ class MentorStatistic extends StatelessWidget {
                 children: [
                   Text(
                     '22,379',
-                    style: AppTextStyle.h4(),
+                    style: AppTextStyles.h4(),
                   ),
                   SizedBox(height: 8.w),
                   Text(
                     'Students',
-                    style: AppTextStyle.bodyMedium(
+                    style: AppTextStyles.bodyMedium(
                       FontWeight.w500,
                       AppColors.greyScaleColor[800],
                     ),
@@ -65,12 +65,12 @@ class MentorStatistic extends StatelessWidget {
                 children: [
                   Text(
                     '9,287',
-                    style: AppTextStyle.h4(),
+                    style: AppTextStyles.h4(),
                   ),
                   SizedBox(height: 8.w),
                   Text(
                     'Reviews',
-                    style: AppTextStyle.bodyMedium(
+                    style: AppTextStyles.bodyMedium(
                       FontWeight.w500,
                       AppColors.greyScaleColor[800],
                     ),

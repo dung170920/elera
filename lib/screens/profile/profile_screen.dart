@@ -38,7 +38,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       child: Center(
                         child: Text(
                           'Yes, Logout',
-                          style: AppTextStyle.bodyLarge(
+                          style: AppTextStyles.bodyLarge(
                               FontWeight.bold, AppColors.lightColor),
                         ),
                       ),
@@ -51,7 +51,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       child: Center(
                         child: Text(
                           'Cancel',
-                          style: AppTextStyle.bodyLarge(
+                          style: AppTextStyles.bodyLarge(
                               FontWeight.bold, AppColors.primaryColor),
                         ),
                       ),

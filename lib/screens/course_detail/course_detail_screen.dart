@@ -2,6 +2,7 @@ import 'package:elera/constants/constants.dart';
 import 'package:elera/screens/course_detail/cubit/course_detail_cubit.dart';
 import 'package:elera/screens/course_detail/widgets/widgets.dart';
 import 'package:elera/theme/theme.dart';
+import 'package:elera/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -85,7 +86,7 @@ class _CourseDetailScreenState extends State<CourseDetailScreen>
                       onPressed: () {},
                       child: Text(
                         'Enroll Course - \$${state.course.price}',
-                        style: AppTextStyle.bodyLarge(
+                        style: AppTextStyles.bodyLarge(
                             FontWeight.bold, AppColors.lightColor),
                       ),
                       radius: 100,

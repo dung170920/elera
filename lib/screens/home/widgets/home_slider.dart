@@ -21,8 +21,8 @@ class HomeSlider extends StatelessWidget {
           fit: BoxFit.cover,
         ),
         color: AppColors.primaryColor,
-        borderRadius: radiusCircular(AppStyles.DEFAULT_LARGE_RADIUS),
-        boxShadow: AppStyles.buttonShadow[1]!,
+        borderRadius: radiusCircular(AppLayouts.DEFAULT_LARGE_RADIUS),
+        boxShadow: AppLayouts.buttonShadow[1]!,
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -39,7 +39,7 @@ class HomeSlider extends StatelessWidget {
                   children: [
                     Text(
                       '40% OFF',
-                      style: AppTextStyle.bodyMedium(
+                      style: AppTextStyles.bodyMedium(
                           FontWeight.w600, AppColors.lightColor),
                     ),
                     SizedBox(
@@ -47,7 +47,7 @@ class HomeSlider extends StatelessWidget {
                     ),
                     Text(
                       'Today’s Special',
-                      style: AppTextStyle.h5(AppColors.lightColor),
+                      style: AppTextStyles.h5(AppColors.lightColor),
                     ),
                   ],
                 ),
@@ -57,7 +57,7 @@ class HomeSlider extends StatelessWidget {
               ),
               Text(
                 '40%',
-                style: AppTextStyle.h1(AppColors.lightColor),
+                style: AppTextStyles.h1(AppColors.lightColor),
               ),
             ],
           ),
@@ -66,7 +66,7 @@ class HomeSlider extends StatelessWidget {
           ),
           Text(
             'Get a discount for every course order! Only valid for today!',
-            style: AppTextStyle.bodyLarge(
+            style: AppTextStyles.bodyLarge(
               FontWeight.w500,
               AppColors.lightColor,
             ),

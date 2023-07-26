@@ -30,7 +30,7 @@ class MentorInfo extends StatelessWidget {
         ),
         Text(
           'Jonathan Williams',
-          style: AppTextStyle.h4(),
+          style: AppTextStyles.h4(),
           textAlign: TextAlign.center,
         ),
         SizedBox(
@@ -38,7 +38,7 @@ class MentorInfo extends StatelessWidget {
         ),
         Text(
           'UX/UI Design Mentor',
-          style: AppTextStyle.bodyMedium(
+          style: AppTextStyles.bodyMedium(
               FontWeight.w600, AppColors.greyScaleColor[800]),
           textAlign: TextAlign.center,
         ),

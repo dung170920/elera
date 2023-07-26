@@ -36,7 +36,7 @@ class AppTheme {
       backgroundColor: AppColors.lightColor,
     ),
     appBarTheme: AppBarTheme(
-      titleTextStyle: AppTextStyle.h4(AppColors.greyScaleColor[900]),
+      titleTextStyle: AppTextStyles.h4(AppColors.greyScaleColor[900]),
       iconTheme: IconThemeData(
         color: AppColors.greyScaleColor[900],
       ),
@@ -48,7 +48,7 @@ class AppTheme {
       ),
     ),
     chipTheme: ChipThemeData(
-      labelStyle: AppTextStyle.bodyLarge(
+      labelStyle: AppTextStyles.bodyLarge(
         FontWeight.w600,
         AppColors.primaryColor,
       ),
@@ -58,7 +58,7 @@ class AppTheme {
       padding: EdgeInsets.symmetric(horizontal: 20.w),
       backgroundColor: AppColors.lightColor,
       selectedColor: AppColors.primaryColor,
-      secondaryLabelStyle: AppTextStyle.bodyLarge(
+      secondaryLabelStyle: AppTextStyles.bodyLarge(
         FontWeight.w600,
         AppColors.lightColor,
       ),
@@ -139,7 +139,7 @@ class AppTheme {
       color: AppColors.darkColor[3],
     ),
     chipTheme: ChipThemeData(
-      labelStyle: AppTextStyle.bodyLarge(
+      labelStyle: AppTextStyles.bodyLarge(
         FontWeight.w600,
         AppColors.primaryColor,
       ),
@@ -148,7 +148,7 @@ class AppTheme {
       elevation: 0,
       padding: EdgeInsets.symmetric(horizontal: 20.w),
       backgroundColor: AppColors.darkColor[1],
-      secondaryLabelStyle: AppTextStyle.bodyLarge(
+      secondaryLabelStyle: AppTextStyles.bodyLarge(
         FontWeight.w600,
         AppColors.lightColor,
       ),
@@ -167,7 +167,7 @@ class AppTheme {
     appBarTheme: AppBarTheme(
       backgroundColor: Colors.transparent,
       elevation: 0,
-      titleTextStyle: AppTextStyle.h4(AppColors.lightColor),
+      titleTextStyle: AppTextStyles.h4(AppColors.lightColor),
       systemOverlayStyle: const SystemUiOverlayStyle(
         statusBarIconBrightness: Brightness.dark,
         statusBarBrightness: Brightness.dark,

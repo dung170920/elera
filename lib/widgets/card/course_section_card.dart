@@ -4,9 +4,9 @@ import 'package:elera/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class CourseSection extends StatelessWidget {
-  const CourseSection({super.key, required this.section});
-  final CourseSectionModel section;
+class CourseSectionCard extends StatelessWidget {
+  const CourseSectionCard({super.key, required this.section});
+  final CourseSectionCardModel section;
 
   @override
   Widget build(BuildContext context) {
@@ -16,14 +16,14 @@ class CourseSection extends StatelessWidget {
         tilePadding: EdgeInsets.symmetric(horizontal: 24.w),
         subtitle: Text(
           '${Duration(seconds: section.sectionDuration ?? 0).inMinutes} min | ${section.totalLesson} lessons',
-          style: AppTextStyle.bodyMedium(
+          style: AppTextStyles.bodyMedium(
             FontWeight.bold,
             AppColors.primaryColor,
           ),
         ),
         title: Text(
           section.title ?? "",
-          style: AppTextStyle.bodyLarge(
+          style: AppTextStyles.bodyLarge(
             FontWeight.bold,
             AppColors.greyScaleColor[700],
           ),

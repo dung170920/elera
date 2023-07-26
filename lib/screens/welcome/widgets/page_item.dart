@@ -1,5 +1,6 @@
 import 'package:elera/models/models.dart';
 import 'package:elera/theme/theme.dart';
+import 'package:elera/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -34,7 +35,7 @@ class PageItem extends StatelessWidget {
               child: Text(
                 item.title!,
                 textAlign: TextAlign.center,
-                style: AppTextStyle.h2(),
+                style: AppTextStyles.h2(),
               ),
             ),
           ),
@@ -76,7 +77,7 @@ class PageItem extends StatelessWidget {
             child: Center(
               child: Text(
                 total == index + 1 ? 'Get Started' : 'Next',
-                style: AppTextStyle.bodyLarge(
+                style: AppTextStyles.bodyLarge(
                     FontWeight.bold, AppColors.lightColor),
               ),
             ),

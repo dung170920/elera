@@ -1,5 +1,5 @@
 import 'package:elera/models/models.dart';
-import 'package:elera/widgets/course_section.dart';
+import 'package:elera/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 
 class CourseLessons extends StatelessWidget {
@@ -13,7 +13,7 @@ class CourseLessons extends StatelessWidget {
       child: Column(
         children: course.sections
                 ?.map(
-                  (e) => CourseSection(
+                  (e) => CourseSectionCard(
                     section: e,
                   ),
                 )

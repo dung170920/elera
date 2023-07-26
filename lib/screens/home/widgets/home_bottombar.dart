@@ -15,8 +15,8 @@ class HomeBottomBar extends StatelessWidget {
       type: BottomNavigationBarType.fixed,
       elevation: 0,
       iconSize: 24.w,
-      selectedLabelStyle: AppTextStyle.bodyXSmall(FontWeight.bold),
-      unselectedLabelStyle: AppTextStyle.bodyXSmall(FontWeight.w500),
+      selectedLabelStyle: AppTextStyles.bodyXSmall(FontWeight.bold),
+      unselectedLabelStyle: AppTextStyles.bodyXSmall(FontWeight.w500),
       unselectedItemColor: AppColors.greyScaleColor[500],
       selectedItemColor: AppColors.primaryColor,
       onTap: (value) {

@@ -24,7 +24,7 @@ class PopularCourses extends StatelessWidget {
             children: [
               Text(
                 'Most Popular Courses',
-                style: AppTextStyle.h6(),
+                style: AppTextStyles.h6(),
               ),
               TextButton(
                 onPressed: () {
@@ -33,7 +33,7 @@ class PopularCourses extends StatelessWidget {
                 },
                 child: Text(
                   'See All',
-                  style: AppTextStyle.bodyLarge(
+                  style: AppTextStyles.bodyLarge(
                       FontWeight.bold, AppColors.primaryColor),
                 ),
               ),

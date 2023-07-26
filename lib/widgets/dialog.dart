@@ -58,7 +58,7 @@ class AppDialog extends StatelessWidget {
                 Text(
                   title,
                   textAlign: TextAlign.center,
-                  style: AppTextStyle.h4(
+                  style: AppTextStyles.h4(
                     status.color,
                   ),
                 ),
@@ -68,7 +68,7 @@ class AppDialog extends StatelessWidget {
                 Text(
                   subTitle,
                   textAlign: TextAlign.center,
-                  style: AppTextStyle.bodyLarge(),
+                  style: AppTextStyles.bodyLarge(),
                 ),
               ],
             ),

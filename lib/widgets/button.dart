@@ -27,7 +27,6 @@ extension AppElevatedButton on ElevatedButton {
         ),
         elevation: 0,
         maximumSize: Size.fromHeight(58.h),
-        //minimumSize: Size.fromHeight(48.h),
       ),
       onPressed: onPressed,
       child: isLoading
@@ -62,7 +61,7 @@ extension AppElevatedButton on ElevatedButton {
             : size == ButtonSize.medium
                 ? EdgeInsets.symmetric(horizontal: 24.w, vertical: 10.w)
                 : EdgeInsets.symmetric(horizontal: 16.w, vertical: 18.w),
-        textStyle: AppTextStyle.bodyLarge(FontWeight.bold),
+        textStyle: AppTextStyles.bodyLarge(FontWeight.bold),
         shape: RoundedRectangleBorder(
           borderRadius: radiusCircular(radius),
         ),

@@ -5,8 +5,8 @@ import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:magicon/magicon.dart';
 
-class AppTextField extends StatefulWidget {
-  const AppTextField({
+class Input extends StatefulWidget {
+  const Input({
     super.key,
     this.controller,
     this.textFieldType = TextInputType.text,
@@ -90,10 +90,10 @@ class AppTextField extends StatefulWidget {
   final String? initialValue;
 
   @override
-  State<AppTextField> createState() => _AppTextFieldState();
+  State<Input> createState() => _InputState();
 }
 
-class _AppTextFieldState extends State<AppTextField> {
+class _InputState extends State<Input> {
   bool isPasswordVisible = false;
 
   @override
@@ -106,7 +106,7 @@ class _AppTextFieldState extends State<AppTextField> {
                 padding: EdgeInsets.only(bottom: 6.w),
                 child: Text(
                   widget.label,
-                  style: AppTextStyle.bodyMedium(FontWeight.bold),
+                  style: AppTextStyles.bodyMedium(FontWeight.bold),
                 ),
               )
             : Container(),
@@ -129,14 +129,14 @@ class _AppTextFieldState extends State<AppTextField> {
           decoration: InputDecoration(
             filled: true,
             errorText: widget.errorText,
-            errorStyle: AppTextStyle.bodyMedium(
+            errorStyle: AppTextStyles.bodyMedium(
               FontWeight.w500,
               StatusType.ERROR.color,
             ),
             errorMaxLines: 3,
             hintText: widget.hintText,
             hintStyle:
-                AppTextStyle.bodyMedium(null, AppColors.greyScaleColor[500]),
+                AppTextStyles.bodyMedium(null, AppColors.greyScaleColor[500]),
             fillColor: widget.focus != null && widget.focus!.hasFocus
                 ? AppColors.primaryColor.withOpacity(0.08)
                 : null,
@@ -165,7 +165,7 @@ class _AppTextFieldState extends State<AppTextField> {
             prefixIcon: widget.prefix,
           ),
           focusNode: widget.focus,
-          style: widget.textStyle ?? AppTextStyle.bodyMedium(FontWeight.w600),
+          style: widget.textStyle ?? AppTextStyles.bodyMedium(FontWeight.w600),
           textAlign: widget.textAlign ?? TextAlign.start,
           maxLines: widget.textFieldType == TextInputType.streetAddress
               ? null

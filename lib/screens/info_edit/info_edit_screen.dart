@@ -28,7 +28,7 @@ class InfoEditScreen extends StatelessWidget {
                 padding: EdgeInsets.symmetric(horizontal: 24.w),
                 child: Column(
                   children: [
-                    AppTextField(
+                    Input(
                       hintText: 'Full name',
                       initialValue: user.name!,
                       onChanged: context.read<InfoEditCubit>().onNameChanged,
@@ -39,7 +39,7 @@ class InfoEditScreen extends StatelessWidget {
                     SizedBox(
                       height: 24.w,
                     ),
-                    AppTextField(
+                    Input(
                       hintText: 'Email',
                       initialValue: user.email!,
                       onChanged: context.read<InfoEditCubit>().onEmailChanged,
@@ -61,7 +61,7 @@ class InfoEditScreen extends StatelessWidget {
                       child: Center(
                         child: Text(
                           'Update',
-                          style: AppTextStyle.bodyLarge(
+                          style: AppTextStyles.bodyLarge(
                             FontWeight.bold,
                             AppColors.lightColor,
                           ),

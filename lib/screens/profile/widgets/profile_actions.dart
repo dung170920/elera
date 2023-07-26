@@ -40,7 +40,7 @@ class ProfileActions extends StatelessWidget {
                                 Text(
                                   e.title ?? '',
                                   style:
-                                      AppTextStyle.bodyLarge(FontWeight.w600),
+                                      AppTextStyles.bodyLarge(FontWeight.w600),
                                 ),
                               ],
                             ),

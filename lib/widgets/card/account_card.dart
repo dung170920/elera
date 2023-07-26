@@ -42,14 +42,14 @@ class AccountCard extends StatelessWidget {
             children: [
               Text(
                 user.name ?? "",
-                style: AppTextStyle.h6(),
+                style: AppTextStyles.h6(),
               ),
               SizedBox(
                 height: 4.w,
               ),
               Text(
                 'React, Flutter Mentor',
-                style: AppTextStyle.bodyMedium(
+                style: AppTextStyles.bodyMedium(
                     FontWeight.w500, AppColors.greyScaleColor[700]),
               ),
             ],

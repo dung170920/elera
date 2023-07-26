@@ -45,7 +45,7 @@ class MentorsScreen extends StatelessWidget {
                             context, AppRoutes.MENTOR_DETAIL),
                         child: Text(
                           'View',
-                          style: AppTextStyle.bodyMedium(
+                          style: AppTextStyles.bodyMedium(
                               FontWeight.w600, AppColors.lightColor),
                         ),
                         size: ButtonSize.small,

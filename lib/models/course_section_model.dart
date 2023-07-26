@@ -1,14 +1,14 @@
 import 'package:equatable/equatable.dart';
 import 'package:elera/models/models.dart';
 
-class CourseSectionModel extends Equatable {
+class CourseSectionCardModel extends Equatable {
   final String id;
   final String? title;
   final List<CourseLessonModel>? lessons;
   final int? sectionDuration;
   final int? totalLesson;
 
-  CourseSectionModel(
+  CourseSectionCardModel(
       {required this.id,
       this.title,
       this.lessons,
@@ -28,13 +28,13 @@ class CourseSectionModel extends Equatable {
     };
   }
 
-  factory CourseSectionModel.fromJson(Map<String, dynamic> map) {
+  factory CourseSectionCardModel.fromJson(Map<String, dynamic> map) {
     final list = <CourseLessonModel>[];
     if (map['lessons'] != null) {
       map['lessons']
           .forEach((lesson) => list.add(CourseLessonModel.fromJson(lesson)));
     }
-    return CourseSectionModel(
+    return CourseSectionCardModel(
       id: map['id'],
       title: map['title'],
       sectionDuration: map['sectionDuration'],
@@ -43,14 +43,14 @@ class CourseSectionModel extends Equatable {
     );
   }
 
-  CourseSectionModel copyWith({
+  CourseSectionCardModel copyWith({
     String? id,
     String? title,
     List<CourseLessonModel>? lessons,
     int? sectionDuration,
     int? totalLesson,
   }) {
-    return CourseSectionModel(
+    return CourseSectionCardModel(
       id: id ?? this.id,
       title: title ?? this.title,
       lessons: lessons ?? this.lessons,

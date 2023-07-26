@@ -4,6 +4,7 @@ import 'package:elera/routes/routes.dart';
 import 'package:elera/screens/profile/cubit/profile_cubit.dart';
 import 'package:elera/theme/theme.dart';
 import 'package:elera/utils/utils.dart';
+import 'package:elera/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -27,8 +28,8 @@ class CourseCard extends StatelessWidget {
           color: context.read<ProfileCubit>().state.theme == AppTheme.lightTheme
               ? AppColors.lightColor
               : AppColors.darkColor[2],
-          borderRadius: radiusCircular(AppStyles.DEFAULT_LARGE_RADIUS),
-          boxShadow: AppStyles.cardShadow[2]!,
+          borderRadius: radiusCircular(AppLayouts.DEFAULT_LARGE_RADIUS),
+          boxShadow: AppLayouts.cardShadow[2]!,
         ),
         width: double.maxFinite,
         child: Row(
@@ -53,7 +54,7 @@ class CourseCard extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      AppTag.inverted(
+                      Tag.inverted(
                           status: StatusType.INFO, text: course.type!.name),
                       course.isBookmarked != null && course.isBookmarked == true
                           ? InkWell(
@@ -75,7 +76,7 @@ class CourseCard extends StatelessWidget {
                   ),
                   Text(
                     course.title ?? '',
-                    style: AppTextStyle.h6(),
+                    style: AppTextStyles.h6(),
                     overflow: TextOverflow.ellipsis,
                   ),
                   SizedBox(
@@ -83,7 +84,7 @@ class CourseCard extends StatelessWidget {
                   ),
                   Text(
                     formatCurrency(price: course.price!, symbol: '\$'),
-                    style: AppTextStyle.h6(AppColors.primaryColor),
+                    style: AppTextStyles.h6(AppColors.primaryColor),
                   ),
                   SizedBox(
                     height: 8.w,
@@ -101,7 +102,7 @@ class CourseCard extends StatelessWidget {
                       ),
                       Text(
                         course.rating!.toString(),
-                        style: AppTextStyle.bodySmall(
+                        style: AppTextStyles.bodySmall(
                           FontWeight.w500,
                           AppColors.greyScaleColor[700],
                         ),
@@ -111,7 +112,7 @@ class CourseCard extends StatelessWidget {
                       ),
                       Text(
                         '|',
-                        style: AppTextStyle.bodySmall(
+                        style: AppTextStyles.bodySmall(
                           FontWeight.w500,
                           AppColors.greyScaleColor[700],
                         ),
@@ -122,7 +123,7 @@ class CourseCard extends StatelessWidget {
                       Expanded(
                         child: Text(
                           '${formatCurrency(price: double.parse(course.studentsCount!.toString()))} students',
-                          style: AppTextStyle.bodySmall(
+                          style: AppTextStyles.bodySmall(
                             FontWeight.w500,
                             AppColors.greyScaleColor[700],
                           ),

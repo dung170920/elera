@@ -22,7 +22,7 @@ class CourseAbout extends StatelessWidget {
           children: [
             Text(
               'Mentor',
-              style: AppTextStyle.h5(),
+              style: AppTextStyles.h5(),
             ),
             SizedBox(
               height: 16.w,
@@ -36,7 +36,7 @@ class CourseAbout extends StatelessWidget {
                       Navigator.pushNamed(context, AppRoutes.MENTOR_DETAIL),
                   child: Text(
                     'View',
-                    style: AppTextStyle.bodyMedium(
+                    style: AppTextStyles.bodyMedium(
                         FontWeight.w600, AppColors.lightColor),
                   ),
                   size: ButtonSize.small,
@@ -49,7 +49,7 @@ class CourseAbout extends StatelessWidget {
             ),
             Text(
               'About Course',
-              style: AppTextStyle.h5(),
+              style: AppTextStyles.h5(),
             ),
             SizedBox(
               height: 16.w,
@@ -60,10 +60,10 @@ class CourseAbout extends StatelessWidget {
               trimMode: TrimMode.Line,
               trimCollapsedText: ' Read more',
               trimExpandedText: ' Read less',
-              style: AppTextStyle.bodyMedium(),
-              moreStyle: AppTextStyle.bodyMedium(
+              style: AppTextStyles.bodyMedium(),
+              moreStyle: AppTextStyles.bodyMedium(
                   FontWeight.bold, AppColors.primaryColor),
-              lessStyle: AppTextStyle.bodyMedium(
+              lessStyle: AppTextStyles.bodyMedium(
                   FontWeight.bold, AppColors.primaryColor),
             ),
           ],

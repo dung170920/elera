@@ -29,5 +29,5 @@ ShapeBorder shapeRadius([double? borderRadius]) {
 }
 
 BorderRadius radiusCircular([double? radius]) {
-  return BorderRadius.circular(radius ?? AppStyles.DEFAULT_RADIUS);
+  return BorderRadius.circular(radius ?? AppLayouts.DEFAULT_RADIUS);
 }

@@ -1,5 +1,4 @@
 import 'package:elera/routes/routes.dart';
-import 'package:elera/screens/let_in/cubit/let_in_cubit.dart';
 import 'package:elera/screens/sign_in/widgets/widgets.dart';
 import 'package:elera/theme/theme.dart';
 import 'package:elera/constants/constants.dart';
@@ -30,7 +29,7 @@ class _SignInScreenState extends State<SignInScreen> {
               children: [
                 Text(
                   'Login to your Account',
-                  style: AppTextStyle.h1(),
+                  style: AppTextStyles.h1(),
                 ),
                 SizedBox(
                   height: 36.w,
@@ -46,7 +45,7 @@ class _SignInScreenState extends State<SignInScreen> {
                       padding: EdgeInsets.symmetric(horizontal: 16.w),
                       child: Text(
                         'or continue with',
-                        style: AppTextStyle.bodyXLarge(
+                        style: AppTextStyles.bodyXLarge(
                           FontWeight.w600,
                           AppColors.greyScaleColor[700],
                         ),

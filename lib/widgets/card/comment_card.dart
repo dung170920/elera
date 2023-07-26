@@ -40,7 +40,7 @@ class CommentCard extends StatelessWidget {
                   children: [
                     Text(
                       'Marielle Wigington',
-                      style: AppTextStyle.bodyLarge(FontWeight.bold),
+                      style: AppTextStyles.bodyLarge(FontWeight.bold),
                     ),
                     SizedBox(
                       height: 4.w,
@@ -65,7 +65,7 @@ class CommentCard extends StatelessWidget {
                         ),
                         Text(
                           '2 weeks ago',
-                          style: AppTextStyle.bodySmall(FontWeight.w600),
+                          style: AppTextStyles.bodySmall(FontWeight.w600),
                         ),
                       ],
                     )
@@ -102,7 +102,7 @@ class CommentCard extends StatelessWidget {
                           ),
                           Text(
                             'Report',
-                            style: AppTextStyle.bodyMedium(
+                            style: AppTextStyles.bodyMedium(
                               FontWeight.w600,
                             ),
                           ),
@@ -121,7 +121,7 @@ class CommentCard extends StatelessWidget {
         ),
         Text(
           'The course is very good, the explanation of the mentor is very clear and easy to understand!',
-          style: AppTextStyle.bodyMedium(),
+          style: AppTextStyles.bodyMedium(),
         ),
       ],
     );

@@ -1,6 +1,7 @@
 import 'package:elera/screens/home/cubit/home_cubit.dart';
 import 'package:elera/screens/home/widgets/widgets.dart';
 import 'package:elera/theme/theme.dart';
+import 'package:elera/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -39,7 +40,7 @@ class _HomeBodyState extends State<HomeBody> {
                   child: Row(
                     children: [
                       Expanded(
-                        child: AppTextField(
+                        child: Input(
                           prefix: Icon(Magicon.search),
                           hintText: 'Search',
                           focus: _focusNode,

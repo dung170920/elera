@@ -18,14 +18,14 @@ class TopMentor extends StatelessWidget {
             children: [
               Text(
                 'Top Mentors',
-                style: AppTextStyle.h6(),
+                style: AppTextStyles.h6(),
               ),
               TextButton(
                 onPressed: () =>
                     Navigator.pushNamed(context, AppRoutes.MENTORS),
                 child: Text(
                   'See All',
-                  style: AppTextStyle.bodyLarge(
+                  style: AppTextStyles.bodyLarge(
                       FontWeight.bold, AppColors.primaryColor),
                 ),
               ),
@@ -62,7 +62,7 @@ class TopMentor extends StatelessWidget {
                             ),
                             Text(
                               e.name != null ? e.name!.split(" ").first : "",
-                              style: AppTextStyle.bodyLarge(FontWeight.w600),
+                              style: AppTextStyles.bodyLarge(FontWeight.w600),
                               overflow: TextOverflow.ellipsis,
                             )
                           ],

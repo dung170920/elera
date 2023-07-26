@@ -76,7 +76,7 @@ class NotificationCard extends StatelessWidget {
                       children: [
                         Text(
                           notification.title,
-                          style: AppTextStyle.h5(),
+                          style: AppTextStyles.h5(),
                         ),
                         SizedBox(
                           height: 6.w,
@@ -88,7 +88,7 @@ class NotificationCard extends StatelessWidget {
                                 dateTime: notification.createdDate,
                                 mode: 'dd MMM yyyy',
                               ),
-                              style: AppTextStyle.bodyMedium(
+                              style: AppTextStyles.bodyMedium(
                                 FontWeight.w500,
                                 AppColors.greyScaleColor[700],
                               ),
@@ -98,7 +98,7 @@ class NotificationCard extends StatelessWidget {
                             ),
                             Text(
                               '|',
-                              style: AppTextStyle.bodyMedium(
+                              style: AppTextStyles.bodyMedium(
                                 FontWeight.w500,
                                 AppColors.greyScaleColor[700],
                               ),
@@ -111,7 +111,7 @@ class NotificationCard extends StatelessWidget {
                                 dateTime: notification.createdDate,
                                 mode: DateFormat.HOUR24_MINUTE,
                               ),
-                              style: AppTextStyle.bodyMedium(
+                              style: AppTextStyles.bodyMedium(
                                 FontWeight.w500,
                                 AppColors.greyScaleColor[700],
                               ),
@@ -128,7 +128,7 @@ class NotificationCard extends StatelessWidget {
               ),
               Text(
                 notification.subTitle ?? '',
-                style: AppTextStyle.bodyMedium(
+                style: AppTextStyles.bodyMedium(
                   FontWeight.normal,
                   AppColors.greyScaleColor[800],
                 ),

@@ -1,5 +1,6 @@
 import 'package:elera/screens/sign_in/cubit/sign_in_cubit.dart';
 import 'package:elera/theme/theme.dart';
+import 'package:elera/widgets/widgets.dart';
 import 'package:elera/constants/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -47,7 +48,7 @@ class _SignInFormState extends State<SignInForm> {
           return Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              AppTextField(
+              Input(
                 label: 'Email',
                 hintText: 'Email',
                 textFieldType: TextInputType.emailAddress,
@@ -65,7 +66,7 @@ class _SignInFormState extends State<SignInForm> {
               SizedBox(
                 height: 20.w,
               ),
-              AppTextField(
+              Input(
                 label: 'Password',
                 hintText: 'Password',
                 textFieldType: TextInputType.text,
@@ -94,7 +95,7 @@ class _SignInFormState extends State<SignInForm> {
                 child: Center(
                   child: Text(
                     'Sign in',
-                    style: AppTextStyle.bodyLarge(
+                    style: AppTextStyles.bodyLarge(
                       FontWeight.bold,
                       AppColors.lightColor,
                     ),
@@ -108,7 +109,7 @@ class _SignInFormState extends State<SignInForm> {
                 child: GestureDetector(
                   child: Text(
                     'Forgot the password?',
-                    style: AppTextStyle.bodyLarge(
+                    style: AppTextStyles.bodyLarge(
                       FontWeight.w600,
                       AppColors.primaryColor,
                     ),

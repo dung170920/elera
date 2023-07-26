@@ -51,7 +51,7 @@ class ProfileInfo extends StatelessWidget {
           ),
           Text(
             user.name ?? '',
-            style: AppTextStyle.h4(),
+            style: AppTextStyles.h4(),
             textAlign: TextAlign.center,
           ),
           SizedBox(
@@ -59,7 +59,7 @@ class ProfileInfo extends StatelessWidget {
           ),
           Text(
             user.email ?? '',
-            style: AppTextStyle.bodyMedium(FontWeight.w600),
+            style: AppTextStyles.bodyMedium(FontWeight.w600),
           ),
         ],
       ),

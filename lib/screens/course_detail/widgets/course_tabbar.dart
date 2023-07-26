@@ -29,10 +29,10 @@ class CourseTabbar extends StatelessWidget {
         ),
         unselectedLabelColor: AppColors.greyScaleColor[500],
         labelColor: AppColors.primaryColor,
-        unselectedLabelStyle: AppTextStyle.bodyXLarge(
+        unselectedLabelStyle: AppTextStyles.bodyXLarge(
           FontWeight.w600,
         ),
-        labelStyle: AppTextStyle.bodyXLarge(
+        labelStyle: AppTextStyles.bodyXLarge(
           FontWeight.w600,
         ),
         tabs: [

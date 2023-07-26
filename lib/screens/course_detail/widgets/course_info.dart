@@ -5,6 +5,7 @@ import 'package:elera/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:magicon/magicon.dart';
+import 'package:elera/widgets/widgets.dart';
 
 class CourseInfo extends StatelessWidget {
   const CourseInfo({super.key, required this.course});
@@ -21,11 +22,11 @@ class CourseInfo extends StatelessWidget {
         children: [
           Text(
             course.title ?? "",
-            style: AppTextStyle.h4(),
+            style: AppTextStyles.h4(),
           ),
           Row(
             children: [
-              AppTag.inverted(status: StatusType.INFO, text: course.type!.name),
+              Tag.inverted(status: StatusType.INFO, text: course.type!.name),
               SizedBox(
                 width: 16.w,
               ),
@@ -39,7 +40,7 @@ class CourseInfo extends StatelessWidget {
               ),
               Text(
                 course.rating!.toString(),
-                style: AppTextStyle.bodyLarge(
+                style: AppTextStyles.bodyLarge(
                   FontWeight.w500,
                 ),
               ),
@@ -48,7 +49,7 @@ class CourseInfo extends StatelessWidget {
               ),
               Text(
                 '|',
-                style: AppTextStyle.bodyLarge(
+                style: AppTextStyles.bodyLarge(
                   FontWeight.w500,
                 ),
               ),
@@ -59,7 +60,7 @@ class CourseInfo extends StatelessWidget {
                 course.reviewsCount != null
                     ? '${formatCurrency(price: double.parse(course.reviewsCount.toString()))} reviews'
                     : "0 review",
-                style: AppTextStyle.bodyLarge(
+                style: AppTextStyles.bodyLarge(
                   FontWeight.w500,
                 ),
                 overflow: TextOverflow.ellipsis,
@@ -68,7 +69,7 @@ class CourseInfo extends StatelessWidget {
           ),
           Text(
             formatCurrency(price: course.price!, symbol: '\$'),
-            style: AppTextStyle.h3(AppColors.primaryColor),
+            style: AppTextStyles.h3(AppColors.primaryColor),
           ),
           Row(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -87,7 +88,7 @@ class CourseInfo extends StatelessWidget {
                     course.studentsCount == 0
                         ? '0 student'
                         : '${formatCurrency(price: double.parse(course.studentsCount!.toString()))} students',
-                    style: AppTextStyle.bodyLarge(
+                    style: AppTextStyles.bodyLarge(
                       FontWeight.w500,
                       AppColors.greyScaleColor[800],
                     ),
@@ -107,7 +108,7 @@ class CourseInfo extends StatelessWidget {
                     course.courseDuration == 0
                         ? "0 hour"
                         : '${Duration(seconds: course.courseDuration!).inHours} hours',
-                    style: AppTextStyle.bodyLarge(
+                    style: AppTextStyles.bodyLarge(
                       FontWeight.w500,
                       AppColors.greyScaleColor[800],
                     ),
@@ -128,7 +129,7 @@ class CourseInfo extends StatelessWidget {
                     //     ? "0 lesson"
                     //     : '${course.courseDuration} hours',
                     '124 lessons',
-                    style: AppTextStyle.bodyLarge(
+                    style: AppTextStyles.bodyLarge(
                       FontWeight.w500,
                       AppColors.greyScaleColor[800],
                     ),

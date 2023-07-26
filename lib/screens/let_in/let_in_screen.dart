@@ -3,7 +3,7 @@ import 'package:elera/screens/let_in/cubit/let_in_cubit.dart';
 import 'package:elera/screens/sign_in/cubit/sign_in_cubit.dart';
 import 'package:elera/theme/theme.dart';
 import 'package:elera/constants/constants.dart';
-import 'package:elera/widgets/text_with_link.dart';
+import 'package:elera/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -35,7 +35,7 @@ class _LetInScreenState extends State<LetInScreen> {
               ),
               Text(
                 "Let’s you in",
-                style: AppTextStyle.h1(),
+                style: AppTextStyles.h1(),
               ),
               SizedBox(
                 height: 4.w,
@@ -71,8 +71,8 @@ class _LetInScreenState extends State<LetInScreen> {
                                   ),
                                   Text(
                                     e.title!,
-                                    style:
-                                        AppTextStyle.bodyLarge(FontWeight.w600),
+                                    style: AppTextStyles.bodyLarge(
+                                        FontWeight.w600),
                                   ),
                                 ],
                               ),
@@ -90,7 +90,7 @@ class _LetInScreenState extends State<LetInScreen> {
                     padding: EdgeInsets.symmetric(horizontal: 16.w),
                     child: Text(
                       'or',
-                      style: AppTextStyle.bodyXLarge(
+                      style: AppTextStyles.bodyXLarge(
                           FontWeight.w600, AppColors.greyScaleColor[700]),
                     ),
                   ),
@@ -110,7 +110,7 @@ class _LetInScreenState extends State<LetInScreen> {
                 child: Center(
                   child: Text(
                     'Sign in with password',
-                    style: AppTextStyle.bodyLarge(
+                    style: AppTextStyles.bodyLarge(
                         FontWeight.bold, AppColors.lightColor),
                   ),
                 ),
