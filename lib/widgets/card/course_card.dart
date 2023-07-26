@@ -1,7 +1,6 @@
 import 'package:elera/constants/constants.dart';
 import 'package:elera/models/models.dart';
 import 'package:elera/routes/routes.dart';
-import 'package:elera/screens/course_detail/cubit/course_detail_cubit.dart';
 import 'package:elera/screens/profile/cubit/profile_cubit.dart';
 import 'package:elera/theme/theme.dart';
 import 'package:elera/utils/utils.dart';
@@ -19,8 +18,8 @@ class CourseCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        context.read<CourseDetailCubit>().getCourse(course.id);
-        Navigator.pushNamed(context, AppRoutes.COURSE_DETAIL);
+        Navigator.pushNamed(context, AppRoutes.COURSE_DETAIL,
+            arguments: {"id": course.id});
       },
       child: Container(
         padding: EdgeInsets.all(20.w),

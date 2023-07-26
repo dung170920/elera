@@ -18,7 +18,7 @@ class LessonCard extends StatelessWidget {
       margin: EdgeInsets.only(bottom: 24.w, left: 24.w, right: 24.w),
       decoration: BoxDecoration(
         borderRadius: radiusCircular(16),
-        boxShadow: AppStyles.cardShadow[2],
+        //boxShadow: AppStyles.cardShadow[2],
         color: context.read<ProfileCubit>().state.theme == AppTheme.lightTheme
             ? AppColors.lightColor
             : AppColors.darkColor[2],

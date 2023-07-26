@@ -29,7 +29,7 @@ class HomeState extends Equatable {
     );
   }
 
-  factory HomeState.loading() {
+  factory HomeState.init() {
     return HomeState(
       courses: PagedListModel.empty(),
       status: LoadStatus.loading,

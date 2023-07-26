@@ -55,9 +55,9 @@ class _HomeBodyState extends State<HomeBody> {
                   ),
                 ),
               ),
-              SliverToBoxAdapter(
-                child: HomeSlider(),
-              ),
+              // SliverToBoxAdapter(
+              //   child: HomeSlider(),
+              // ),
               SliverToBoxAdapter(
                 child: TopMentor(),
               ),

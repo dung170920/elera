@@ -1,8 +1,10 @@
 import 'package:elera/models/course_model.dart';
 import 'package:elera/routes/routes.dart';
+import 'package:elera/screens/courses/cubit/courses_cubit.dart';
 import 'package:elera/theme/theme.dart';
 import 'package:elera/widgets/widgets.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class PopularCourses extends StatelessWidget {
@@ -25,8 +27,10 @@ class PopularCourses extends StatelessWidget {
                 style: AppTextStyle.h6(),
               ),
               TextButton(
-                onPressed: () =>
-                    Navigator.pushNamed(context, AppRoutes.COURSES),
+                onPressed: () {
+                  Navigator.pushNamed(context, AppRoutes.COURSES);
+                  context.read<CoursesCubit>().init();
+                },
                 child: Text(
                   'See All',
                   style: AppTextStyle.bodyLarge(

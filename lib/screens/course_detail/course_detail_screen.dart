@@ -25,6 +25,13 @@ class _CourseDetailScreenState extends State<CourseDetailScreen>
   }
 
   @override
+  void didChangeDependencies() {
+    var args = ModalRoute.of(context)!.settings.arguments as Map;
+    context.read<CourseDetailCubit>().getCourse(args['id']);
+    super.didChangeDependencies();
+  }
+
+  @override
   void dispose() {
     tabController.dispose();
     super.dispose();
@@ -46,7 +53,6 @@ class _CourseDetailScreenState extends State<CourseDetailScreen>
                     length: 3,
                     child: NestedScrollView(
                       controller: scrollController,
-                      //physics: ScrollPhysics(parent: PageScrollPhysics()),
                       headerSliverBuilder: (context, innerBoxIsScrolled) => [
                         SliverList(
                           delegate: SliverChildListDelegate(

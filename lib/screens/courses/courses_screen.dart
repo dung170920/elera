@@ -58,7 +58,8 @@ class CoursesScreen extends StatelessWidget {
                                     physics: NeverScrollableScrollPhysics(),
                                     shrinkWrap: true,
                                     itemBuilder: (context, index) => CourseCard(
-                                        course: state.list.data[index]),
+                                      course: state.list.data[index],
+                                    ),
                                     itemCount: state.list.data.length,
                                     separatorBuilder: (context, index) =>
                                         SizedBox(height: 16.w),

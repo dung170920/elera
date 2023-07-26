@@ -16,7 +16,7 @@ class _MyCoursesScreenState extends State<MyCoursesScreen> {
     return Scaffold(
       appBar: NavBar(
         isBack: false,
-        title: 'My Courses',
+        title: 'My Course',
         actions: [
           GestureDetector(
             onTap: () {},

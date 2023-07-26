@@ -43,7 +43,7 @@ class Data {
     );
     list.add(
       TextModel(
-        title: 'My Courses',
+        title: 'My Course',
         iconData: Magicon.noteText,
         activeIconData: Magicon.solidNoteText,
       ),
@@ -57,9 +57,9 @@ class Data {
     );
     list.add(
       TextModel(
-        title: "Transaction",
-        iconData: Magicon.shoppingCart,
-        activeIconData: Magicon.solidShoppingCart,
+        title: "Bookmark",
+        iconData: Magicon.bookmark,
+        activeIconData: Magicon.solidBookmark,
       ),
     );
     list.add(

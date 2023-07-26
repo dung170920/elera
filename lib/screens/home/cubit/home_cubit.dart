@@ -10,14 +10,13 @@ part 'home_state.dart';
 class HomeCubit extends Cubit<HomeState> {
   final CourseService courseService;
 
-  HomeCubit(this.courseService) : super(HomeState.loading());
+  HomeCubit(this.courseService) : super(HomeState.init());
 
   void onPageChange(value) => emit(state.copyWith(index: value));
 
   Future<void> init() async {
     try {
       final response = await courseService.getCourses({'isPopular': true});
-      // final types = await courseTypeService.getCourseTypes();
       emit(HomeState.success(response.result));
     } on AppExceptions catch (e) {
       emit(HomeState.failure(e.message));

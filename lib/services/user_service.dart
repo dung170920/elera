@@ -10,7 +10,7 @@ class UserService {
             response.data, (data) => UserModel.fromJson(data));
       }).catchError((error) {
         print(error.toString());
-        return ApiResponseModel.fromJson(error, (data) => UserModel.empty);
+        //return ApiResponseModel.fromJson(error, (data) => UserModel.empty);
       });
 
   Future<void> register() =>

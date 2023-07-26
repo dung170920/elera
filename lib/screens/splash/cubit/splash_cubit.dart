@@ -16,6 +16,7 @@ class SplashCubit extends Cubit<SplashState> {
   SplashCubit({required this.authService, required this.userService})
       : super(SplashState.unAuthenticated()) {
     authService.accessToken.listen((token) {
+      print("SplashCubit $token");
       onAuthUserChanged(token);
     });
   }
@@ -31,8 +32,8 @@ class SplashCubit extends Cubit<SplashState> {
     }
   }
 
-  void onAuthLogoutRequested() {
-    unawaited(authService.logOut());
+  void onAuthLogoutRequested() async {
+    await authService.logOut();
   }
 
   @override

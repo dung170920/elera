@@ -10,24 +10,16 @@ class LetInCubit extends Cubit<LetInState> {
 
   LetInCubit(this._authService) : super(LetInState.inital());
 
-  // Future<void> signInWithGoogle() async {
-  //   emit(state.copyWith(status: FormzSubmissionStatus.inProgress));
-  //   try {
-  //     await _authService.logInWithGoogle();
-  //     await _userService.register();
+  void signInWithGoogle() async {
+    emit(state.copyWith(status: FormzSubmissionStatus.inProgress));
+    try {
+      await _authService.logInWithGoogle();
 
-  //     emit(state.copyWith(status: FormzSubmissionStatus.success));
-  //   } on AppExceptions catch (e) {
-  //     emit(
-  //       state.copyWith(
-  //         errorMessage: e.message,
-  //         status: FormzSubmissionStatus.failure,
-  //       ),
-  //     );
-  //   } catch (_) {
-  //     emit(state.copyWith(
-  //       status: FormzSubmissionStatus.failure,
-  //     ));
-  //   }
-  // }
+      emit(state.copyWith(status: FormzSubmissionStatus.success));
+    } catch (_) {
+      emit(state.copyWith(
+        status: FormzSubmissionStatus.failure,
+      ));
+    }
+  }
 }

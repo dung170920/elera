@@ -58,11 +58,13 @@ class InfoEditScreen extends StatelessWidget {
                           state.status == FormzSubmissionStatus.inProgress
                               ? null
                               : context.read<InfoEditCubit>().editSubmitted,
-                      child: Text(
-                        'Update',
-                        style: AppTextStyle.bodyLarge(
-                          FontWeight.bold,
-                          AppColors.lightColor,
+                      child: Center(
+                        child: Text(
+                          'Update',
+                          style: AppTextStyle.bodyLarge(
+                            FontWeight.bold,
+                            AppColors.lightColor,
+                          ),
                         ),
                       ),
                     ),

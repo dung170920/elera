@@ -1,4 +1,3 @@
-import 'package:elera/constants/constants.dart';
 import 'package:elera/screens/mentor_detail/widgets/widgets.dart';
 import 'package:elera/widgets/widgets.dart';
 import 'package:flutter/material.dart';
@@ -35,32 +34,17 @@ class _MentorDetailScreenState extends State<MentorDetailScreen>
         isBack: true,
         title: 'Mentor',
       ),
-      body: NestedScrollView(
-        headerSliverBuilder: (context, innerBoxIsScrolled) => [
-          SliverToBoxAdapter(
-            child: MentorInfo(),
+      body: ListView(
+        children: [
+          MentorInfo(),
+          MentorStatistic(),
+          MentorButtons(),
+          Padding(
+            padding: EdgeInsets.all(24.w),
+            child: Divider(),
           ),
-          SliverToBoxAdapter(
-            child: MentorStatistic(),
-          ),
-          SliverToBoxAdapter(
-            child: MentorButtons(),
-          ),
-          SliverToBoxAdapter(
-            child: Padding(
-              padding: EdgeInsets.all(24.w),
-              child: Divider(),
-            ),
-          ),
-          SliverToBoxAdapter(
-            child: MentorTabBar(tabController: tabController),
-          )
+          MentorCourses()
         ],
-        body: TabBarView(
-          physics: const NeverScrollableScrollPhysics(),
-          controller: tabController,
-          children: [MentorCourses(), MentorStudents(), MentorReviews()],
-        ),
       ),
     );
   }

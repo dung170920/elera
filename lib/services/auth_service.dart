@@ -6,7 +6,14 @@ import 'package:google_sign_in/google_sign_in.dart';
 
 class AuthService {
   var apiUrl = "user";
-  final GoogleSignIn _googleSignIn = GoogleSignIn.standard();
+  final GoogleSignIn _googleSignIn = GoogleSignIn(
+    serverClientId:
+        "682109380492-da8utofrmlnn1qmhikc6atjo1lgifamg.apps.googleusercontent.com",
+    scopes: <String>[
+      'email',
+      'profile',
+    ],
+  );
   final _controller = StreamController<String>.broadcast();
   Stream<String> get accessToken async* {
     String accessToken =
@@ -57,14 +64,18 @@ class AuthService {
     try {
       final googleUser = await _googleSignIn.signIn();
       final googleAuth = await googleUser!.authentication;
-      // final credential = GoogleAuthProvider.credential(
-      //   accessToken: googleAuth.accessToken,
-      //   idToken: googleAuth.idToken,
-      // );
-
-      // await firebaseAuth.signInWithCredential(credential);
+      DioManager().dio.post(
+        "$apiUrl/google-login",
+        data: {'idToken': googleAuth.idToken},
+      ).then((response) async {
+        var result = ApiResponseModel<TokensModel>.fromJson(
+            response.data, (data) => TokensModel.fromJson(data));
+        _controller.sink.add(result.result.accessToken!);
+        await storeToken(result.result);
+      });
     } catch (e) {
-      throw const AppExceptions();
+      _googleSignIn.disconnect();
+      print(e.toString());
     }
   }
 
@@ -84,12 +95,13 @@ class AuthService {
 
   Future<void> logOut() async {
     try {
-      Future.wait([
-        Global.storageService.remove(Preferences.ACCESS_TOKEN),
-        Global.storageService.remove(Preferences.REFRESH_TOKEN),
-        DioManager().dio.post("$apiUrl/logout")
-      ]);
-      _controller.add("");
+      DioManager().dio.post("$apiUrl/logout").then((value) {
+        Future.wait([
+          Global.storageService.remove(Preferences.ACCESS_TOKEN),
+          Global.storageService.remove(Preferences.REFRESH_TOKEN),
+        ]);
+        _controller.add("");
+      });
     } catch (e) {
       throw AppExceptions();
     }
