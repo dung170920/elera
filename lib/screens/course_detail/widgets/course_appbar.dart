@@ -1,5 +1,6 @@
 import 'package:elera/models/models.dart';
 import 'package:elera/theme/theme.dart';
+import 'package:elera/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:magicon/magicon.dart';
@@ -18,9 +19,9 @@ class CourseAppBar extends StatelessWidget {
           decoration: BoxDecoration(
             image: DecorationImage(
               fit: BoxFit.fill,
-              image: NetworkImage(
-                course.imageUrl ?? "",
-              ),
+              image: CacheImage(
+                image: course.imageUrl ?? "",
+              ) as ImageProvider,
             ),
           ),
           child: Center(

@@ -34,14 +34,11 @@ class CourseCard extends StatelessWidget {
         width: double.maxFinite,
         child: Row(
           children: [
-            ClipRRect(
-              borderRadius: radiusCircular(20),
-              child: Image.network(
-                course.imageUrl ?? '',
-                width: 100.w,
-                height: 100.w,
-                fit: BoxFit.cover,
-              ),
+            CacheImage(
+              image: course.imageUrl ?? '',
+              width: 100.w,
+              height: 100.w,
+              borderRadius: 20,
             ),
             SizedBox(
               width: 12.w,

@@ -1,7 +1,7 @@
 import 'package:elera/constants/constants.dart';
+import 'package:elera/widgets/widgets.dart';
 import 'package:magicon/magicon.dart';
 import 'package:elera/theme/theme.dart';
-import 'package:elera/utils/common.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -19,18 +19,12 @@ class CommentCard extends StatelessWidget {
           children: [
             Row(
               children: [
-                Container(
+                CacheImage(
+                  image:
+                      "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80",
+                  borderRadius: 100,
                   width: 48.w,
                   height: 48.w,
-                  decoration: BoxDecoration(
-                    borderRadius: radiusCircular(100),
-                    image: DecorationImage(
-                      fit: BoxFit.cover,
-                      image: NetworkImage(
-                        "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80",
-                      ),
-                    ),
-                  ),
                 ),
                 SizedBox(
                   width: 16.w,

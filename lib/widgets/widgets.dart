@@ -7,6 +7,7 @@ export 'snackbar.dart';
 export 'button.dart';
 export 'dialog.dart';
 export 'bottom_sheet.dart';
+export 'cache_image.dart';
 
 export 'card/course_card.dart';
 export 'card/lesson_card.dart';

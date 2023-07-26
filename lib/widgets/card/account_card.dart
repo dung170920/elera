@@ -1,7 +1,6 @@
-import 'package:elera/constants/constants.dart';
 import 'package:elera/models/models.dart';
 import 'package:elera/theme/theme.dart';
-import 'package:elera/utils/common.dart';
+import 'package:elera/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -17,21 +16,11 @@ class AccountCard extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.center,
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Container(
+        CacheImage(
+          image: user.avatar ?? "",
+          borderRadius: 100,
           width: 60.w,
           height: 60.w,
-          decoration: BoxDecoration(
-            borderRadius: radiusCircular(100),
-            image: DecorationImage(
-              image: user.avatar != null
-                  ? NetworkImage(
-                      user.avatar!,
-                    )
-                  : AssetImage(
-                      logo,
-                    ) as ImageProvider,
-            ),
-          ),
         ),
         SizedBox(
           width: 16.w,

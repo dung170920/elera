@@ -3,6 +3,7 @@ import 'package:elera/routes/routes.dart';
 import 'package:elera/screens/notification/cubit/notification_cubit.dart';
 import 'package:elera/screens/splash/cubit/splash_cubit.dart';
 import 'package:elera/theme/theme.dart';
+import 'package:elera/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -19,12 +20,8 @@ class HomeAppBar extends StatelessWidget {
           padding: EdgeInsets.all(24.w),
           child: AppBar(
             leadingWidth: 48.w,
-            leading: CircleAvatar(
-              backgroundImage: state.user.avatar != null
-                  ? NetworkImage(
-                      state.user.avatar!,
-                    )
-                  : AssetImage(logo) as ImageProvider,
+            leading: CacheImage(
+              image: state.user.avatar ?? logo,
             ),
             title: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
